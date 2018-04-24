@@ -1,6 +1,7 @@
 package ifsp.edu.br.Menu;
 
 public class GatoMenu {
+
     public void show(){
         System.out.println("1 - Cadastrar gato.");
         System.out.println("2 - Listar todos os gato.");

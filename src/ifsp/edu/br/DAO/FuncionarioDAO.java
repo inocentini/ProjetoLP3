@@ -35,6 +35,15 @@ public class FuncionarioDAO {
         return null;
     }
 
+    public Funcionario read(int id){
+        for(Funcionario func : funcionarios){
+            if(func.getId() == id) {
+                return func;
+            }
+        }
+        return null;
+    }
+
     public void list(){
         for(Funcionario func : funcionarios){
             System.out.println("\nID: "+func.getId()+

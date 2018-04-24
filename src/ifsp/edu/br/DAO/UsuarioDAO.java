@@ -35,6 +35,15 @@ public class UsuarioDAO {
         return null;
     }
 
+    public Usuario read(int id){
+        for(Usuario user : usuarios){
+            if(user.getId() == id) {
+                return user;
+            }
+        }
+        return null;
+    }
+
     public void list(){
         for(Usuario user : usuarios){
             System.out.println("\nID: "+user.getId()+
