@@ -8,7 +8,5 @@ public class CachorroMenu {
         System.out.println("4 - Alterar cachorro");
         System.out.println("5 - Remover cachorro");
         System.out.println("0 - Para Sair");
-
-        
     }
 }

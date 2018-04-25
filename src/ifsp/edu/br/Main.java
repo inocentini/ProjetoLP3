@@ -1,33 +1,35 @@
 package ifsp.edu.br;
 
-import ifsp.edu.br.DAO.CachorroDAO;
-import ifsp.edu.br.DAO.FuncionarioDAO;
-import ifsp.edu.br.DAO.GatoDAO;
-import ifsp.edu.br.DAO.UsuarioDAO;
+import ifsp.edu.br.DAO.*;
 import ifsp.edu.br.Menu.*;
 import ifsp.edu.br.Modelo.Animais.Animal;
 import ifsp.edu.br.Modelo.Animais.Cachorro;
 import ifsp.edu.br.Modelo.Animais.Gato;
+import ifsp.edu.br.Modelo.Conta;
 import ifsp.edu.br.Modelo.Pessoas.Funcionario;
 import ifsp.edu.br.Modelo.Pessoas.Usuario;
+import jdk.nashorn.internal.parser.DateParser;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         MainMenu mainMenu = new MainMenu();
         int idDog = 0;
         int idCat = 0;
         int idUser = 0;
         int idFunc = 0;
+        int idConta = 0;
 
         CachorroDAO dogDAO = new CachorroDAO() ;
         GatoDAO catDAO = new GatoDAO();
         UsuarioDAO userDAO = new UsuarioDAO();
         FuncionarioDAO funcDAO = new FuncionarioDAO();
+        ContaDAO contaDAO = new ContaDAO();
 
         int opcMain = -1;
         Scanner scn = new Scanner(System.in);
@@ -46,6 +48,8 @@ public class Main {
                         cachorroMenu.show();
                         int opdog = scn.nextInt();
                         switch (opdog){
+                            case 0: // Sair
+                                break;
                             case 1: // Cadastrar cachorro
                                 Cachorro dog = new Cachorro();
                                 dog.setId(idDog++);
@@ -82,6 +86,8 @@ public class Main {
                         gatoMenu.show();
                         int opCat = scn.nextInt();
                         switch (opCat){
+                            case 0: // Sair
+                                break;
                             case 1: // Adicionar Gato
                                 Gato cat = new Gato();
                                 cat.setId(idCat++);
@@ -122,6 +128,8 @@ public class Main {
                     usuarioMenu.show();
                     int opcUser = scn.nextInt();
                     switch (opcUser){
+                        case 0: // Sair
+                            break;
                         case 1: // Adicionar usuário
                             Usuario user = new Usuario();
                             user.setId(idUser++);
@@ -156,6 +164,8 @@ public class Main {
                     funcionarioMenu.show();
                     int opcFunc = scn.nextInt();
                     switch (opcFunc){
+                        case 0: // Sair
+                            break;
                         case 1: // Adicionar funcionário
                             Funcionario func = new Funcionario();
                             func.setId(idFunc++);
@@ -187,6 +197,43 @@ public class Main {
                             funcDAO.remove(funcDAO.read(scn.nextInt()));
                     }
                     break;
+                case 4: // Gerenciamento de Contas
+                    ContaMenu contaMenu = new ContaMenu();
+                    contaMenu.show();
+                    int opConta = scn.nextInt();
+                    switch (opConta){
+                        case 0:// Sair
+                            break;
+                        case 1: // Adicionar conta
+                            Conta conta = new Conta();
+                            conta.setId(idConta++);
+                            System.out.println("Informe nome e descrição da conta:");
+                            conta.setDescricao(scn.next());
+                            System.out.println("Informe o valor da conta:");
+                            conta.setValor(scn.nextDouble());
+                            System.out.println("Informe a data de vencimento:");
+                            String date = scn.next();
+                            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                            Date dt = df.parse(date);
+                            conta.setVencimento(dt);
+                            contaDAO.add(conta);
+                            break;
+                        case 2: // Listar todas as contas
+                            contaDAO.list();
+                            break;
+                        case 3: // Pesquisar conta pelo id
+                            System.out.println("Informe o id da conta");
+                            contaDAO.read(scn.nextInt());
+                            break;
+                        case 4: // Alterar conta pelo id
+                            System.out.println("Informe o id da conta que deseja alterar:");
+                            contaDAO.update(contaDAO.read(scn.nextInt()));
+                            break;
+                        case 5: // Remover conta pelo id
+                            System.out.println("Informar o id da conta que deseja remover:");
+                            contaDAO.remove(contaDAO.read(scn.nextInt()));
+                            break;
+                    }
         }
 
         }while(opcMain != 0);
