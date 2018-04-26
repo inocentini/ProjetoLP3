@@ -74,11 +74,23 @@ public class Main {
                                 break;
                             case 4: // Atualizar cachorro
                                 System.out.println("Informe o id do cachorro que deseja atualizar:");
-                                dogDAO.update(dogDAO.read(scn.nextInt()));
+                                Cachorro dogUp = dogDAO.read(scn.nextInt());
+                                System.out.println("Informe o novo Apelido do animal:");
+                                dogUp.setApelido(scn.next());
+                                System.out.println("Informe a nova idade:");
+                                dogUp.setIdade(scn.nextInt());
+                                System.out.println("O animal é vacinado? true/false");
+                                dogUp.setVacinado(scn.nextBoolean());
+                                System.out.println("O animal é castrado? true/false");
+                                dogUp.setCastrado(scn.nextBoolean());
+                                dogDAO.update(dogUp);
                                 break;
                             case 5:
                                 System.out.println("informe o id do cachorro que deseja remover:");
                                 dogDAO.remove(dogDAO.read(scn.nextInt()));
+                                break;
+                            default:
+                                System.out.println("Opção Inválida");
                                 break;
                         }
                     }else if(opAnimal == 2){
@@ -112,11 +124,23 @@ public class Main {
                                 break;
                             case 4: //Atualiza o gato pelo id
                                 System.out.println("Informe o id do gato que deseja atualizar:");
+                                Gato catUp = catDAO.read(scn.nextInt());
+                                System.out.println("Informe o novo Apelido do animal:");
+                                catUp.setApelido(scn.next());
+                                System.out.println("Informe a nova idade:");
+                                catUp.setIdade(scn.nextInt());
+                                System.out.println("O animal é vacinado? true/false");
+                                catUp.setVacinado(scn.nextBoolean());
+                                System.out.println("O animal é castrado? true/false");
+                                catUp.setCastrado(scn.nextBoolean());
                                 catDAO.update(catDAO.read(scn.nextInt()));
                                 break;
                             case 5: // Remove um gato pelo id
                                 System.out.println("Informe o id do gato que deseja remover:");
                                 catDAO.remove(catDAO.read(scn.nextInt()));
+                                break;
+                            default:
+                                System.out.println("Opção Inválida");
                                 break;
                         }
                     }else{
@@ -153,10 +177,22 @@ public class Main {
                             userDAO.read(scn.nextInt());
                         case 4: // Atualizar usuario pelo id
                             System.out.println("Informe o id do usuario que deseja atualizar:");
-                            userDAO.update(userDAO.read(scn.nextInt()));
+                            Usuario userUP = userDAO.read(scn.nextInt());
+                            System.out.println("Informe o novo nome do usuário:");
+                            userUP.setNome(scn.next());
+                            System.out.println("Informe o novo endereço:");
+                            userUP.setEndereco(scn.next());
+                            System.out.println("Informe o novo telefone:");
+                            userUP.setTelefone(scn.next());
+                            System.out.println("Informe o novo email:");
+                            userUP.setEmail(scn.next());
+                            userDAO.update(userUP);
                         case 5:
                             System.out.println("Informe o id do usuario que deseja remover:");
                             userDAO.remove(userDAO.read(scn.nextInt()));
+                        default:
+                            System.out.println("Opção Inválida");
+                            break;
                     }
                     break;
                 case 3: // Gerenciamento de funcionarios
@@ -191,7 +227,18 @@ public class Main {
                             funcDAO.read(scn.nextInt());
                         case 4: // Atualizar funcionário pelo id
                             System.out.println("Informe o id do funcionário que deseja atualizar:");
-                            funcDAO.update(funcDAO.read(scn.nextInt()));
+                            Funcionario funcUp = funcDAO.read(scn.nextInt());
+                            System.out.println("Informe o novo nome do funcionário:");
+                            funcUp.setNome(scn.next());
+                            System.out.println("Informe o novo endereço:");
+                            funcUp.setEndereco(scn.next());
+                            System.out.println("Informe o novo telefone:");
+                            funcUp.setTelefone(scn.next());
+                            System.out.println("Informe o novo email:");
+                            funcUp.setEmail(scn.next());
+                            System.out.println("Informe o novo salário:");
+                            funcUp.setSalario(scn.nextDouble());
+                            funcDAO.update(funcUp);
                         case 5: // Remover funcionário pelo id
                             System.out.println("Informe o id do funcionário que deseja remover:");
                             funcDAO.remove(funcDAO.read(scn.nextInt()));
@@ -227,7 +274,17 @@ public class Main {
                             break;
                         case 4: // Alterar conta pelo id
                             System.out.println("Informe o id da conta que deseja alterar:");
-                            contaDAO.update(contaDAO.read(scn.nextInt()));
+                            Conta contaUp = contaDAO.read(scn.nextInt());
+                            System.out.println("Informe o novo nome e descrição da conta:");
+                            contaUp.setDescricao(scn.next());
+                            System.out.println("Informe o novo valor da conta:");
+                            contaUp.setValor(scn.nextDouble());
+                            System.out.println("Informe a nova data de vencimento:");
+                            String dateUP = scn.next();
+                            DateFormat dfUP = new SimpleDateFormat("dd/MM/yyyy");
+                            Date dtUP = df.parse(dateUP);
+                            contaUp.setVencimento(dtUP);
+                            contaDAO.update(contaUp);
                             break;
                         case 5: // Remover conta pelo id
                             System.out.println("Informar o id da conta que deseja remover:");

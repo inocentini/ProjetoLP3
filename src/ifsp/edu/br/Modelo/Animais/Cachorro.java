@@ -8,4 +8,14 @@ public class Cachorro extends Animal {
     public Cachorro(int id, String apelido, int idade, boolean sexo, boolean vacinado, boolean castrado) {
         super(id, apelido, idade, sexo, vacinado, castrado);
     }
+
+    /*@Override
+    public String toString() {
+        return "\nID:"+getId()+
+                "\nApelido:"+getApelido()+
+                "\nIdade:"+getIdade()+
+                "\nSexo:"+isSexo()+
+                "\nVacinado?"+isVacinado()+
+                "\nCastrado?"+isCastrado();
+    }*/
 }
