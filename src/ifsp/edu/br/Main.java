@@ -18,7 +18,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws ParseException {
-        MainMenu mainMenu = new MainMenu();
+        Menu menu = new Menu();
         int idDog = 0;
         int idCat = 0;
         int idUser = 0;
@@ -34,18 +34,17 @@ public class Main {
         int opcMain = -1;
         Scanner scn = new Scanner(System.in);
 
+        // Menu Inicial
         do{
-            mainMenu.show();
+            menu.mainMenu();
             opcMain = scn.nextInt();
 
             switch (opcMain){
                 case 1: // Gerenciamento de animais
-                    AnimalMenu animalMenu = new AnimalMenu();
-                    animalMenu.show();
+                    menu.animalMenu();
                     int opAnimal = scn.nextInt();
                     if(opAnimal == 1){
-                        CachorroMenu cachorroMenu = new CachorroMenu();
-                        cachorroMenu.show();
+                        menu.cachorroMenu();
                         int opdog = scn.nextInt();
                         switch (opdog){
                             case 0: // Sair
@@ -94,8 +93,7 @@ public class Main {
                                 break;
                         }
                     }else if(opAnimal == 2){
-                        GatoMenu gatoMenu = new GatoMenu();
-                        gatoMenu.show();
+                        menu.gatoMenu();
                         int opCat = scn.nextInt();
                         switch (opCat){
                             case 0: // Sair
@@ -148,8 +146,7 @@ public class Main {
                     }
                     break;
                 case 2: // Gerenciamento de Usuários
-                    UsuarioMenu usuarioMenu = new UsuarioMenu();
-                    usuarioMenu.show();
+                    menu.usuarioMenu();
                     int opcUser = scn.nextInt();
                     switch (opcUser){
                         case 0: // Sair
@@ -196,8 +193,7 @@ public class Main {
                     }
                     break;
                 case 3: // Gerenciamento de funcionarios
-                    FuncionarioMenu funcionarioMenu = new FuncionarioMenu();
-                    funcionarioMenu.show();
+                    menu.funcionarioMenu();
                     int opcFunc = scn.nextInt();
                     switch (opcFunc){
                         case 0: // Sair
@@ -245,8 +241,7 @@ public class Main {
                     }
                     break;
                 case 4: // Gerenciamento de Contas
-                    ContaMenu contaMenu = new ContaMenu();
-                    contaMenu.show();
+                    menu.cachorroMenu();
                     int opConta = scn.nextInt();
                     switch (opConta){
                         case 0:// Sair
@@ -282,7 +277,7 @@ public class Main {
                             System.out.println("Informe a nova data de vencimento:");
                             String dateUP = scn.next();
                             DateFormat dfUP = new SimpleDateFormat("dd/MM/yyyy");
-                            Date dtUP = df.parse(dateUP);
+                            Date dtUP = dfUP.parse(dateUP);
                             contaUp.setVencimento(dtUP);
                             contaDAO.update(contaUp);
                             break;
@@ -290,6 +285,8 @@ public class Main {
                             System.out.println("Informar o id da conta que deseja remover:");
                             contaDAO.remove(contaDAO.read(scn.nextInt()));
                             break;
+                        default:
+                            System.out.println("Opção Inválida");
                     }
         }
 
