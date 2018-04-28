@@ -180,6 +180,7 @@ public class Main {
                         case 3: //Pesquisar usuario pelo id
                             System.out.println("Informe o id do usuario:");
                             userDAO.read(scn.nextInt());
+                            break;
                         case 4: // Atualizar usuario pelo id
                             scn.nextLine();
                             System.out.println("Informe o id do usuario que deseja atualizar:");
@@ -193,9 +194,11 @@ public class Main {
                             System.out.println("Informe o novo email:");
                             userUP.setEmail(scn.nextLine());
                             userDAO.update(userUP);
+                            break;
                         case 5:
                             System.out.println("Informe o id do usuario que deseja remover:");
                             userDAO.remove(userDAO.read(scn.nextInt()));
+                            break;
                         default:
                             System.out.println("Opção Inválida");
                             break;
@@ -231,6 +234,7 @@ public class Main {
                         case 3: // Pesquisar funcionário pelo id
                             System.out.println("Informe o id do funcionário");
                             funcDAO.read(scn.nextInt());
+                            break;
                         case 4: // Atualizar funcionário pelo id
                             System.out.println("Informe o id do funcionário que deseja atualizar:");
                             Funcionario funcUp = funcDAO.read(scn.nextInt());
@@ -246,9 +250,11 @@ public class Main {
                             System.out.println("Informe o novo salário:");
                             funcUp.setSalario(scn.nextDouble());
                             funcDAO.update(funcUp);
+                            break;
                         case 5: // Remover funcionário pelo id
                             System.out.println("Informe o id do funcionário que deseja remover:");
                             funcDAO.remove(funcDAO.read(scn.nextInt()));
+                            break;
                     }
                     break;
                 case 4: // Gerenciamento de Contas
@@ -301,6 +307,7 @@ public class Main {
                         default:
                             System.out.println("Opção Inválida");
                     }
+                    break;
                 case 5: //Gerenciamento de Adoções
                     menu.adocaoMenu();
                     int opcAd = scn.nextInt();
@@ -392,10 +399,13 @@ public class Main {
                             adocaoDAO.remove(adocaoDAO.read(scn.nextInt()));
                             break;
                     }
+                    break;
                 case 6: // Gerenciamento de Doações Implementar
                     break;
                 case 7: // Gerenciamento de Estoque Implementar
                     break;
+                default:
+                    System.out.println("Opção inválida.");
             }
 
         }while(opcMain != 0);
