@@ -8,8 +8,9 @@ public class Menu {
         System.out.println("2 - Gerenciamento de Usuarios.");
         System.out.println("3 - Gerenciamento de Funcionarios");
         System.out.println("4 - Gerenciamento de Contas");
-        System.out.println("5 - Gerenciamento de Doações");
-        System.out.println("6 - Gerencimento de Adoções");
+        System.out.println("5 - Gerenciamento de Adoações");
+        System.out.println("6 - Gerencimento de Doções");
+        System.out.println("7 - Gerenciamento de Estoque");
         System.out.println("0 - Para Sair");
     }
 
@@ -56,6 +57,15 @@ public class Menu {
         System.out.println("4 - Alterar cachorro");
         System.out.println("5 - Remover cachorro");
         System.out.println("0 - Para Sair");
+    }
+
+    public void adocaoMenu(){
+        System.out.println("1 - Cadastrar adoção");
+        System.out.println("2 - Listar todas as adoções");
+        System.out.println("3 - Pesquisar adoção");
+        System.out.println("4 - Alterar adoção");
+        System.out.println("5 - Remover adoção");
+        System.out.println("0 - Sair");
     }
 
     public void animalMenu() {

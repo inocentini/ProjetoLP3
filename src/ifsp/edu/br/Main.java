@@ -2,6 +2,7 @@ package ifsp.edu.br;
 
 import ifsp.edu.br.DAO.*;
 import ifsp.edu.br.Menu.*;
+import ifsp.edu.br.Modelo.Adocao;
 import ifsp.edu.br.Modelo.Animais.Animal;
 import ifsp.edu.br.Modelo.Animais.Cachorro;
 import ifsp.edu.br.Modelo.Animais.Gato;
@@ -24,12 +25,14 @@ public class Main {
         int idUser = 0;
         int idFunc = 0;
         int idConta = 0;
+        int idAdocao = 0;
 
         CachorroDAO dogDAO = new CachorroDAO() ;
         GatoDAO catDAO = new GatoDAO();
         UsuarioDAO userDAO = new UsuarioDAO();
         FuncionarioDAO funcDAO = new FuncionarioDAO();
         ContaDAO contaDAO = new ContaDAO();
+        AdocaoDAO adocaoDAO = new AdocaoDAO();
 
         int opcMain = -1;
         Scanner scn = new Scanner(System.in);
@@ -50,10 +53,11 @@ public class Main {
                             case 0: // Sair
                                 break;
                             case 1: // Cadastrar cachorro
-                                Cachorro dog = new Cachorro();
+                                Animal dog = new Cachorro();
                                 dog.setId(idDog++);
+                                scn.nextLine();
                                 System.out.println("Informe o Apelido do animal:");
-                                dog.setApelido(scn.next());
+                                dog.setApelido(scn.nextLine());
                                 System.out.println("Informe a idade:");
                                 dog.setIdade(scn.nextInt());
                                 System.out.println("Informe o sexo: True = Macho, false = femea");
@@ -62,7 +66,7 @@ public class Main {
                                 dog.setVacinado(scn.nextBoolean());
                                 System.out.println("O animal é castrado? true/false");
                                 dog.setCastrado(scn.nextBoolean());
-                                dogDAO.add(dog);
+                                dogDAO.add((Cachorro) dog);
                                 break;
                             case 2: // Listar todos cachorros
                                 dogDAO.list();
@@ -74,8 +78,9 @@ public class Main {
                             case 4: // Atualizar cachorro
                                 System.out.println("Informe o id do cachorro que deseja atualizar:");
                                 Cachorro dogUp = dogDAO.read(scn.nextInt());
+                                scn.nextLine();
                                 System.out.println("Informe o novo Apelido do animal:");
-                                dogUp.setApelido(scn.next());
+                                dogUp.setApelido(scn.nextLine());
                                 System.out.println("Informe a nova idade:");
                                 dogUp.setIdade(scn.nextInt());
                                 System.out.println("O animal é vacinado? true/false");
@@ -99,10 +104,11 @@ public class Main {
                             case 0: // Sair
                                 break;
                             case 1: // Adicionar Gato
-                                Gato cat = new Gato();
+                                Animal cat = new Gato();
                                 cat.setId(idCat++);
+                                scn.nextLine();
                                 System.out.println("Informe o Apelido do animal:");
-                                cat.setApelido(scn.next());
+                                cat.setApelido(scn.nextLine());
                                 System.out.println("Informe a idade:");
                                 cat.setIdade(scn.nextInt());
                                 System.out.println("Informe o sexo: M= True, F=false");
@@ -111,7 +117,7 @@ public class Main {
                                 cat.setVacinado(scn.nextBoolean());
                                 System.out.println("O animal é castrado? true/false");
                                 cat.setCastrado(scn.nextBoolean());
-                                catDAO.add(cat);
+                                catDAO.add((Gato) cat);
                                 break;
                             case 2: // Listar todos os gatos
                                 catDAO.list();
@@ -123,8 +129,9 @@ public class Main {
                             case 4: //Atualiza o gato pelo id
                                 System.out.println("Informe o id do gato que deseja atualizar:");
                                 Gato catUp = catDAO.read(scn.nextInt());
+                                scn.nextLine();
                                 System.out.println("Informe o novo Apelido do animal:");
-                                catUp.setApelido(scn.next());
+                                catUp.setApelido(scn.nextLine());
                                 System.out.println("Informe a nova idade:");
                                 catUp.setIdade(scn.nextInt());
                                 System.out.println("O animal é vacinado? true/false");
@@ -154,16 +161,17 @@ public class Main {
                         case 1: // Adicionar usuário
                             Usuario user = new Usuario();
                             user.setId(idUser++);
+                            scn.nextLine();
                             System.out.println("Informe o nome do usuário:");
-                            user.setNome(scn.next());
+                            user.setNome(scn.nextLine());
                             System.out.println("Informe o CPF:");
-                            user.setCpf(scn.next());
+                            user.setCpf(scn.nextLine());
                             System.out.println("Informe o endereço:");
-                            user.setEndereco(scn.next());
+                            user.setEndereco(scn.nextLine());
                             System.out.println("Informe o telefone:");
-                            user.setTelefone(scn.next());
+                            user.setTelefone(scn.nextLine());
                             System.out.println("Informe o email:");
-                            user.setEmail(scn.next());
+                            user.setEmail(scn.nextLine());
                             userDAO.add(user);
                             break;
                         case 2: // Listar todos os usuarios
@@ -173,16 +181,17 @@ public class Main {
                             System.out.println("Informe o id do usuario:");
                             userDAO.read(scn.nextInt());
                         case 4: // Atualizar usuario pelo id
+                            scn.nextLine();
                             System.out.println("Informe o id do usuario que deseja atualizar:");
                             Usuario userUP = userDAO.read(scn.nextInt());
                             System.out.println("Informe o novo nome do usuário:");
-                            userUP.setNome(scn.next());
+                            userUP.setNome(scn.nextLine());
                             System.out.println("Informe o novo endereço:");
-                            userUP.setEndereco(scn.next());
+                            userUP.setEndereco(scn.nextLine());
                             System.out.println("Informe o novo telefone:");
-                            userUP.setTelefone(scn.next());
+                            userUP.setTelefone(scn.nextLine());
                             System.out.println("Informe o novo email:");
-                            userUP.setEmail(scn.next());
+                            userUP.setEmail(scn.nextLine());
                             userDAO.update(userUP);
                         case 5:
                             System.out.println("Informe o id do usuario que deseja remover:");
@@ -201,16 +210,17 @@ public class Main {
                         case 1: // Adicionar funcionário
                             Funcionario func = new Funcionario();
                             func.setId(idFunc++);
+                            scn.nextLine();
                             System.out.println("Informe o nome do funcionário:");
-                            func.setNome(scn.next());
+                            func.setNome(scn.nextLine());
                             System.out.println("Informe o CPF:");
-                            func.setCpf(scn.next());
+                            func.setCpf(scn.nextLine());
                             System.out.println("Informe o endereço:");
-                            func.setEndereco(scn.next());
+                            func.setEndereco(scn.nextLine());
                             System.out.println("Informe o telefone:");
-                            func.setTelefone(scn.next());
+                            func.setTelefone(scn.nextLine());
                             System.out.println("Informe o email:");
-                            func.setEmail(scn.next());
+                            func.setEmail(scn.nextLine());
                             System.out.println("Informe o salário:");
                             func.setSalario(scn.nextDouble());
                             funcDAO.add(func);
@@ -224,14 +234,15 @@ public class Main {
                         case 4: // Atualizar funcionário pelo id
                             System.out.println("Informe o id do funcionário que deseja atualizar:");
                             Funcionario funcUp = funcDAO.read(scn.nextInt());
+                            scn.nextLine();
                             System.out.println("Informe o novo nome do funcionário:");
-                            funcUp.setNome(scn.next());
+                            funcUp.setNome(scn.nextLine());
                             System.out.println("Informe o novo endereço:");
-                            funcUp.setEndereco(scn.next());
+                            funcUp.setEndereco(scn.nextLine());
                             System.out.println("Informe o novo telefone:");
-                            funcUp.setTelefone(scn.next());
+                            funcUp.setTelefone(scn.nextLine());
                             System.out.println("Informe o novo email:");
-                            funcUp.setEmail(scn.next());
+                            funcUp.setEmail(scn.nextLine());
                             System.out.println("Informe o novo salário:");
                             funcUp.setSalario(scn.nextDouble());
                             funcDAO.update(funcUp);
@@ -249,12 +260,13 @@ public class Main {
                         case 1: // Adicionar conta
                             Conta conta = new Conta();
                             conta.setId(idConta++);
+                            scn.nextLine();
                             System.out.println("Informe nome e descrição da conta:");
-                            conta.setDescricao(scn.next());
+                            conta.setDescricao(scn.nextLine());
                             System.out.println("Informe o valor da conta:");
                             conta.setValor(scn.nextDouble());
                             System.out.println("Informe a data de vencimento:");
-                            String date = scn.next();
+                            String date = scn.nextLine();
                             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                             Date dt = df.parse(date);
                             conta.setVencimento(dt);
@@ -270,12 +282,13 @@ public class Main {
                         case 4: // Alterar conta pelo id
                             System.out.println("Informe o id da conta que deseja alterar:");
                             Conta contaUp = contaDAO.read(scn.nextInt());
+                            scn.nextLine();
                             System.out.println("Informe o novo nome e descrição da conta:");
-                            contaUp.setDescricao(scn.next());
+                            contaUp.setDescricao(scn.nextLine());
                             System.out.println("Informe o novo valor da conta:");
                             contaUp.setValor(scn.nextDouble());
                             System.out.println("Informe a nova data de vencimento:");
-                            String dateUP = scn.next();
+                            String dateUP = scn.nextLine();
                             DateFormat dfUP = new SimpleDateFormat("dd/MM/yyyy");
                             Date dtUP = dfUP.parse(dateUP);
                             contaUp.setVencimento(dtUP);
@@ -288,7 +301,102 @@ public class Main {
                         default:
                             System.out.println("Opção Inválida");
                     }
-        }
+                case 5: //Gerenciamento de Adoções
+                    menu.adocaoMenu();
+                    int opcAd = scn.nextInt();
+                    switch (opcAd){
+                        case 1: // Adicionar adoção
+                            Adocao adocao = new Adocao();
+                            adocao.setId(idAdocao++);
+                            System.out.println("Informe o id do usuário que fará a adoção:");
+                            userDAO.list();
+                            adocao.setUser(userDAO.read(scn.nextInt()));
+                            scn.nextLine();
+                            System.out.println("Informe a data da adoção:");
+                            String dateAd = scn.nextLine();
+                            DateFormat dfAd = new SimpleDateFormat("dd/MM/yyyy");
+                            Date dtAd = dfAd.parse(dateAd);
+                            adocao.setData(dtAd);
+                            boolean opAd = true;
+                            List<Animal> animais = new ArrayList<>();
+                            while(opAd){
+                                System.out.println("Deseja adicionar:\n1 - Cachorro.\n2 - Gato.\n0 - Sair");
+                                int opAdSw = scn.nextInt();
+                                switch (opAdSw){
+                                    case 0://Sair
+                                        opAd = false;
+                                        break;
+                                    case 1: // Adicionar cachorro na lista
+                                        System.out.println("Informe o id do cachorro que deseja adotar:");
+                                        dogDAO.list();
+                                        animais.add(dogDAO.read(scn.nextInt()));
+                                        break;
+                                    case 2: // Adicionar gato na lista
+                                        System.out.println("Informe o id do gato que deseja adotar:");
+                                        catDAO.list();
+                                        animais.add(catDAO.read(scn.nextInt()));
+                                        break;
+                                    default:
+                                        System.out.println("Opção inválida.");
+                                }
+                            }
+                            adocao.setAnimais(animais);
+                            adocaoDAO.add(adocao);
+                            break;
+                        case 2: // Listar todas as adoções
+                            adocaoDAO.list();
+                            break;
+                        case 3: //Pesquisar adoção pelo id.
+                            System.out.println("Informe o id da adoção.");
+                            adocaoDAO.read(scn.nextInt());
+                            break;
+                        case 4:// Alterar Implementar..
+                            System.out.println("Informe o id da adoção que deseja alterar:");
+                            Adocao adocaoUp = adocaoDAO.read(scn.nextInt());
+                            scn.nextLine();
+                            System.out.println("Informe o id do novo Usuário da adoção:");
+                            userDAO.list();
+                            adocaoUp.setUser(userDAO.read(scn.nextInt()));
+                            System.out.println("Informe a nova data da adoção:");
+                            String dateAdUp = scn.nextLine();
+                            DateFormat dfAdUp = new SimpleDateFormat("dd/MM/yyyy");
+                            Date dtAdUp = dfAdUp.parse(dateAdUp);
+                            adocao.setData(dtAdUp);
+                            boolean opAdUp = true;
+                            List<Animal> animaisUp = new ArrayList<>();
+                            while(opAdUp){
+                                System.out.println("Deseja adicionar:\n1 - Cachorro.\n2 - Gato.\n0 - Sair");
+                                int opAdSwUp = scn.nextInt();
+                                switch (opAdSwUp){
+                                    case 0://Sair
+                                        opAdUp = false;
+                                        break;
+                                    case 1: // Adicionar cachorro na lista
+                                        System.out.println("Informe o id do novo cachorro que deseja adotar:");
+                                        dogDAO.list();
+                                        animaisUp.add(dogDAO.read(scn.nextInt()));
+                                        break;
+                                    case 2: // Adicionar gato na lista
+                                        System.out.println("Informe o id do novo gato que deseja adotar:");
+                                        catDAO.list();
+                                        animaisUp.add(catDAO.read(scn.nextInt()));
+                                        break;
+                                    default:
+                                        System.out.println("Opção inválida.");
+                                }
+                            }
+                            adocaoUp.setAnimais(animaisUp);
+                            adocaoDAO.update(adocaoUp);
+                            break;
+                        case 5:
+                            adocaoDAO.remove(adocaoDAO.read(scn.nextInt()));
+                            break;
+                    }
+                case 6: // Gerenciamento de Doações Implementar
+                    break;
+                case 7: // Gerenciamento de Estoque Implementar
+                    break;
+            }
 
         }while(opcMain != 0);
     }
