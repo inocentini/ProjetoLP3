@@ -68,6 +68,24 @@ public class Menu {
         System.out.println("0 - Sair");
     }
 
+    public void doacaoMenu(){
+        System.out.println("1 - Cadastrar doação");
+        System.out.println("2 - Listar todas as doações");
+        System.out.println("3 - Pesquisar doação");
+        System.out.println("4 - Alterar doação");
+        System.out.println("5 - Remover doação");
+        System.out.println("0 - Sair");
+    }
+
+    public void estoqueMenu(){
+        System.out.println("1 - Cadastrar produto/suprimento");
+        System.out.println("2 - Listar estoque");
+        System.out.println("3 - Pesquisar produto/suprimento em estoque");
+        System.out.println("4 - Alterar produto/suprimento");
+        System.out.println("5 - Remover produto/suprimento");
+        System.out.println("0 - Sair");
+    }
+
     public void animalMenu() {
         System.out.println("Deseja gerenciar:\n1-Cachorro.\n2-Gato.");
     }

@@ -7,8 +7,10 @@ import ifsp.edu.br.Modelo.Animais.Animal;
 import ifsp.edu.br.Modelo.Animais.Cachorro;
 import ifsp.edu.br.Modelo.Animais.Gato;
 import ifsp.edu.br.Modelo.Conta;
+import ifsp.edu.br.Modelo.Doacao;
 import ifsp.edu.br.Modelo.Pessoas.Funcionario;
 import ifsp.edu.br.Modelo.Pessoas.Usuario;
+import ifsp.edu.br.Modelo.Produto;
 import jdk.nashorn.internal.parser.DateParser;
 
 import java.text.DateFormat;
@@ -26,6 +28,8 @@ public class Main {
         int idFunc = 0;
         int idConta = 0;
         int idAdocao = 0;
+        int idDoacao = 0;
+        int idProduto = 0;
 
         CachorroDAO dogDAO = new CachorroDAO() ;
         GatoDAO catDAO = new GatoDAO();
@@ -33,6 +37,8 @@ public class Main {
         FuncionarioDAO funcDAO = new FuncionarioDAO();
         ContaDAO contaDAO = new ContaDAO();
         AdocaoDAO adocaoDAO = new AdocaoDAO();
+        DoacaoDAO doacaoDAO = new DoacaoDAO();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
 
         int opcMain = -1;
         Scanner scn = new Scanner(System.in);
@@ -255,6 +261,9 @@ public class Main {
                             System.out.println("Informe o id do funcionário que deseja remover:");
                             funcDAO.remove(funcDAO.read(scn.nextInt()));
                             break;
+                        default:
+                            System.out.println("Opção inválida.");
+                            break;
                     }
                     break;
                 case 4: // Gerenciamento de Contas
@@ -306,12 +315,15 @@ public class Main {
                             break;
                         default:
                             System.out.println("Opção Inválida");
+                            break;
                     }
                     break;
                 case 5: //Gerenciamento de Adoções
                     menu.adocaoMenu();
                     int opcAd = scn.nextInt();
                     switch (opcAd){
+                        case 0: // Sair
+                            break;
                         case 1: // Adicionar adoção
                             Adocao adocao = new Adocao();
                             adocao.setId(idAdocao++);
@@ -357,7 +369,7 @@ public class Main {
                             System.out.println("Informe o id da adoção.");
                             adocaoDAO.read(scn.nextInt());
                             break;
-                        case 4:// Alterar Implementar..
+                        case 4:// Alterar adoção pelo id
                             System.out.println("Informe o id da adoção que deseja alterar:");
                             Adocao adocaoUp = adocaoDAO.read(scn.nextInt());
                             scn.nextLine();
@@ -368,7 +380,7 @@ public class Main {
                             String dateAdUp = scn.nextLine();
                             DateFormat dfAdUp = new SimpleDateFormat("dd/MM/yyyy");
                             Date dtAdUp = dfAdUp.parse(dateAdUp);
-                            adocao.setData(dtAdUp);
+                            adocaoUp.setData(dtAdUp);
                             boolean opAdUp = true;
                             List<Animal> animaisUp = new ArrayList<>();
                             while(opAdUp){
@@ -395,14 +407,151 @@ public class Main {
                             adocaoUp.setAnimais(animaisUp);
                             adocaoDAO.update(adocaoUp);
                             break;
-                        case 5:
+                        case 5: // Remover Adoção
                             adocaoDAO.remove(adocaoDAO.read(scn.nextInt()));
+                            break;
+                        default:
+                            System.out.println("Opção inválida");
                             break;
                     }
                     break;
-                case 6: // Gerenciamento de Doações Implementar
+                case 6: // Gerenciamento de Doações
+                    menu.doacaoMenu(); // Menu Doação
+                    int opcDoa = scn.nextInt();
+                    switch (opcDoa){
+                        case 0: //Sair
+                            break;
+                        case 1: // Adicionar doação
+                            Doacao doacao = new Doacao();
+                            doacao.setId(idDoacao++);
+                            System.out.println("Informe o id do usuário que fará a adoção:");
+                            userDAO.list();
+                            doacao.setUser(userDAO.read(scn.nextInt()));
+                            scn.nextLine();
+                            System.out.println("Informe a data da adoção:");
+                            String dateDoa = scn.nextLine();
+                            DateFormat dfDoa = new SimpleDateFormat("dd/MM/yyyy");
+                            Date dtDoa = dfDoa.parse(dateDoa);
+                            doacao.setData(dtDoa);
+                            boolean opDoa = true;
+                            List<Animal> animaisDoa = new ArrayList<>();
+                            while(opDoa){
+                                System.out.println("Deseja adicionar:\n1 - Cachorro.\n2 - Gato.\n0 - Sair");
+                                int opDoaSw = scn.nextInt();
+                                switch (opDoaSw){
+                                    case 0://Sair
+                                        opDoa = false;
+                                        break;
+                                    case 1: // Adicionar cachorro na lista
+                                        System.out.println("Informe o id do cachorro que deseja adotar:");
+                                        dogDAO.list();
+                                        animaisDoa.add(dogDAO.read(scn.nextInt()));
+                                        break;
+                                    case 2: // Adicionar gato na lista
+                                        System.out.println("Informe o id do gato que deseja adotar:");
+                                        catDAO.list();
+                                        animaisDoa.add(catDAO.read(scn.nextInt()));
+                                        break;
+                                    default:
+                                        System.out.println("Opção inválida.");
+                                }
+                            }
+                            doacao.setAnimais(animaisDoa);
+                            doacaoDAO.add(doacao);
+                            break;
+                        case 2: // Listar todas as doações
+                            doacaoDAO.list();
+                            break;
+                        case 3: //Pesquisar doação pelo id.
+                            System.out.println("Informe o id da adoção.");
+                            doacaoDAO.read(scn.nextInt());
+                            break;
+                        case 4:// Alterar doação pelo id
+                            System.out.println("Informe o id da adoção que deseja alterar:");
+                            Doacao doacaoUp = doacaoDAO.read(scn.nextInt());
+                            scn.nextLine();
+                            System.out.println("Informe o id do novo Usuário da adoção:");
+                            userDAO.list();
+                            doacaoUp.setUser(userDAO.read(scn.nextInt()));
+                            System.out.println("Informe a nova data da adoção:");
+                            String dateDoaUp = scn.nextLine();
+                            DateFormat dfDoaUp = new SimpleDateFormat("dd/MM/yyyy");
+                            Date dtDoaUp = dfDoaUp.parse(dateDoaUp);
+                            doacaoUp.setData(dtDoaUp);
+                            boolean opDoaUp = true;
+                            List<Animal> animaisDoaUp = new ArrayList<>();
+                            while(opDoaUp){
+                                System.out.println("Deseja adicionar:\n1 - Cachorro.\n2 - Gato.\n0 - Sair");
+                                int opDoaSwUp = scn.nextInt();
+                                switch (opDoaSwUp){
+                                    case 0://Sair
+                                        opDoaUp = false;
+                                        break;
+                                    case 1: // Adicionar cachorro na lista
+                                        System.out.println("Informe o id do novo cachorro que deseja adotar:");
+                                        dogDAO.list();
+                                        animaisDoaUp.add(dogDAO.read(scn.nextInt()));
+                                        break;
+                                    case 2: // Adicionar gato na lista
+                                        System.out.println("Informe o id do novo gato que deseja adotar:");
+                                        catDAO.list();
+                                        animaisDoaUp.add(catDAO.read(scn.nextInt()));
+                                        break;
+                                    default:
+                                        System.out.println("Opção inválida.");
+                                }
+                            }
+                            doacaoUp.setAnimais(animaisDoaUp);
+                            doacaoDAO.update(doacaoUp);
+                            break;
+                        case 5: // Remover doação
+                            doacaoDAO.remove(doacaoDAO.read(scn.nextInt()));
+                            break;
+                        default:
+                            System.out.println("Opção inválida.");
+                            break;
+                    }
                     break;
                 case 7: // Gerenciamento de Estoque Implementar
+                    menu.estoqueMenu();
+                    int opcEst = scn.nextInt();
+                    switch (opcEst){
+                        case 0: // Sair
+                            break;
+                        case 1: // Adicionar produto em estoque.
+                            Produto produto = new Produto();
+                            produto.setId(idProduto++);
+                            scn.nextLine();
+                            System.out.println("Informe o nome e descrição do produto:");
+                            produto.setDescricao(scn.nextLine());
+                            System.out.println("Informe o quanto custou a unidade do produto:");
+                            produto.setPreco(scn.nextDouble());
+                            System.out.println("Informe a quantidade comprada do produto:");
+                            produto.setQtd(scn.nextInt());
+                            produtoDAO.add(produto);
+                            break;
+                        case 2: // Listar Estoque
+                            produtoDAO.list();
+                            break;
+                        case 3: //Pesquisar produto em estoque pelo id
+                            produtoDAO.read(scn.nextInt());
+                            break;
+                        case 4: // Alterar produto pelo id
+                            Produto produtoUp = produtoDAO.read(scn.nextInt());
+                            System.out.println("Informe a nova descrição do produto:");
+                            produtoUp.setDescricao(scn.nextLine());
+                            System.out.println("Informe o novo valor do produto:");
+                            produtoUp.setPreco(scn.nextDouble());
+                            System.out.println("Informe a nova quantidade do produto:");
+                            produtoUp.setQtd(scn.nextInt());
+                            produtoDAO.update(produtoUp);
+                            break;
+                        case 5: // Remover produto pelo id
+                            produtoDAO.remove(produtoDAO.read(scn.nextInt()));
+                            break;
+                        default:
+                            System.out.println("Opção inválida");
+                    }
                     break;
                 default:
                     System.out.println("Opção inválida.");
