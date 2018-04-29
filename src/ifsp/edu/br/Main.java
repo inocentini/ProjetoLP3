@@ -551,10 +551,12 @@ public class Main {
                             break;
                         default:
                             System.out.println("Opção inválida");
+                            break;
                     }
                     break;
                 default:
                     System.out.println("Opção inválida.");
+                    break;
             }
 
         }while(opcMain != 0);
