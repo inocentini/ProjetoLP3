@@ -28,7 +28,6 @@ public class CachorroDAO {
     public Cachorro read(Cachorro c){
         for(Cachorro dog : cachorros){
             if(dog.getId() == c.getId());
-                dog = c;
                 return dog;
         }
         return null;
@@ -44,10 +43,11 @@ public class CachorroDAO {
 
     public void list(){
         for(Cachorro dog : cachorros){
+            String sex = dog.isSexo()? "macho" : "femea";
             System.out.println("\nID: "+dog.getId()+
                     "\nApelido: "+dog.getApelido()+
                     "\nIdade: "+dog.getIdade()+
-                    "\nSexo: "+dog.isSexo()+
+                    "\nSexo: "+sex+
                     "\nVacinado? "+dog.isVacinado()+
                     "\nCastrado? "+dog.isCastrado());
         }

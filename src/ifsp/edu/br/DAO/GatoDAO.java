@@ -28,7 +28,6 @@ public class GatoDAO {
     public Gato read(Gato g){
         for(Gato cat : gatos){
             if(cat.getId() == g.getId());
-            cat = g;
             return cat;
         }
         return null;
@@ -44,10 +43,11 @@ public class GatoDAO {
 
     public void list(){
         for(Gato cat : gatos){
+            String sex = cat.isSexo() ? "macho" : "femea";
             System.out.println("\nID: "+cat.getId()+
                     "\nApelido: "+cat.getApelido()+
                     "\nIdade: "+cat.getIdade()+
-                    "\nSexo: "+cat.isSexo()+
+                    "\nSexo: "+sex+
                     "\nVacinado? "+cat.isVacinado()+
                     "\nCastrado? "+cat.isCastrado());
         }
