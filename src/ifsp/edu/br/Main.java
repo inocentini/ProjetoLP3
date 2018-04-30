@@ -597,44 +597,118 @@ public class Main {
                             }
                             break;
                         case 4:// Alterar doação pelo id
-                            /*System.out.println("Informe o id da adoção que deseja alterar:");
+                            System.out.println("Informe o id da doação que deseja alterar");
                             Doacao doacaoUp = doacaoDAO.read(scn.nextInt());
-                            scn.nextLine();
-                            System.out.println("Informe o id do novo Usuário da adoção:");
+                            System.out.println("Informe o id do novo usuário da doação:");
                             userDAO.list();
                             doacaoUp.setUser(userDAO.read(scn.nextInt()));
-                            System.out.println("Informe a nova data da adoção:");
+                            scn.nextLine();
+                            System.out.println("Informe a data da doação:");
                             String dateDoaUp = scn.nextLine();
                             DateFormat dfDoaUp = new SimpleDateFormat("dd/MM/yyyy");
                             Date dtDoaUp = dfDoaUp.parse(dateDoaUp);
                             doacaoUp.setData(dtDoaUp);
                             boolean opDoaUp = true;
-                            List<Animal> animaisDoaUp = new ArrayList<>();
-                            while(opDoaUp){
-                                System.out.println("Deseja adicionar:\n1 - Cachorro.\n2 - Gato.\n0 - Sair");
-                                int opDoaSwUp = scn.nextInt();
-                                switch (opDoaSwUp){
+                            List<Animal> animaisDoaUp = doacaoUp.getAnimais();
+                            List<Produto> produtosDoaUp = doacaoUp.getProdutos();
+                            while(opDoa){
+                                System.out.println("Deseja adicionar:" +
+                                        "\n1 - Cachorro." +
+                                        "\n2 - Gato." +
+                                        "\n3 - Produto." +
+                                        "\n4 - Remover Cachorro." +
+                                        "\n5 - Remover Gato." +
+                                        "\n6 - Remover Produto." +
+                                        "\n0 - Sair");
+                                int opDoaSw = scn.nextInt();
+                                switch (opDoaSw){
                                     case 0://Sair
-                                        opDoaUp = false;
+                                        opDoa = false;
                                         break;
                                     case 1: // Adicionar cachorro na lista
-                                        System.out.println("Informe o id do novo cachorro que deseja adotar:");
-                                        dogDAO.list();
-                                        animaisDoaUp.add(dogDAO.read(scn.nextInt()));
+                                        System.out.println("Informe as informações do cachorro que irá doar:");
+                                        Animal dogDoa = new Cachorro();
+                                        dogDoa.setId(idDog++);
+                                        scn.nextLine();
+                                        System.out.println("Informe o Apelido do animal:");
+                                        dogDoa.setApelido(scn.nextLine());
+                                        System.out.println("Informe a idade:");
+                                        dogDoa.setIdade(scn.nextInt());
+                                        System.out.println("Informe o sexo: True = Macho, false = femea");
+                                        dogDoa.setSexo(scn.nextBoolean());
+                                        System.out.println("O animal é vacinado? true/false");
+                                        dogDoa.setVacinado(scn.nextBoolean());
+                                        System.out.println("O animal é castrado? true/false");
+                                        dogDoa.setCastrado(scn.nextBoolean());
+                                        dogDAO.add((Cachorro) dogDoa);
+                                        animaisDoaUp.add(dogDoa);
                                         break;
                                     case 2: // Adicionar gato na lista
-                                        System.out.println("Informe o id do novo gato que deseja adotar:");
-                                        catDAO.list();
-                                        animaisDoaUp.add(catDAO.read(scn.nextInt()));
+                                        System.out.println("Informe as informações do gato que deseja doar:");
+                                        Animal catDoa = new Gato();
+                                        catDoa.setId(idCat++);
+                                        scn.nextLine();
+                                        System.out.println("Informe o Apelido do animal:");
+                                        catDoa.setApelido(scn.nextLine());
+                                        System.out.println("Informe a idade:");
+                                        catDoa.setIdade(scn.nextInt());
+                                        System.out.println("Informe o sexo: M= True, F=false");
+                                        catDoa.setSexo(scn.nextBoolean());
+                                        System.out.println("O animal é vacinado?");
+                                        catDoa.setVacinado(scn.nextBoolean());
+                                        System.out.println("O animal é castrado? true/false");
+                                        catDoa.setCastrado(scn.nextBoolean());
+                                        catDAO.add((Gato) catDoa);
+                                        animaisDoaUp.add(catDoa);
+                                        break;
+                                    case 3:// Adicionar produto
+                                        Produto produtoDoa = new Produto();
+                                        produtoDoa.setId(idProduto++);
+                                        scn.nextLine();
+                                        System.out.println("Informe o nome e descrição do produto:");
+                                        produtoDoa.setDescricao(scn.nextLine());
+                                        System.out.println("Informe o quanto custou a unidade do produto:");
+                                        produtoDoa.setPreco(scn.nextDouble());
+                                        System.out.println("Informe a quantidade comprada do produto:");
+                                        produtoDoa.setQtd(scn.nextInt());
+                                        produtoDAO.add(produtoDoa);
+                                        produtosDoaUp.add(produtoDoa);
+                                        break;
+                                    case 4: //Remover cachorro;
+                                        System.out.println("Informe o id do cachorro que deseja remover da lista:");
+                                        for(Animal a : animaisDoaUp) {
+                                            if (a.getClass() == Cachorro.class) {
+                                                System.out.println("Cachorro:");
+                                                System.out.println("ID:" + a.getId() + "\nApelido:" + a.getApelido());
+                                            }
+                                        }
+                                        animaisDoaUp.remove(dogDAO.read(scn.nextInt()));
+                                        break;
+                                    case 5: // Remover gato
+                                        System.out.println("Informe o id do gato que deseja remover da lista:");
+                                        for(Animal a : animaisDoaUp){
+                                            if(a.getClass() == Gato.class){
+                                                System.out.println("Gato:");
+                                                System.out.println("ID:" + a.getId() + "\nApelido:" + a.getApelido());
+                                            }
+                                        }
+                                        animaisDoaUp.remove(catDAO.read(scn.nextInt()));
+                                        break;
+                                    case 6: // Remover Produto
+                                        System.out.println("Informe o id do produto que deseja remover da lista:");
+                                        for(Produto p : produtosDoaUp){
+                                            System.out.println("ID:"+p.getId()+"\nDescrição:"+p.getDescricao());
+                                        }
+                                        produtosDoaUp.remove(produtoDAO.read(scn.nextInt()));
                                         break;
                                     default:
                                         System.out.println("Opção inválida.");
+                                        break;
                                 }
                             }
-                            doacaoUp.setAnimais(animaisDoaUp);
-                            doacaoDAO.update(doacaoUp);
-                            break;*/
-                            System.out.println("Ainda a implementar");
+                            doacao.setProdutos(produtosDoaUp);
+                            doacao.setAnimais(animaisDoaUp);
+                            doacaoDAO.add(doacaoUp);
                             break;
                         case 5: // Remover doação
                             doacaoDAO.remove(doacaoDAO.read(scn.nextInt()));
@@ -666,7 +740,11 @@ public class Main {
                             produtoDAO.list();
                             break;
                         case 3: //Pesquisar produto em estoque pelo id
-                            produtoDAO.read(scn.nextInt());
+                            Produto produtoRead = produtoDAO.read(scn.nextInt());
+                            System.out.println("ID:"+produtoRead.getId()+
+                                    "\nDescrição:"+produtoRead.getDescricao()+
+                                    "\nPreço:"+produtoRead.getPreco()+
+                                    "\nQuantidade:"+produtoRead.getQtd());
                             break;
                         case 4: // Alterar produto pelo id
                             Produto produtoUp = produtoDAO.read(scn.nextInt());
