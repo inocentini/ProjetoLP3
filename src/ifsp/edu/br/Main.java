@@ -593,7 +593,7 @@ public class Main {
                                 System.out.println("ID:"+pd.getId()+
                                         "\nDescrição:"+pd.getDescricao()+
                                         "\nPreço:"+pd.getPreco()+
-                                        "\nQuantidade:"pd.getQtd());
+                                        "\nQuantidade:"+pd.getQtd());
                             }
                             break;
                         case 4:// Alterar doação pelo id

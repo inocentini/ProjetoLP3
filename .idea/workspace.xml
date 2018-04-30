@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="97cb4ea5-ec28-40f9-8c51-db68d59251fc" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/CachorroDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/CachorroDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/GatoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/GatoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Doacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Doacao.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +17,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="402" column="34" lean-forward="true" selection-start-line="402" selection-start-column="34" selection-end-line="402" selection-end-column="34" />
+            <state relative-caret-position="255">
+              <caret line="599" column="68" lean-forward="true" selection-start-line="599" selection-start-column="68" selection-end-line="599" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -514,8 +510,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="402" column="34" lean-forward="true" selection-start-line="402" selection-start-column="34" selection-end-line="402" selection-end-column="34" />
+        <state relative-caret-position="255">
+          <caret line="599" column="68" lean-forward="true" selection-start-line="599" selection-start-column="68" selection-end-line="599" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
