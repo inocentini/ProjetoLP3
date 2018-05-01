@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GatoDAO {
-    public static List<Gato> gatos = new ArrayList<>();
+    private static List<Gato> gatos = new ArrayList<>();
 
     public void add(Gato g){
         gatos.add(g);
@@ -25,32 +25,17 @@ public class GatoDAO {
         }
     }
 
-    public Gato read(Gato g){
-        for(Gato cat : gatos){
-            if(cat.getId() == g.getId());
-            return cat;
-        }
-        return null;
-    }
-
     public Gato read(int id){
         for(Gato cat : gatos){
-            if(cat.getId() == id);
-            return cat;
+            if(cat.getId() == id)
+                return cat;
         }
         return null;
     }
 
     public void list(){
-        for(Gato cat : gatos){
-            String sex = cat.isSexo() ? "macho" : "femea";
-            System.out.println("\nID: "+cat.getId()+
-                    "\nApelido: "+cat.getApelido()+
-                    "\nIdade: "+cat.getIdade()+
-                    "\nSexo: "+sex+
-                    "\nVacinado? "+cat.isVacinado()+
-                    "\nCastrado? "+cat.isCastrado());
-        }
+        for(Gato cat : gatos)
+            System.out.println(cat.toString());
     }
 
     public void remove(Gato g){

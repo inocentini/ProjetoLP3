@@ -9,17 +9,15 @@ public abstract class Animal {
     private boolean vacinado;
     private  boolean castrado;
 
-    public Animal(){
-
-    }
+    public Animal(){}
 
     public Animal(int id,String apelido, int idade, boolean sexo, boolean vacinado, boolean castrado) {
-        this.id = id;
-        this.apelido = apelido;
-        this.idade = idade;
-        this.sexo = sexo;
-        this.vacinado = vacinado;
-        this.castrado = castrado;
+        this.setId(id);
+        this.setApelido(apelido);
+        this.setIdade(idade);
+        this.setSexo(sexo);
+        this.setVacinado(vacinado);
+        this.setCastrado(castrado);
     }
 
     public int getId() {
@@ -68,5 +66,16 @@ public abstract class Animal {
 
     public void setCastrado(boolean castrado) {
         this.castrado = castrado;
+    }
+
+    @Override
+    public String toString(){
+        String sex = isSexo() ? "Fêmea" : "Macho";
+        return ("\nID: " + getId()+
+                "\nApelido: " + getApelido()+
+                "\nIdade: " + getIdade()+
+                "\nSexo: " + sex+
+                "\nVacinado? " + isVacinado()+
+                "\nCastrado? " + isCastrado());
     }
 }

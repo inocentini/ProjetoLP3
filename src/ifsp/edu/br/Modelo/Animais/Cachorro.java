@@ -9,13 +9,8 @@ public class Cachorro extends Animal {
         super(id, apelido, idade, sexo, vacinado, castrado);
     }
 
-    /*@Override
+    @Override
     public String toString() {
-        return "\nID:"+getId()+
-                "\nApelido:"+getApelido()+
-                "\nIdade:"+getIdade()+
-                "\nSexo:"+isSexo()+
-                "\nVacinado?"+isVacinado()+
-                "\nCastrado?"+isCastrado();
-    }*/
+        return super.toString();
+    }
 }

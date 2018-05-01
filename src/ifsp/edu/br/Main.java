@@ -11,7 +11,6 @@ import ifsp.edu.br.Modelo.Doacao;
 import ifsp.edu.br.Modelo.Pessoas.Funcionario;
 import ifsp.edu.br.Modelo.Pessoas.Usuario;
 import ifsp.edu.br.Modelo.Produto;
-import jdk.nashorn.internal.parser.DateParser;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,6 +18,23 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Main {
+    private static Scanner scn = new Scanner(System.in);
+
+    private static Cachorro CreateCachorro(Cachorro dog){
+        scn.nextLine();
+        System.out.println("Informe o Apelido do animal:");
+        dog.setApelido(scn.nextLine());
+        System.out.println("Informe a idade:");
+        dog.setIdade(scn.nextInt());
+        System.out.println("Informe o sexo: True = Macho, false = femea");
+        dog.setSexo(scn.nextBoolean());
+        System.out.println("O animal é vacinado? true/false");
+        dog.setVacinado(scn.nextBoolean());
+        System.out.println("O animal é castrado? true/false");
+        dog.setCastrado(scn.nextBoolean());
+
+        return dog;
+    }
 
     public static void main(String[] args) throws ParseException {
         Menu menu = new Menu();
@@ -40,8 +56,7 @@ public class Main {
         DoacaoDAO doacaoDAO = new DoacaoDAO();
         ProdutoDAO produtoDAO = new ProdutoDAO();
 
-        int opcMain = -1;
-        Scanner scn = new Scanner(System.in);
+        int opcMain;
 
         // Menu Inicial
         do{
@@ -63,51 +78,38 @@ public class Main {
                                 break;
                             case 1: // Cadastrar cachorro
                                 Animal dog = new Cachorro();
-                                dog.setId(idDog++);
-                                scn.nextLine();
-                                System.out.println("Informe o Apelido do animal:");
-                                dog.setApelido(scn.nextLine());
-                                System.out.println("Informe a idade:");
-                                dog.setIdade(scn.nextInt());
-                                System.out.println("Informe o sexo: True = Macho, false = femea");
-                                dog.setSexo(scn.nextBoolean());
-                                System.out.println("O animal é vacinado? true/false");
-                                dog.setVacinado(scn.nextBoolean());
-                                System.out.println("O animal é castrado? true/false");
-                                dog.setCastrado(scn.nextBoolean());
-                                dogDAO.add((Cachorro) dog);
+                                dogDAO.add(CreateCachorro((Cachorro)dog));
                                 break;
                             case 2: // Listar todos cachorros
                                 dogDAO.list();
                                 break;
                             case 3: // Pesquisar pelo id
                                 System.out.println("Informe o id do cachorro:");
-                                Cachorro dogRead = dogDAO.read(scn.nextInt());
-                                String sex = dogRead.isSexo() ? "macho" : "femea";
-                                System.out.println("\nID:"+dogRead.getId()+
-                                        "\nApelido:"+dogRead.getApelido()+
-                                        "\nIdade:"+dogRead.getIdade()+
-                                        "\nSexo:"+sex+
-                                        "\nVacinado?"+dogRead.isVacinado()+
-                                        "\nCastrado?"+dogRead.isCastrado());
+                                Cachorro dogFound = dogDAO.read(scn.nextInt());
+                                if (dogFound != null)
+                                    System.out.println(dogFound.toString());
+                                else
+                                    System.out.println("Cachorro não encontrado.");
                                 break;
                             case 4: // Atualizar cachorro
                                 System.out.println("Informe o id do cachorro que deseja atualizar:");
                                 Cachorro dogUp = dogDAO.read(scn.nextInt());
-                                scn.nextLine();
-                                System.out.println("Informe o novo Apelido do animal:");
-                                dogUp.setApelido(scn.nextLine());
-                                System.out.println("Informe a nova idade:");
-                                dogUp.setIdade(scn.nextInt());
-                                System.out.println("O animal é vacinado? true/false");
-                                dogUp.setVacinado(scn.nextBoolean());
-                                System.out.println("O animal é castrado? true/false");
-                                dogUp.setCastrado(scn.nextBoolean());
-                                dogDAO.update(dogUp);
+                                if (dogUp != null) {
+                                    scn.nextLine();
+                                    System.out.println("Informe o novo Apelido do animal:");
+                                    dogUp.setApelido(scn.nextLine());
+                                    System.out.println("Informe a nova idade:");
+                                    dogUp.setIdade(scn.nextInt());
+                                    System.out.println("O animal é vacinado? true/false");
+                                    dogUp.setVacinado(scn.nextBoolean());
+                                    System.out.println("O animal é castrado? true/false");
+                                    dogUp.setCastrado(scn.nextBoolean());
+                                } else
+                                    System.out.println("Cachorro não encontrado.");
                                 break;
                             case 5:
                                 System.out.println("informe o id do cachorro que deseja remover:");
-                                dogDAO.remove(dogDAO.read(scn.nextInt()));
+                                dogDAO.remove(scn.nextInt());
                                 break;
                             default:
                                 System.out.println("Opção Inválida");
@@ -121,7 +123,6 @@ public class Main {
                                 break;
                             case 1: // Adicionar Gato
                                 Animal cat = new Gato();
-                                cat.setId(idCat++);
                                 scn.nextLine();
                                 System.out.println("Informe o Apelido do animal:");
                                 cat.setApelido(scn.nextLine());
@@ -141,13 +142,10 @@ public class Main {
                             case 3: // Pesquisar gato pelo id
                                 System.out.println("Informe o id do gato:");
                                 Gato catRead = catDAO.read(scn.nextInt());
-                                String sex = catRead.isSexo() ? "macho" : "femea";
-                                System.out.println("\nID:"+catRead.getId()+
-                                        "\nApelido:"+catRead.getApelido()+
-                                        "\nIdade:"+catRead.getIdade()+
-                                        "\nSexo:"+sex+
-                                        "\nVacinado?"+catRead.isVacinado()+
-                                        "\nCastrado?"+catRead.isCastrado());
+                                if (catRead != null)
+                                    System.out.println(catRead.toString());
+                                else
+                                    System.out.println("Gato não encontrado!");
                                 break;
                             case 4: //Atualiza o gato pelo id
                                 System.out.println("Informe o id do gato que deseja atualizar:");
@@ -203,12 +201,10 @@ public class Main {
                         case 3: //Pesquisar usuario pelo id
                             System.out.println("Informe o id do usuario:");
                             Usuario userRead = userDAO.read(scn.nextInt());
-                            System.out.println("ID:"+userRead.getId()+
-                                    "\nNome:"+userRead.getNome()+
-                                    "\nCPF:"+userRead.getCpf()+
-                                    "\nEndereço:"+userRead.getEndereco()+
-                                    "\nTelefone:"+userRead.getTelefone()+
-                                    "\nEmail:"+userRead.getEmail());
+                            if (userRead != null)
+                                System.out.println(userRead.toString());
+                            else
+                                System.out.println("Usuário não encontrado!");
                             break;
                         case 4: // Atualizar usuario pelo id
                             scn.nextLine();
@@ -263,13 +259,10 @@ public class Main {
                         case 3: // Pesquisar funcionário pelo id
                             System.out.println("Informe o id do funcionário");
                             Funcionario funcRead = funcDAO.read(scn.nextInt());
-                            System.out.println("ID:"+funcRead.getId()+
-                                    "\nNome:"+funcRead.getNome()+
-                                    "\nCPF:"+funcRead.getCpf()+
-                                    "\nEndereço:"+funcRead.getEndereco()+
-                                    "\nTelefone:"+funcRead.getTelefone()+
-                                    "\nEmail:"+funcRead.getEmail()+
-                                    "\nSalario:"+funcRead.getSalario());
+                            if (funcRead != null)
+                                System.out.println(funcRead.toString());
+                            else
+                                System.out.println("Funcionário não encontrado!");
                             break;
                         case 4: // Atualizar funcionário pelo id
                             System.out.println("Informe o id do funcionário que deseja atualizar:");
@@ -324,10 +317,10 @@ public class Main {
                         case 3: // Pesquisar conta pelo id
                             System.out.println("Informe o id da conta");
                             Conta contaRead = contaDAO.read(scn.nextInt());
-                            System.out.println("ID:"+contaRead.getId()+
-                                    "\nDescrição:"+contaRead.getDescricao()+
-                                    "\nPreço:"+contaRead.getValor()+
-                                    "\nVencimento:"+contaRead.getVencimento());
+                            if (contaRead != null)
+                                System.out.println(contaRead.toString());
+                            else
+                                System.out.println("Conta não encontrada!");
                             break;
                         case 4: // Alterar conta pelo id
                             System.out.println("Informe o id da conta que deseja alterar:");
@@ -384,15 +377,21 @@ public class Main {
                                         System.out.println("Informe o id do cachorro que deseja adotar:");
                                         dogDAO.list();
                                         Cachorro dogAd = dogDAO.read(scn.nextInt());
-                                        animais.add(dogDAO.read(dogAd));
-                                        dogDAO.remove(dogDAO.read(dogAd));
+                                        if (dogAd != null) {
+                                            animais.add(dogAd);
+                                            dogDAO.remove(dogAd);
+                                        } else
+                                            System.out.println("Cachorro não encontrado!");
                                         break;
                                     case 2: // Adicionar gato na lista
                                         System.out.println("Informe o id do gato que deseja adotar:");
                                         catDAO.list();
                                         Gato catAd = catDAO.read(scn.nextInt());
-                                        animais.add(catDAO.read(catAd));
-                                        catDAO.remove(catDAO.read(catAd));
+                                        if (catAd != null) {
+                                            animais.add(catAd);
+                                            catDAO.remove(catAd);
+                                        } else
+                                            System.out.println("Gato não encontrado!");
                                         break;
                                     default:
                                         System.out.println("Opção inválida.");
@@ -407,26 +406,18 @@ public class Main {
                         case 3: //Pesquisar adoção pelo id.
                             System.out.println("Informe o id da adoção.");
                             Adocao adocaoRead = adocaoDAO.read(scn.nextInt());
-                            System.out.println("ID:"+adocaoRead.getId()+
-                                    "\nUsuário"+adocaoRead.getUser().getNome()+
-                                    "\nData:"+adocaoRead.getData());
-                            for(Animal a : adocaoRead.getAnimais()){
-                                if(a.getClass() == Cachorro.class){
-                                    System.out.println("Cachorro:");
-                                    System.out.println("ID:"+a.getId()+
-                                            "\nApelido: "+a.getApelido()+
-                                            "\nIdade: "+a.getIdade()+
-                                            "\nVacinado?"+a.isVacinado()+
-                                            "\nCastrado?"+a.isCastrado());
-                                }else if(a.getClass() == Gato.class){
-                                    System.out.println("Gato:");
-                                    System.out.println("ID:"+a.getId()+
-                                            "\nApelido: "+a.getApelido()+
-                                            "\nIdade: "+a.getIdade()+
-                                            "\nVacinado?"+a.isVacinado()+
-                                            "\nCastrado?"+a.isCastrado());
+                            if (adocaoRead != null) {
+                                System.out.println(adocaoDAO.toString());
+                                for (Animal a : adocaoRead.getAnimais()) {
+                                    if (a.getClass() == Cachorro.class)
+                                        System.out.println("Cachorro:");
+                                    else if (a.getClass() == Gato.class)
+                                        System.out.println("Gato:");
+
+                                    System.out.println(a.toString());
                                 }
-                            }
+                            } else
+                                System.out.println("Adoção não encontrada!");
 
                             break;
                         case 4:// Alterar adoção pelo id
@@ -454,15 +445,21 @@ public class Main {
                                         System.out.println("Informe o id do novo cachorro que deseja adotar:");
                                         dogDAO.list();
                                         Cachorro dogAd = dogDAO.read(scn.nextInt());
-                                        animaisUp.add(dogAd);
-                                        dogDAO.remove(dogDAO.read(dogAd));
+                                        if (dogAd != null) {
+                                            animaisUp.add(dogAd);
+                                            dogDAO.remove(dogAd);
+                                        } else
+                                            System.out.println("Cachorro não encontrado!");
                                         break;
                                     case 2: // Adicionar gato na lista
                                         System.out.println("Informe o id do novo gato que deseja adotar:");
                                         catDAO.list();
                                         Gato catAd = catDAO.read(scn.nextInt());
-                                        animaisUp.add(catDAO.read(catAd));
-                                        catDAO.remove(catDAO.read(catAd));
+                                        if (catAd != null) {
+                                            animaisUp.add(catAd);
+                                            catDAO.remove(catAd);
+                                        } else
+                                            System.out.println("Gato não encontrado!");
                                         break;
                                     default:
                                         System.out.println("Opção inválida.");
@@ -569,32 +566,21 @@ public class Main {
                         case 3: //Pesquisar doação pelo id.
                             System.out.println("Informe o id da adoção.");
                             Doacao doacaoRead = doacaoDAO.read(scn.nextInt());
-                            System.out.println("ID:"+doacaoRead.getId()+
-                                    "\nUsuário:"+doacaoRead.getUser().getNome()+
-                                    "\nData:"+doacaoRead.getData());
-                            for(Animal ad : doacaoRead.getAnimais()){
-                                if(ad.getClass() == Cachorro.class){
-                                    System.out.println("Cachorro:");
-                                    System.out.println("ID:"+ad.getId()+
-                                            "\nApelido: "+ad.getApelido()+
-                                            "\nIdade: "+ad.getIdade()+
-                                            "\nVacinado?"+ad.isVacinado()+
-                                            "\nCastrado?"+ad.isCastrado());
-                                }else if(ad.getClass() == Gato.class){
-                                    System.out.println("Gato:");
-                                    System.out.println("ID:"+ad.getId()+
-                                            "\nApelido: "+ad.getApelido()+
-                                            "\nIdade: "+ad.getIdade()+
-                                            "\nVacinado?"+ad.isVacinado()+
-                                            "\nCastrado?"+ad.isCastrado());
+                            if (doacaoRead != null) {
+                                System.out.println(doacaoRead.toString());
+                                for (Animal ad : doacaoRead.getAnimais()) {
+                                    if (ad.getClass() == Cachorro.class)
+                                        System.out.println("Cachorro:");
+                                    else if (ad.getClass() == Gato.class)
+                                        System.out.println("Gato:");
+
+                                    System.out.println(ad.toString());
                                 }
-                            }
-                            for(Produto pd : doacaoRead.getProdutos()){
-                                System.out.println("ID:"+pd.getId()+
-                                        "\nDescrição:"+pd.getDescricao()+
-                                        "\nPreço:"+pd.getPreco()+
-                                        "\nQuantidade:"+pd.getQtd());
-                            }
+                                for (Produto pd : doacaoRead.getProdutos()) {
+                                    System.out.println(pd.toString());
+                                }
+                            } else
+                                System.out.println("Não encontrado!");
                             break;
                         case 4:// Alterar doação pelo id
                             System.out.println("Informe o id da doação que deseja alterar");
@@ -608,7 +594,7 @@ public class Main {
                             DateFormat dfDoaUp = new SimpleDateFormat("dd/MM/yyyy");
                             Date dtDoaUp = dfDoaUp.parse(dateDoaUp);
                             doacaoUp.setData(dtDoaUp);
-                            boolean opDoaUp = true;
+                            opDoa = true;
                             List<Animal> animaisDoaUp = doacaoUp.getAnimais();
                             List<Produto> produtosDoaUp = doacaoUp.getProdutos();
                             while(opDoa){
@@ -706,8 +692,8 @@ public class Main {
                                         break;
                                 }
                             }
-                            doacao.setProdutos(produtosDoaUp);
-                            doacao.setAnimais(animaisDoaUp);
+                            doacaoUp.setProdutos(produtosDoaUp);
+                            doacaoUp.setAnimais(animaisDoaUp);
                             doacaoDAO.add(doacaoUp);
                             break;
                         case 5: // Remover doação
@@ -741,10 +727,10 @@ public class Main {
                             break;
                         case 3: //Pesquisar produto em estoque pelo id
                             Produto produtoRead = produtoDAO.read(scn.nextInt());
-                            System.out.println("ID:"+produtoRead.getId()+
-                                    "\nDescrição:"+produtoRead.getDescricao()+
-                                    "\nPreço:"+produtoRead.getPreco()+
-                                    "\nQuantidade:"+produtoRead.getQtd());
+                            if (produtoRead != null)
+                                System.out.println(produtoRead.toString());
+                            else
+                                System.out.println("Produto não encontrado!");
                             break;
                         case 4: // Alterar produto pelo id
                             Produto produtoUp = produtoDAO.read(scn.nextInt());

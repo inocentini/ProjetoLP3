@@ -27,15 +27,6 @@ public class DoacaoDAO {
         }
     }
 
-    public Doacao read(Doacao d){
-        for(Doacao doacao : doacoes){
-            if(doacao.getId() == d.getId()){
-                return doacao;
-            }
-        }
-        return null;
-    }
-
     public Doacao read(int id){
         for(Doacao doacao : doacoes){
             if(doacao.getId() == id){
@@ -47,31 +38,17 @@ public class DoacaoDAO {
 
     public void list(){
         for(Doacao doacao : doacoes){
-            System.out.println("ID: "+doacao.getId()+
-                    "\nUsuário: "+doacao.getUser().getNome()+
-                    "\nData: "+doacao.getData());
+            System.out.println(doacao.toString());
             for(Animal animal : doacao.getAnimais()){
-                if(animal.getClass() == Cachorro.class){
+                if(animal.getClass() == Cachorro.class)
                     System.out.println("Cachorro:");
-                    System.out.println("ID:"+animal.getId()+
-                            "\nApelido: "+animal.getApelido()+
-                            "\nIdade: "+animal.getIdade()+
-                            "\nVacinado?"+animal.isVacinado()+
-                            "\nCastrado?"+animal.isCastrado());
-                }else if(animal.getClass() == Gato.class){
+                else if(animal.getClass() == Gato.class)
                     System.out.println("Gato:");
-                    System.out.println("ID:"+animal.getId()+
-                            "\nApelido: "+animal.getApelido()+
-                            "\nIdade: "+animal.getIdade()+
-                            "\nVacinado?"+animal.isVacinado()+
-                            "\nCastrado?"+animal.isCastrado());
-                }
+
+                System.out.println(animal.toString());
             }
             for(Produto produto : doacao.getProdutos()){
-                System.out.println("ID:"+produto.getId()+
-                        "\nDescrição:"+produto.getDescricao()+
-                        "\nPreço:"+produto.getPreco()+
-                        "\nQuantidade:"+produto.getQtd());
+                System.out.println(produto.toString());
             }
         }
     }

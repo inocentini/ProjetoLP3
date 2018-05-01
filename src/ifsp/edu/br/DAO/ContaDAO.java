@@ -23,16 +23,6 @@ public class ContaDAO {
         }
     }
 
-    public Conta read(Conta c){
-        for(Conta conta : contas){
-            if(conta.getId() == c.getId()) {
-                conta = c;
-                return conta;
-            }
-        }
-        return null;
-    }
-
     public Conta read(int id){
         for(Conta conta : contas){
             if(conta.getId() == id) {
@@ -44,10 +34,7 @@ public class ContaDAO {
 
     public void list(){
         for(Conta conta : contas){
-            System.out.println("\nID: "+conta.getId()+
-                    "\nDescrição: "+conta.getDescricao()+
-                    "\nValor: "+conta.getValor()+
-                    "\nVencimento: "+conta.getVencimento());
+            System.out.println(conta.toString());
         }
     }
 

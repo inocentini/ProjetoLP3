@@ -21,18 +21,8 @@ public class UsuarioDAO {
                 user.setEndereco(u.getEndereco());
                 user.setTelefone(u.getTelefone());
                 user.setEmail(u.getEmail());
-        }
-    }
-}
-
-    public Usuario read(Usuario u){
-        for(Usuario user : usuarios){
-            if(user.getId() == u.getId()) {
-                user = u;
-                return user;
             }
         }
-        return null;
     }
 
     public Usuario read(int id){
@@ -46,12 +36,7 @@ public class UsuarioDAO {
 
     public void list(){
         for(Usuario user : usuarios){
-            System.out.println("\nID: "+user.getId()+
-                    "\nNome: "+user.getNome()+
-                    "\nCPF: "+user.getCpf()+
-                    "\nEndereço: "+user.getEndereco()+
-                    "\nTelefone: "+user.getTelefone()+
-                    "\nEmail: "+user.getEmail());
+            System.out.println(user.toString());
         }
     }
 

@@ -25,14 +25,6 @@ public class CachorroDAO {
         }
     }
 
-    public Cachorro read(Cachorro c){
-        for(Cachorro dog : cachorros){
-            if(dog.getId() == c.getId());
-                return dog;
-        }
-        return null;
-    }
-
     public Cachorro read(int id){
         for(Cachorro dog : cachorros){
             if(dog.getId() == id);
@@ -43,17 +35,22 @@ public class CachorroDAO {
 
     public void list(){
         for(Cachorro dog : cachorros){
-            String sex = dog.isSexo()? "macho" : "femea";
-            System.out.println("\nID: "+dog.getId()+
-                    "\nApelido: "+dog.getApelido()+
-                    "\nIdade: "+dog.getIdade()+
-                    "\nSexo: "+sex+
-                    "\nVacinado? "+dog.isVacinado()+
-                    "\nCastrado? "+dog.isCastrado());
+            System.out.println(dog.toString());
         }
     }
 
-    public void remove(Cachorro c){
-        cachorros.remove(c);
+    public boolean remove(int idDog){
+        Cachorro dogToRemove = this.read(idDog);
+        if (dogToRemove != null) {
+            this.cachorros.remove(dogToRemove);
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean remove(Cachorro dogToRemove){
+        this.cachorros.remove(dogToRemove);
+        return true;
     }
 }

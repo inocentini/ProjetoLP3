@@ -50,4 +50,12 @@ public class Conta {
     public void setVencimento(Date vencimento) {
         this.vencimento = vencimento;
     }
+
+    @Override
+    public String toString() {
+        return "ID:"+getId()+
+                "\nDescrição:"+getDescricao()+
+                "\nPreço:"+getValor()+
+                "\nVencimento:"+getVencimento();
+    }
 }

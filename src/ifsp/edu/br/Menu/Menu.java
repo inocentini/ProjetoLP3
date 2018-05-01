@@ -12,6 +12,7 @@ public class Menu {
         System.out.println("6 - Gerencimento de Doções");
         System.out.println("7 - Gerenciamento de Estoque");
         System.out.println("0 - Para Sair");
+        System.out.print("\nOpção: ");
     }
 
     public void usuarioMenu(){
@@ -21,6 +22,7 @@ public class Menu {
         System.out.println("4 - Alterar usuário");
         System.out.println("5 - Remover usuário");
         System.out.println("0 - Para Sair");
+        System.out.print("\nOpção: ");
     }
 
     public void gatoMenu(){
@@ -30,6 +32,7 @@ public class Menu {
         System.out.println("4 - Alterar gato");
         System.out.println("5 - Remover gato");
         System.out.println("0 - Para Sair");
+        System.out.print("\nOpção: ");
     }
 
     public void funcionarioMenu(){
@@ -39,6 +42,7 @@ public class Menu {
         System.out.println("4 - Alterar funcionário");
         System.out.println("5 - Remover funcionário");
         System.out.println("0 - Para Sair");
+        System.out.print("\nOpção: ");
     }
 
     public void contaMenu(){
@@ -48,6 +52,7 @@ public class Menu {
         System.out.println("4 - Alterar conta");
         System.out.println("5 - Remover conta");
         System.out.println("0 - Para Sair");
+        System.out.print("\nOpção: ");
     }
 
     public void cachorroMenu(){
@@ -57,6 +62,7 @@ public class Menu {
         System.out.println("4 - Alterar cachorro");
         System.out.println("5 - Remover cachorro");
         System.out.println("0 - Para Sair");
+        System.out.print("\nOpção: ");
     }
 
     public void adocaoMenu(){
@@ -66,6 +72,7 @@ public class Menu {
         System.out.println("4 - Alterar adoção");
         System.out.println("5 - Remover adoção");
         System.out.println("0 - Sair");
+        System.out.print("\nOpção: ");
     }
 
     public void doacaoMenu(){
@@ -75,6 +82,7 @@ public class Menu {
         System.out.println("4 - Alterar doação");
         System.out.println("5 - Remover doação");
         System.out.println("0 - Sair");
+        System.out.print("\nOpção: ");
     }
 
     public void estoqueMenu(){
@@ -84,9 +92,11 @@ public class Menu {
         System.out.println("4 - Alterar produto/suprimento");
         System.out.println("5 - Remover produto/suprimento");
         System.out.println("0 - Sair");
+        System.out.print("\nOpção: ");
     }
 
     public void animalMenu() {
         System.out.println("Deseja gerenciar:\n1-Cachorro.\n2-Gato.");
+        System.out.print("\nOpção: ");
     }
 }
