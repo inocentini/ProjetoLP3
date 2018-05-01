@@ -25,31 +25,17 @@ public class GatoDAO {
         }
     }
 
-    public Gato read(Gato g){
-        for(Gato cat : gatos){
-            if(cat.getId() == g.getId());
-            cat = g;
-            return cat;
-        }
-        return null;
-    }
-
     public Gato read(int id){
         for(Gato cat : gatos){
-            if(cat.getId() == id);
-            return cat;
+            if(cat.getId() == id)
+                return cat;
         }
         return null;
     }
 
     public void list(){
         for(Gato cat : gatos){
-            System.out.println("\nID: "+cat.getId()+
-                    "\nApelido: "+cat.getApelido()+
-                    "\nIdade: "+cat.getIdade()+
-                    "\nSexo: "+cat.isSexo()+
-                    "\nVacinado? "+cat.isVacinado()+
-                    "\nCastrado? "+cat.isCastrado());
+            System.out.println(cat.toString());
         }
     }
 

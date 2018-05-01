@@ -11,7 +11,6 @@ import ifsp.edu.br.Modelo.Doacao;
 import ifsp.edu.br.Modelo.Pessoas.Funcionario;
 import ifsp.edu.br.Modelo.Pessoas.Usuario;
 import ifsp.edu.br.Modelo.Produto;
-import jdk.nashorn.internal.parser.DateParser;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,10 +18,26 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Main {
+    static Scanner scn = new Scanner(System.in);
+
+    public static Cachorro CreateCachorro(Cachorro dog){
+        scn.nextLine();
+        System.out.println("Informe o Apelido do animal:");
+        dog.setApelido(scn.nextLine());
+        System.out.println("Informe a idade:");
+        dog.setIdade(scn.nextInt());
+        System.out.println("Informe o sexo: True = Macho, false = femea");
+        dog.setSexo(scn.nextBoolean());
+        System.out.println("O animal é vacinado? true/false");
+        dog.setVacinado(scn.nextBoolean());
+        System.out.println("O animal é castrado? true/false");
+        dog.setCastrado(scn.nextBoolean());
+
+        return dog;
+    }
 
     public static void main(String[] args) throws ParseException {
         Menu menu = new Menu();
-        int idDog = 0;
         int idCat = 0;
         int idUser = 0;
         int idFunc = 0;
@@ -41,7 +56,6 @@ public class Main {
         ProdutoDAO produtoDAO = new ProdutoDAO();
 
         int opcMain = -1;
-        Scanner scn = new Scanner(System.in);
 
         // Menu Inicial
         do{
@@ -60,44 +74,38 @@ public class Main {
                                 break;
                             case 1: // Cadastrar cachorro
                                 Animal dog = new Cachorro();
-                                dog.setId(idDog++);
-                                scn.nextLine();
-                                System.out.println("Informe o Apelido do animal:");
-                                dog.setApelido(scn.nextLine());
-                                System.out.println("Informe a idade:");
-                                dog.setIdade(scn.nextInt());
-                                System.out.println("Informe o sexo: True = Macho, false = femea");
-                                dog.setSexo(scn.nextBoolean());
-                                System.out.println("O animal é vacinado? true/false");
-                                dog.setVacinado(scn.nextBoolean());
-                                System.out.println("O animal é castrado? true/false");
-                                dog.setCastrado(scn.nextBoolean());
-                                dogDAO.add((Cachorro) dog);
+                                dogDAO.add(CreateCachorro((Cachorro)dog));
                                 break;
                             case 2: // Listar todos cachorros
                                 dogDAO.list();
                                 break;
                             case 3: // Pesquisar pelo id
                                 System.out.println("Informe o id do cachorro:");
-                                dogDAO.read(scn.nextInt());
+                                Cachorro dogFound = dogDAO.read(scn.nextInt());
+                                if (dogFound != null)
+                                    System.out.println(dogFound.toString());
+                                else
+                                    System.out.println("Cachorro não encontrado.");
                                 break;
                             case 4: // Atualizar cachorro
                                 System.out.println("Informe o id do cachorro que deseja atualizar:");
                                 Cachorro dogUp = dogDAO.read(scn.nextInt());
-                                scn.nextLine();
-                                System.out.println("Informe o novo Apelido do animal:");
-                                dogUp.setApelido(scn.nextLine());
-                                System.out.println("Informe a nova idade:");
-                                dogUp.setIdade(scn.nextInt());
-                                System.out.println("O animal é vacinado? true/false");
-                                dogUp.setVacinado(scn.nextBoolean());
-                                System.out.println("O animal é castrado? true/false");
-                                dogUp.setCastrado(scn.nextBoolean());
-                                dogDAO.update(dogUp);
+                                if (dogUp != null) {
+                                    scn.nextLine();
+                                    System.out.println("Informe o novo Apelido do animal:");
+                                    dogUp.setApelido(scn.nextLine());
+                                    System.out.println("Informe a nova idade:");
+                                    dogUp.setIdade(scn.nextInt());
+                                    System.out.println("O animal é vacinado? true/false");
+                                    dogUp.setVacinado(scn.nextBoolean());
+                                    System.out.println("O animal é castrado? true/false");
+                                    dogUp.setCastrado(scn.nextBoolean());
+                                } else
+                                    System.out.println("Cachorro não encontrado.");
                                 break;
                             case 5:
                                 System.out.println("informe o id do cachorro que deseja remover:");
-                                dogDAO.remove(dogDAO.read(scn.nextInt()));
+                                dogDAO.remove(scn.nextInt());
                                 break;
                             default:
                                 System.out.println("Opção Inválida");
@@ -111,7 +119,6 @@ public class Main {
                                 break;
                             case 1: // Adicionar Gato
                                 Animal cat = new Gato();
-                                cat.setId(idCat++);
                                 scn.nextLine();
                                 System.out.println("Informe o Apelido do animal:");
                                 cat.setApelido(scn.nextLine());
@@ -553,6 +560,8 @@ public class Main {
                             System.out.println("Opção inválida");
                             break;
                     }
+                    break;
+                case 0:
                     break;
                 default:
                     System.out.println("Opção inválida.");
