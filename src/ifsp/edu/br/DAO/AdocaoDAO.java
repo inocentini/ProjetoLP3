@@ -26,15 +26,6 @@ public class AdocaoDAO {
         }
     }
 
-    public Adocao read(Adocao a){
-        for(Adocao adocao : adocoes){
-            if(adocao.getId() == a.getId()){
-                return adocao;
-            }
-        }
-        return null;
-    }
-
     public Adocao read(int id){
         for(Adocao adocao : adocoes){
             if(adocao.getId() == id){
@@ -46,25 +37,14 @@ public class AdocaoDAO {
 
     public void list(){
         for(Adocao adocao : adocoes){
-            System.out.println("ID: "+adocao.getId()+
-                    "\nUsuário: "+adocao.getUser().getNome()+
-                    "\nData: "+adocao.getData());
+            System.out.println(adocao.toString());
             for(Animal animal : adocao.getAnimais()){
-                if(animal.getClass() == Cachorro.class){
+                if(animal.getClass() == Cachorro.class)
                     System.out.println("Cachorro:");
-                    System.out.println("ID:"+animal.getId()+
-                            "\nApelido: "+animal.getApelido()+
-                            "\nIdade: "+animal.getIdade()+
-                            "\nVacinado?"+animal.isVacinado()+
-                            "\nCastrado?"+animal.isCastrado());
-                }else if(animal.getClass() == Gato.class){
+                else if(animal.getClass() == Gato.class)
                     System.out.println("Gato:");
-                    System.out.println("ID:"+animal.getId()+
-                            "\nApelido: "+animal.getApelido()+
-                            "\nIdade: "+animal.getIdade()+
-                            "\nVacinado?"+animal.isVacinado()+
-                            "\nCastrado?"+animal.isCastrado());
-                }
+
+                System.out.println(animal.toString());
             }
         }
     }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GatoDAO {
-    public static List<Gato> gatos = new ArrayList<>();
+    private static List<Gato> gatos = new ArrayList<>();
 
     public void add(Gato g){
         gatos.add(g);
@@ -34,9 +34,8 @@ public class GatoDAO {
     }
 
     public void list(){
-        for(Gato cat : gatos){
+        for(Gato cat : gatos)
             System.out.println(cat.toString());
-        }
     }
 
     public void remove(Gato g){

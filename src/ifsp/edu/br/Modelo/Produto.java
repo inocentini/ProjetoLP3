@@ -48,4 +48,12 @@ public class Produto {
     public void setQtd(int qtd) {
         this.qtd = qtd;
     }
+
+    @Override
+    public String toString() {
+        return "ID:" + getId() +
+                "\nDescrição:" + getDescricao() +
+                "\nPreço:" + getPreco() +
+                "\nQuantidade:" + getQtd();
+    }
 }
