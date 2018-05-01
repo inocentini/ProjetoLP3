@@ -4,6 +4,7 @@ import ifsp.edu.br.Modelo.Animais.Animal;
 import ifsp.edu.br.Modelo.Animais.Cachorro;
 import ifsp.edu.br.Modelo.Animais.Gato;
 import ifsp.edu.br.Modelo.Doacao;
+import ifsp.edu.br.Modelo.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +66,12 @@ public class DoacaoDAO {
                             "\nVacinado?"+animal.isVacinado()+
                             "\nCastrado?"+animal.isCastrado());
                 }
+            }
+            for(Produto produto : doacao.getProdutos()){
+                System.out.println("ID:"+produto.getId()+
+                        "\nDescrição:"+produto.getDescricao()+
+                        "\nPreço:"+produto.getPreco()+
+                        "\nQuantidade:"+produto.getQtd());
             }
         }
     }

@@ -49,6 +49,9 @@ public class Main {
             opcMain = scn.nextInt();
 
             switch (opcMain){
+                case 0: // Sair
+                    opcMain = 0;
+                    break;
                 case 1: // Gerenciamento de animais
                     menu.animalMenu();
                     int opAnimal = scn.nextInt();
@@ -79,7 +82,14 @@ public class Main {
                                 break;
                             case 3: // Pesquisar pelo id
                                 System.out.println("Informe o id do cachorro:");
-                                dogDAO.read(scn.nextInt());
+                                Cachorro dogRead = dogDAO.read(scn.nextInt());
+                                String sex = dogRead.isSexo() ? "macho" : "femea";
+                                System.out.println("\nID:"+dogRead.getId()+
+                                        "\nApelido:"+dogRead.getApelido()+
+                                        "\nIdade:"+dogRead.getIdade()+
+                                        "\nSexo:"+sex+
+                                        "\nVacinado?"+dogRead.isVacinado()+
+                                        "\nCastrado?"+dogRead.isCastrado());
                                 break;
                             case 4: // Atualizar cachorro
                                 System.out.println("Informe o id do cachorro que deseja atualizar:");
@@ -130,7 +140,14 @@ public class Main {
                                 break;
                             case 3: // Pesquisar gato pelo id
                                 System.out.println("Informe o id do gato:");
-                                catDAO.read(scn.nextInt());
+                                Gato catRead = catDAO.read(scn.nextInt());
+                                String sex = catRead.isSexo() ? "macho" : "femea";
+                                System.out.println("\nID:"+catRead.getId()+
+                                        "\nApelido:"+catRead.getApelido()+
+                                        "\nIdade:"+catRead.getIdade()+
+                                        "\nSexo:"+sex+
+                                        "\nVacinado?"+catRead.isVacinado()+
+                                        "\nCastrado?"+catRead.isCastrado());
                                 break;
                             case 4: //Atualiza o gato pelo id
                                 System.out.println("Informe o id do gato que deseja atualizar:");
@@ -185,7 +202,13 @@ public class Main {
                             break;
                         case 3: //Pesquisar usuario pelo id
                             System.out.println("Informe o id do usuario:");
-                            userDAO.read(scn.nextInt());
+                            Usuario userRead = userDAO.read(scn.nextInt());
+                            System.out.println("ID:"+userRead.getId()+
+                                    "\nNome:"+userRead.getNome()+
+                                    "\nCPF:"+userRead.getCpf()+
+                                    "\nEndereço:"+userRead.getEndereco()+
+                                    "\nTelefone:"+userRead.getTelefone()+
+                                    "\nEmail:"+userRead.getEmail());
                             break;
                         case 4: // Atualizar usuario pelo id
                             scn.nextLine();
@@ -239,7 +262,14 @@ public class Main {
                             break;
                         case 3: // Pesquisar funcionário pelo id
                             System.out.println("Informe o id do funcionário");
-                            funcDAO.read(scn.nextInt());
+                            Funcionario funcRead = funcDAO.read(scn.nextInt());
+                            System.out.println("ID:"+funcRead.getId()+
+                                    "\nNome:"+funcRead.getNome()+
+                                    "\nCPF:"+funcRead.getCpf()+
+                                    "\nEndereço:"+funcRead.getEndereco()+
+                                    "\nTelefone:"+funcRead.getTelefone()+
+                                    "\nEmail:"+funcRead.getEmail()+
+                                    "\nSalario:"+funcRead.getSalario());
                             break;
                         case 4: // Atualizar funcionário pelo id
                             System.out.println("Informe o id do funcionário que deseja atualizar:");
@@ -267,7 +297,7 @@ public class Main {
                     }
                     break;
                 case 4: // Gerenciamento de Contas
-                    menu.cachorroMenu();
+                    menu.contaMenu();
                     int opConta = scn.nextInt();
                     switch (opConta){
                         case 0:// Sair
@@ -280,6 +310,7 @@ public class Main {
                             conta.setDescricao(scn.nextLine());
                             System.out.println("Informe o valor da conta:");
                             conta.setValor(scn.nextDouble());
+                            scn.nextLine();
                             System.out.println("Informe a data de vencimento:");
                             String date = scn.nextLine();
                             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -292,7 +323,11 @@ public class Main {
                             break;
                         case 3: // Pesquisar conta pelo id
                             System.out.println("Informe o id da conta");
-                            contaDAO.read(scn.nextInt());
+                            Conta contaRead = contaDAO.read(scn.nextInt());
+                            System.out.println("ID:"+contaRead.getId()+
+                                    "\nDescrição:"+contaRead.getDescricao()+
+                                    "\nPreço:"+contaRead.getValor()+
+                                    "\nVencimento:"+contaRead.getVencimento());
                             break;
                         case 4: // Alterar conta pelo id
                             System.out.println("Informe o id da conta que deseja alterar:");
@@ -348,12 +383,16 @@ public class Main {
                                     case 1: // Adicionar cachorro na lista
                                         System.out.println("Informe o id do cachorro que deseja adotar:");
                                         dogDAO.list();
-                                        animais.add(dogDAO.read(scn.nextInt()));
+                                        Cachorro dogAd = dogDAO.read(scn.nextInt());
+                                        animais.add(dogDAO.read(dogAd));
+                                        dogDAO.remove(dogDAO.read(dogAd));
                                         break;
                                     case 2: // Adicionar gato na lista
                                         System.out.println("Informe o id do gato que deseja adotar:");
                                         catDAO.list();
-                                        animais.add(catDAO.read(scn.nextInt()));
+                                        Gato catAd = catDAO.read(scn.nextInt());
+                                        animais.add(catDAO.read(catAd));
+                                        catDAO.remove(catDAO.read(catAd));
                                         break;
                                     default:
                                         System.out.println("Opção inválida.");
@@ -367,7 +406,28 @@ public class Main {
                             break;
                         case 3: //Pesquisar adoção pelo id.
                             System.out.println("Informe o id da adoção.");
-                            adocaoDAO.read(scn.nextInt());
+                            Adocao adocaoRead = adocaoDAO.read(scn.nextInt());
+                            System.out.println("ID:"+adocaoRead.getId()+
+                                    "\nUsuário"+adocaoRead.getUser().getNome()+
+                                    "\nData:"+adocaoRead.getData());
+                            for(Animal a : adocaoRead.getAnimais()){
+                                if(a.getClass() == Cachorro.class){
+                                    System.out.println("Cachorro:");
+                                    System.out.println("ID:"+a.getId()+
+                                            "\nApelido: "+a.getApelido()+
+                                            "\nIdade: "+a.getIdade()+
+                                            "\nVacinado?"+a.isVacinado()+
+                                            "\nCastrado?"+a.isCastrado());
+                                }else if(a.getClass() == Gato.class){
+                                    System.out.println("Gato:");
+                                    System.out.println("ID:"+a.getId()+
+                                            "\nApelido: "+a.getApelido()+
+                                            "\nIdade: "+a.getIdade()+
+                                            "\nVacinado?"+a.isVacinado()+
+                                            "\nCastrado?"+a.isCastrado());
+                                }
+                            }
+
                             break;
                         case 4:// Alterar adoção pelo id
                             System.out.println("Informe o id da adoção que deseja alterar:");
@@ -393,12 +453,16 @@ public class Main {
                                     case 1: // Adicionar cachorro na lista
                                         System.out.println("Informe o id do novo cachorro que deseja adotar:");
                                         dogDAO.list();
-                                        animaisUp.add(dogDAO.read(scn.nextInt()));
+                                        Cachorro dogAd = dogDAO.read(scn.nextInt());
+                                        animaisUp.add(dogAd);
+                                        dogDAO.remove(dogDAO.read(dogAd));
                                         break;
                                     case 2: // Adicionar gato na lista
                                         System.out.println("Informe o id do novo gato que deseja adotar:");
                                         catDAO.list();
-                                        animaisUp.add(catDAO.read(scn.nextInt()));
+                                        Gato catAd = catDAO.read(scn.nextInt());
+                                        animaisUp.add(catDAO.read(catAd));
+                                        catDAO.remove(catDAO.read(catAd));
                                         break;
                                     default:
                                         System.out.println("Opção inválida.");
@@ -424,38 +488,78 @@ public class Main {
                         case 1: // Adicionar doação
                             Doacao doacao = new Doacao();
                             doacao.setId(idDoacao++);
-                            System.out.println("Informe o id do usuário que fará a adoção:");
+                            System.out.println("Informe o id do usuário que fará a doação:");
                             userDAO.list();
                             doacao.setUser(userDAO.read(scn.nextInt()));
                             scn.nextLine();
-                            System.out.println("Informe a data da adoção:");
+                            System.out.println("Informe a data da doação:");
                             String dateDoa = scn.nextLine();
                             DateFormat dfDoa = new SimpleDateFormat("dd/MM/yyyy");
                             Date dtDoa = dfDoa.parse(dateDoa);
                             doacao.setData(dtDoa);
                             boolean opDoa = true;
                             List<Animal> animaisDoa = new ArrayList<>();
+                            List<Produto> produtosDoa = new ArrayList<>();
                             while(opDoa){
-                                System.out.println("Deseja adicionar:\n1 - Cachorro.\n2 - Gato.\n0 - Sair");
+                                System.out.println("Deseja adicionar:\n1 - Cachorro.\n2 - Gato.\n3 - Produto.\n0 - Sair");
                                 int opDoaSw = scn.nextInt();
                                 switch (opDoaSw){
                                     case 0://Sair
                                         opDoa = false;
                                         break;
                                     case 1: // Adicionar cachorro na lista
-                                        System.out.println("Informe o id do cachorro que deseja adotar:");
-                                        dogDAO.list();
-                                        animaisDoa.add(dogDAO.read(scn.nextInt()));
+                                        System.out.println("Informe as informações do cachorro que irá doar:");
+                                        Animal dogDoa = new Cachorro();
+                                        dogDoa.setId(idDog++);
+                                        scn.nextLine();
+                                        System.out.println("Informe o Apelido do animal:");
+                                        dogDoa.setApelido(scn.nextLine());
+                                        System.out.println("Informe a idade:");
+                                        dogDoa.setIdade(scn.nextInt());
+                                        System.out.println("Informe o sexo: True = Macho, false = femea");
+                                        dogDoa.setSexo(scn.nextBoolean());
+                                        System.out.println("O animal é vacinado? true/false");
+                                        dogDoa.setVacinado(scn.nextBoolean());
+                                        System.out.println("O animal é castrado? true/false");
+                                        dogDoa.setCastrado(scn.nextBoolean());
+                                        dogDAO.add((Cachorro) dogDoa);
+                                        animaisDoa.add(dogDoa);
                                         break;
                                     case 2: // Adicionar gato na lista
-                                        System.out.println("Informe o id do gato que deseja adotar:");
-                                        catDAO.list();
-                                        animaisDoa.add(catDAO.read(scn.nextInt()));
+                                        System.out.println("Informe as informações do gato que deseja doar:");
+                                        Animal catDoa = new Gato();
+                                        catDoa.setId(idCat++);
+                                        scn.nextLine();
+                                        System.out.println("Informe o Apelido do animal:");
+                                        catDoa.setApelido(scn.nextLine());
+                                        System.out.println("Informe a idade:");
+                                        catDoa.setIdade(scn.nextInt());
+                                        System.out.println("Informe o sexo: M= True, F=false");
+                                        catDoa.setSexo(scn.nextBoolean());
+                                        System.out.println("O animal é vacinado?");
+                                        catDoa.setVacinado(scn.nextBoolean());
+                                        System.out.println("O animal é castrado? true/false");
+                                        catDoa.setCastrado(scn.nextBoolean());
+                                        catDAO.add((Gato) catDoa);
+                                        animaisDoa.add(catDoa);
                                         break;
+                                    case 3:// Adicionar produto
+                                        Produto produtoDoa = new Produto();
+                                        produtoDoa.setId(idProduto++);
+                                        scn.nextLine();
+                                        System.out.println("Informe o nome e descrição do produto:");
+                                        produtoDoa.setDescricao(scn.nextLine());
+                                        System.out.println("Informe o quanto custou a unidade do produto:");
+                                        produtoDoa.setPreco(scn.nextDouble());
+                                        System.out.println("Informe a quantidade comprada do produto:");
+                                        produtoDoa.setQtd(scn.nextInt());
+                                        produtoDAO.add(produtoDoa);
+                                        produtosDoa.add(produtoDoa);
                                     default:
                                         System.out.println("Opção inválida.");
                                 }
                             }
+                            doacao.setProdutos(produtosDoa);
                             doacao.setAnimais(animaisDoa);
                             doacaoDAO.add(doacao);
                             break;
@@ -464,45 +568,147 @@ public class Main {
                             break;
                         case 3: //Pesquisar doação pelo id.
                             System.out.println("Informe o id da adoção.");
-                            doacaoDAO.read(scn.nextInt());
+                            Doacao doacaoRead = doacaoDAO.read(scn.nextInt());
+                            System.out.println("ID:"+doacaoRead.getId()+
+                                    "\nUsuário:"+doacaoRead.getUser().getNome()+
+                                    "\nData:"+doacaoRead.getData());
+                            for(Animal ad : doacaoRead.getAnimais()){
+                                if(ad.getClass() == Cachorro.class){
+                                    System.out.println("Cachorro:");
+                                    System.out.println("ID:"+ad.getId()+
+                                            "\nApelido: "+ad.getApelido()+
+                                            "\nIdade: "+ad.getIdade()+
+                                            "\nVacinado?"+ad.isVacinado()+
+                                            "\nCastrado?"+ad.isCastrado());
+                                }else if(ad.getClass() == Gato.class){
+                                    System.out.println("Gato:");
+                                    System.out.println("ID:"+ad.getId()+
+                                            "\nApelido: "+ad.getApelido()+
+                                            "\nIdade: "+ad.getIdade()+
+                                            "\nVacinado?"+ad.isVacinado()+
+                                            "\nCastrado?"+ad.isCastrado());
+                                }
+                            }
+                            for(Produto pd : doacaoRead.getProdutos()){
+                                System.out.println("ID:"+pd.getId()+
+                                        "\nDescrição:"+pd.getDescricao()+
+                                        "\nPreço:"+pd.getPreco()+
+                                        "\nQuantidade:"+pd.getQtd());
+                            }
                             break;
                         case 4:// Alterar doação pelo id
-                            System.out.println("Informe o id da adoção que deseja alterar:");
+                            System.out.println("Informe o id da doação que deseja alterar");
                             Doacao doacaoUp = doacaoDAO.read(scn.nextInt());
-                            scn.nextLine();
-                            System.out.println("Informe o id do novo Usuário da adoção:");
+                            System.out.println("Informe o id do novo usuário da doação:");
                             userDAO.list();
                             doacaoUp.setUser(userDAO.read(scn.nextInt()));
-                            System.out.println("Informe a nova data da adoção:");
+                            scn.nextLine();
+                            System.out.println("Informe a data da doação:");
                             String dateDoaUp = scn.nextLine();
                             DateFormat dfDoaUp = new SimpleDateFormat("dd/MM/yyyy");
                             Date dtDoaUp = dfDoaUp.parse(dateDoaUp);
                             doacaoUp.setData(dtDoaUp);
                             boolean opDoaUp = true;
-                            List<Animal> animaisDoaUp = new ArrayList<>();
-                            while(opDoaUp){
-                                System.out.println("Deseja adicionar:\n1 - Cachorro.\n2 - Gato.\n0 - Sair");
-                                int opDoaSwUp = scn.nextInt();
-                                switch (opDoaSwUp){
+                            List<Animal> animaisDoaUp = doacaoUp.getAnimais();
+                            List<Produto> produtosDoaUp = doacaoUp.getProdutos();
+                            while(opDoa){
+                                System.out.println("Deseja adicionar:" +
+                                        "\n1 - Cachorro." +
+                                        "\n2 - Gato." +
+                                        "\n3 - Produto." +
+                                        "\n4 - Remover Cachorro." +
+                                        "\n5 - Remover Gato." +
+                                        "\n6 - Remover Produto." +
+                                        "\n0 - Sair");
+                                int opDoaSw = scn.nextInt();
+                                switch (opDoaSw){
                                     case 0://Sair
-                                        opDoaUp = false;
+                                        opDoa = false;
                                         break;
                                     case 1: // Adicionar cachorro na lista
-                                        System.out.println("Informe o id do novo cachorro que deseja adotar:");
-                                        dogDAO.list();
-                                        animaisDoaUp.add(dogDAO.read(scn.nextInt()));
+                                        System.out.println("Informe as informações do cachorro que irá doar:");
+                                        Animal dogDoa = new Cachorro();
+                                        dogDoa.setId(idDog++);
+                                        scn.nextLine();
+                                        System.out.println("Informe o Apelido do animal:");
+                                        dogDoa.setApelido(scn.nextLine());
+                                        System.out.println("Informe a idade:");
+                                        dogDoa.setIdade(scn.nextInt());
+                                        System.out.println("Informe o sexo: True = Macho, false = femea");
+                                        dogDoa.setSexo(scn.nextBoolean());
+                                        System.out.println("O animal é vacinado? true/false");
+                                        dogDoa.setVacinado(scn.nextBoolean());
+                                        System.out.println("O animal é castrado? true/false");
+                                        dogDoa.setCastrado(scn.nextBoolean());
+                                        dogDAO.add((Cachorro) dogDoa);
+                                        animaisDoaUp.add(dogDoa);
                                         break;
                                     case 2: // Adicionar gato na lista
-                                        System.out.println("Informe o id do novo gato que deseja adotar:");
-                                        catDAO.list();
-                                        animaisDoaUp.add(catDAO.read(scn.nextInt()));
+                                        System.out.println("Informe as informações do gato que deseja doar:");
+                                        Animal catDoa = new Gato();
+                                        catDoa.setId(idCat++);
+                                        scn.nextLine();
+                                        System.out.println("Informe o Apelido do animal:");
+                                        catDoa.setApelido(scn.nextLine());
+                                        System.out.println("Informe a idade:");
+                                        catDoa.setIdade(scn.nextInt());
+                                        System.out.println("Informe o sexo: M= True, F=false");
+                                        catDoa.setSexo(scn.nextBoolean());
+                                        System.out.println("O animal é vacinado?");
+                                        catDoa.setVacinado(scn.nextBoolean());
+                                        System.out.println("O animal é castrado? true/false");
+                                        catDoa.setCastrado(scn.nextBoolean());
+                                        catDAO.add((Gato) catDoa);
+                                        animaisDoaUp.add(catDoa);
+                                        break;
+                                    case 3:// Adicionar produto
+                                        Produto produtoDoa = new Produto();
+                                        produtoDoa.setId(idProduto++);
+                                        scn.nextLine();
+                                        System.out.println("Informe o nome e descrição do produto:");
+                                        produtoDoa.setDescricao(scn.nextLine());
+                                        System.out.println("Informe o quanto custou a unidade do produto:");
+                                        produtoDoa.setPreco(scn.nextDouble());
+                                        System.out.println("Informe a quantidade comprada do produto:");
+                                        produtoDoa.setQtd(scn.nextInt());
+                                        produtoDAO.add(produtoDoa);
+                                        produtosDoaUp.add(produtoDoa);
+                                        break;
+                                    case 4: //Remover cachorro;
+                                        System.out.println("Informe o id do cachorro que deseja remover da lista:");
+                                        for(Animal a : animaisDoaUp) {
+                                            if (a.getClass() == Cachorro.class) {
+                                                System.out.println("Cachorro:");
+                                                System.out.println("ID:" + a.getId() + "\nApelido:" + a.getApelido());
+                                            }
+                                        }
+                                        animaisDoaUp.remove(dogDAO.read(scn.nextInt()));
+                                        break;
+                                    case 5: // Remover gato
+                                        System.out.println("Informe o id do gato que deseja remover da lista:");
+                                        for(Animal a : animaisDoaUp){
+                                            if(a.getClass() == Gato.class){
+                                                System.out.println("Gato:");
+                                                System.out.println("ID:" + a.getId() + "\nApelido:" + a.getApelido());
+                                            }
+                                        }
+                                        animaisDoaUp.remove(catDAO.read(scn.nextInt()));
+                                        break;
+                                    case 6: // Remover Produto
+                                        System.out.println("Informe o id do produto que deseja remover da lista:");
+                                        for(Produto p : produtosDoaUp){
+                                            System.out.println("ID:"+p.getId()+"\nDescrição:"+p.getDescricao());
+                                        }
+                                        produtosDoaUp.remove(produtoDAO.read(scn.nextInt()));
                                         break;
                                     default:
                                         System.out.println("Opção inválida.");
+                                        break;
                                 }
                             }
-                            doacaoUp.setAnimais(animaisDoaUp);
-                            doacaoDAO.update(doacaoUp);
+                            doacao.setProdutos(produtosDoaUp);
+                            doacao.setAnimais(animaisDoaUp);
+                            doacaoDAO.add(doacaoUp);
                             break;
                         case 5: // Remover doação
                             doacaoDAO.remove(doacaoDAO.read(scn.nextInt()));
@@ -534,7 +740,11 @@ public class Main {
                             produtoDAO.list();
                             break;
                         case 3: //Pesquisar produto em estoque pelo id
-                            produtoDAO.read(scn.nextInt());
+                            Produto produtoRead = produtoDAO.read(scn.nextInt());
+                            System.out.println("ID:"+produtoRead.getId()+
+                                    "\nDescrição:"+produtoRead.getDescricao()+
+                                    "\nPreço:"+produtoRead.getPreco()+
+                                    "\nQuantidade:"+produtoRead.getQtd());
                             break;
                         case 4: // Alterar produto pelo id
                             Produto produtoUp = produtoDAO.read(scn.nextInt());
