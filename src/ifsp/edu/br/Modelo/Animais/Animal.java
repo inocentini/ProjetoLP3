@@ -70,7 +70,7 @@ public abstract class Animal {
 
     @Override
     public String toString(){
-        String sex = isSexo() ? "Fêmea" : "Macho";
+        String sex = isSexo() ? "Macho" : "Fêmea";
         return ("\nID: " + getId()+
                 "\nApelido: " + getApelido()+
                 "\nIdade: " + getIdade()+
