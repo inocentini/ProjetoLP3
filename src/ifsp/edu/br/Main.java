@@ -20,42 +20,26 @@ import java.util.*;
 public class Main {
     private static Scanner scn = new Scanner(System.in);
 
-    /*private static Cachorro CreateCachorro(Cachorro dog){
-        dog.setId(idDog++);
-        scn.nextLine();
-        System.out.println("Informe o Apelido do animal:");
-        dog.setApelido(scn.nextLine());
-        System.out.println("Informe a idade:");
-        dog.setIdade(scn.nextInt());
-        System.out.println("Informe o sexo: True = Macho, false = femea");
-        dog.setSexo(scn.nextBoolean());
-        System.out.println("O animal é vacinado? true/false");
-        dog.setVacinado(scn.nextBoolean());
-        System.out.println("O animal é castrado? true/false");
-        dog.setCastrado(scn.nextBoolean());
-
-        return dog;
-    }*/
 
     //Propriedades ID estático
-    public static int idDog = 0;
-    public static int idCat = 0;
-    public static int idUser = 0;
-    public static int idFunc = 0;
-    public static int idConta = 0;
-    public static int idAdocao = 0;
-    public static int idDoacao = 0;
-    public static int idProduto = 0;
+    private static int idDog = 0;
+    private static int idCat = 0;
+    private static int idUser = 0;
+    private static int idFunc = 0;
+    private static int idConta = 0;
+    private static int idAdocao = 0;
+    private static int idDoacao = 0;
+    private static int idProduto = 0;
 
     //DAO estáticos
-    public static CachorroDAO dogDAO = new CachorroDAO() ;
-    public static GatoDAO catDAO = new GatoDAO();
-    public static UsuarioDAO userDAO = new UsuarioDAO();
-    public static FuncionarioDAO funcDAO = new FuncionarioDAO();
-    public static ContaDAO contaDAO = new ContaDAO();
-    public static AdocaoDAO adocaoDAO = new AdocaoDAO();
-    public static DoacaoDAO doacaoDAO = new DoacaoDAO();
-    public static ProdutoDAO produtoDAO = new ProdutoDAO();
+    private static CachorroDAO dogDAO = new CachorroDAO() ;
+    private static GatoDAO catDAO = new GatoDAO();
+    private static UsuarioDAO userDAO = new UsuarioDAO();
+    private static FuncionarioDAO funcDAO = new FuncionarioDAO();
+    private static ContaDAO contaDAO = new ContaDAO();
+    private static AdocaoDAO adocaoDAO = new AdocaoDAO();
+    private static DoacaoDAO doacaoDAO = new DoacaoDAO();
+    private static ProdutoDAO produtoDAO = new ProdutoDAO();
 
     public static void main(String[] args) throws ParseException {
         Menu menu = new Menu();
