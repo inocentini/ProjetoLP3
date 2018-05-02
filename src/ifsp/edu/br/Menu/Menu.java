@@ -3,7 +3,7 @@ package ifsp.edu.br.Menu;
 public class Menu {
 
     public void mainMenu(){
-        System.out.println("--------------------NOME DA APLICAÇÃO--------------------------");
+        System.out.println("--------------------Focinhus Healthy Pets--------------------------");
         System.out.println("1 - Gerenciamento de Animais.");
         System.out.println("2 - Gerenciamento de Usuarios.");
         System.out.println("3 - Gerenciamento de Funcionarios");
