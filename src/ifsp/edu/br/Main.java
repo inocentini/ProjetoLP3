@@ -20,7 +20,8 @@ import java.util.*;
 public class Main {
     private static Scanner scn = new Scanner(System.in);
 
-    private static Cachorro CreateCachorro(Cachorro dog){
+    /*private static Cachorro CreateCachorro(Cachorro dog){
+        dog.setId(idDog++);
         scn.nextLine();
         System.out.println("Informe o Apelido do animal:");
         dog.setApelido(scn.nextLine());
@@ -34,27 +35,30 @@ public class Main {
         dog.setCastrado(scn.nextBoolean());
 
         return dog;
-    }
+    }*/
+
+    //Propriedades ID estático
+    public static int idDog = 0;
+    public static int idCat = 0;
+    public static int idUser = 0;
+    public static int idFunc = 0;
+    public static int idConta = 0;
+    public static int idAdocao = 0;
+    public static int idDoacao = 0;
+    public static int idProduto = 0;
+
+    //DAO estáticos
+    public static CachorroDAO dogDAO = new CachorroDAO() ;
+    public static GatoDAO catDAO = new GatoDAO();
+    public static UsuarioDAO userDAO = new UsuarioDAO();
+    public static FuncionarioDAO funcDAO = new FuncionarioDAO();
+    public static ContaDAO contaDAO = new ContaDAO();
+    public static AdocaoDAO adocaoDAO = new AdocaoDAO();
+    public static DoacaoDAO doacaoDAO = new DoacaoDAO();
+    public static ProdutoDAO produtoDAO = new ProdutoDAO();
 
     public static void main(String[] args) throws ParseException {
         Menu menu = new Menu();
-        int idDog = 0;
-        int idCat = 0;
-        int idUser = 0;
-        int idFunc = 0;
-        int idConta = 0;
-        int idAdocao = 0;
-        int idDoacao = 0;
-        int idProduto = 0;
-
-        CachorroDAO dogDAO = new CachorroDAO() ;
-        GatoDAO catDAO = new GatoDAO();
-        UsuarioDAO userDAO = new UsuarioDAO();
-        FuncionarioDAO funcDAO = new FuncionarioDAO();
-        ContaDAO contaDAO = new ContaDAO();
-        AdocaoDAO adocaoDAO = new AdocaoDAO();
-        DoacaoDAO doacaoDAO = new DoacaoDAO();
-        ProdutoDAO produtoDAO = new ProdutoDAO();
 
         int opcMain;
 
@@ -78,7 +82,19 @@ public class Main {
                                 break;
                             case 1: // Cadastrar cachorro
                                 Animal dog = new Cachorro();
-                                dogDAO.add(CreateCachorro((Cachorro)dog));
+                                dog.setId(idDog++);
+                                scn.nextLine();
+                                System.out.println("Informe o Apelido do animal:");
+                                dog.setApelido(scn.nextLine());
+                                System.out.println("Informe a idade:");
+                                dog.setIdade(scn.nextInt());
+                                System.out.println("Informe o sexo: True = Macho, false = femea");
+                                dog.setSexo(scn.nextBoolean());
+                                System.out.println("O animal é vacinado? true/false");
+                                dog.setVacinado(scn.nextBoolean());
+                                System.out.println("O animal é castrado? true/false");
+                                dog.setCastrado(scn.nextBoolean());
+                                dogDAO.add((Cachorro) dog);
                                 break;
                             case 2: // Listar todos cachorros
                                 dogDAO.list();
@@ -108,8 +124,12 @@ public class Main {
                                     System.out.println("Cachorro não encontrado.");
                                 break;
                             case 5:
-                                System.out.println("informe o id do cachorro que deseja remover:");
-                                dogDAO.remove(scn.nextInt());
+                                System.out.println("Informe o id do cachorro que deseja remover:");
+                                Cachorro dogRemove = dogDAO.read(scn.nextInt());
+                                if(dogRemove != null)
+                                    dogDAO.remove(dogRemove);
+                                else
+                                    System.out.println("Cachorro não encontrado!");
                                 break;
                             default:
                                 System.out.println("Opção Inválida");
@@ -123,6 +143,7 @@ public class Main {
                                 break;
                             case 1: // Adicionar Gato
                                 Animal cat = new Gato();
+                                cat.setId(idCat++);
                                 scn.nextLine();
                                 System.out.println("Informe o Apelido do animal:");
                                 cat.setApelido(scn.nextLine());
@@ -163,7 +184,11 @@ public class Main {
                                 break;
                             case 5: // Remove um gato pelo id
                                 System.out.println("Informe o id do gato que deseja remover:");
-                                catDAO.remove(catDAO.read(scn.nextInt()));
+                                Gato gatoRemove = catDAO.read(scn.nextInt());
+                                if(gatoRemove != null)
+                                    catDAO.remove(gatoRemove);
+                                else
+                                    System.out.println("Gato não encontrado!");
                                 break;
                             default:
                                 System.out.println("Opção Inválida");
@@ -546,14 +571,15 @@ public class Main {
                                         scn.nextLine();
                                         System.out.println("Informe o nome e descrição do produto:");
                                         produtoDoa.setDescricao(scn.nextLine());
-                                        System.out.println("Informe o quanto custou a unidade do produto:");
-                                        produtoDoa.setPreco(scn.nextDouble());
-                                        System.out.println("Informe a quantidade comprada do produto:");
+                                        produtoDoa.setPreco(0.00);
+                                        System.out.println("Informe a quantidade doada do produto:");
                                         produtoDoa.setQtd(scn.nextInt());
                                         produtoDAO.add(produtoDoa);
                                         produtosDoa.add(produtoDoa);
+                                        break;
                                     default:
                                         System.out.println("Opção inválida.");
+                                        break;
                                 }
                             }
                             doacao.setProdutos(produtosDoa);

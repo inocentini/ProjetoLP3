@@ -39,7 +39,11 @@ public class CachorroDAO {
         }
     }
 
-    public boolean remove(int idDog){
+    public void remove(Cachorro c){
+        cachorros.remove(c);
+    }
+
+    /*public boolean remove(int idDog){
         Cachorro dogToRemove = this.read(idDog);
         if (dogToRemove != null) {
             this.cachorros.remove(dogToRemove);
@@ -52,5 +56,5 @@ public class CachorroDAO {
     public boolean remove(Cachorro dogToRemove){
         this.cachorros.remove(dogToRemove);
         return true;
-    }
+    }*/
 }
