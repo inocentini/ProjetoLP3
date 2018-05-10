@@ -14,12 +14,13 @@ public class UsuarioDAO {
     //public static List<Usuario> usuarios = new ArrayList<>();
 
     Connection connection = Database.getConnection();
+    String sql = "";
+    PreparedStatement stmt = null;
 
     public void add(Usuario u){
-//        usuarios.add(u);
         try {
-            String sql = "INSERT INTO Usuario(id,nome,cpf,endereco,telefone,email) VALUES (?,?,?,?,?,?)";
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            sql = "INSERT INTO Usuario(id,nome,cpf,endereco,telefone,email) VALUES (?,?,?,?,?,?)";
+            stmt = connection.prepareStatement(sql);
             stmt.setInt(1, u.getId());
             stmt.setString(2,u.getNome());
             stmt.setString(3,u.getCpf());
@@ -46,8 +47,8 @@ public class UsuarioDAO {
 //            }
 //        }
         try {
-            String sql = "UPDATE Usuario SET nome = ?, endereco = ?, telefone = ?, email = ? WHERE id = ?";
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            sql = "UPDATE Usuario SET nome = ?, endereco = ?, telefone = ?, email = ? WHERE id = ?";
+            stmt = connection.prepareStatement(sql);
             stmt.setString(1,u.getNome());
             stmt.setString(2,u.getEndereco());
             stmt.setString(3,u.getTelefone());
@@ -68,8 +69,8 @@ public class UsuarioDAO {
 //        }
 //        return null;
         try {
-            String sql = "SELECT * FROM Usuario WHERE id = ?";
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            sql = "SELECT * FROM Usuario WHERE id = ?";
+            stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             Usuario user = new Usuario();
@@ -90,8 +91,8 @@ public class UsuarioDAO {
 //            System.out.println(user.toString());
 //        }
         try {
-            String sql = "SELECT * FROM Usuario";
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            sql = "SELECT * FROM Usuario";
+            stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             List<Usuario> usuarios = new ArrayList<>();
             while(rs.next()){
@@ -116,8 +117,8 @@ public class UsuarioDAO {
     public void remove(Usuario u){
 //        usuarios.remove(u);
         try {
-            String sql = "DELETE FROM Usuario WHERE id = ?";
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            sql = "DELETE FROM Usuario WHERE id = ?";
+            stmt = connection.prepareStatement(sql);
             stmt.setInt(1,u.getId());
             stmt.execute();
             stmt.close();

@@ -68,7 +68,6 @@ public class Main {
                                 break;
                             case 1: // Cadastrar cachorro
                                 Animal dog = new Cachorro();
-                                dog.setId(idDog++);
                                 scn.nextLine();
                                 System.out.println("Informe o Apelido do animal:");
                                 dog.setApelido(scn.nextLine());
@@ -83,7 +82,10 @@ public class Main {
                                 dogDAO.add((Cachorro) dog);
                                 break;
                             case 2: // Listar todos cachorros
-                                dogDAO.list();
+                                List<Cachorro> cachorros = dogDAO.list();
+                                for(Cachorro c : cachorros){
+                                    System.out.println(c.toString());
+                                }
                                 break;
                             case 3: // Pesquisar pelo id
                                 System.out.println("Informe o id do cachorro:");
@@ -129,7 +131,6 @@ public class Main {
                                 break;
                             case 1: // Adicionar Gato
                                 Animal cat = new Gato();
-                                cat.setId(idCat++);
                                 scn.nextLine();
                                 System.out.println("Informe o Apelido do animal:");
                                 cat.setApelido(scn.nextLine());
@@ -144,7 +145,10 @@ public class Main {
                                 catDAO.add((Gato) cat);
                                 break;
                             case 2: // Listar todos os gatos
-                                catDAO.list();
+                                List<Gato> gatos = catDAO.list();
+                                for(Gato g : gatos){
+                                    System.out.println(g.toString());
+                                }
                                 break;
                             case 3: // Pesquisar gato pelo id
                                 System.out.println("Informe o id do gato:");
@@ -192,7 +196,6 @@ public class Main {
                             break;
                         case 1: // Adicionar usuário
                             Usuario user = new Usuario();
-                            user.setId(idUser++);
                             scn.nextLine();
                             System.out.println("Informe o nome do usuário:");
                             user.setNome(scn.nextLine());
@@ -251,7 +254,6 @@ public class Main {
                             break;
                         case 1: // Adicionar funcionário
                             Funcionario func = new Funcionario();
-                            func.setId(idFunc++);
                             scn.nextLine();
                             System.out.println("Informe o nome do funcionário:");
                             func.setNome(scn.nextLine());
@@ -268,7 +270,9 @@ public class Main {
                             funcDAO.add(func);
                             break;
                         case 2: // Listar todos os funcionários
-                            funcDAO.list();
+                            List<Funcionario> funcionarios = funcDAO.list();
+                            for(Funcionario f : funcionarios)
+                                System.out.println(f.toString());
                             break;
                         case 3: // Pesquisar funcionário pelo id
                             System.out.println("Informe o id do funcionário");
