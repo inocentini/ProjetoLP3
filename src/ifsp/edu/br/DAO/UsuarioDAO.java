@@ -110,6 +110,7 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             throw new RuntimeException("Erro na listagem dos usuários", e);
         }
+
     }
 
     public void remove(Usuario u){

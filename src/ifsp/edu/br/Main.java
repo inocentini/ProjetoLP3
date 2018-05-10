@@ -207,7 +207,10 @@ public class Main {
                             userDAO.add(user);
                             break;
                         case 2: // Listar todos os usuarios
-                            userDAO.list();
+                            List<Usuario> users = userDAO.list();
+                            for(Usuario u : users){
+                                System.out.println(u.toString());
+                            }
                             break;
                         case 3: //Pesquisar usuario pelo id
                             System.out.println("Informe o id do usuario:");
