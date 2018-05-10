@@ -12,6 +12,7 @@ import ifsp.edu.br.Modelo.Pessoas.Funcionario;
 import ifsp.edu.br.Modelo.Pessoas.Usuario;
 import ifsp.edu.br.Modelo.Produto;
 
+import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,6 +44,7 @@ public class Main {
 
     public static void main(String[] args) throws ParseException {
         Menu menu = new Menu();
+
 
         int opcMain;
 

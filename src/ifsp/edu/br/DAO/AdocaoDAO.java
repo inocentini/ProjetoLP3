@@ -1,18 +1,20 @@
 package ifsp.edu.br.DAO;
 
+import ifsp.edu.br.Database;
 import ifsp.edu.br.Modelo.Adocao;
 import ifsp.edu.br.Modelo.Animais.Animal;
 import ifsp.edu.br.Modelo.Animais.Cachorro;
 import ifsp.edu.br.Modelo.Animais.Gato;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdocaoDAO {
     public static List<Adocao> adocoes = new ArrayList<>();
 
-
-    public void add(Adocao a){
+    public void add(Adocao a) {
         adocoes.add(a);
     }
 
