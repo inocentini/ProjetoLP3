@@ -17,7 +17,6 @@ public class FuncionarioDAO {
     PreparedStatement stmt = null;
 
     public void add(Funcionario f){
-//        funcionarios.add(f);
         try {
             sql = "INSERT INTO Funcionario(id,nome,cpf,endereco,telefone,email,salario) VALUES (?,?,?,?,?,?,?)";
             stmt = connection.prepareStatement(sql);
@@ -52,6 +51,27 @@ public class FuncionarioDAO {
         }
     }
 
+    public Funcionario read(Funcionario f){
+        try {
+            sql = "SELECT * FROM Funcionario WHERE id = ?";
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, f.getId());
+            ResultSet rs = stmt.executeQuery();
+            Funcionario func = new Funcionario();
+            func.setId(rs.getInt("id"));
+            func.setNome(rs.getString("nome"));
+            func.setCpf(rs.getString("cpf"));
+            func.setEndereco(rs.getString("endereco"));
+            func.setTelefone(rs.getString("telefone"));
+            func.setEmail(rs.getString("email"));
+            func.setSalario(rs.getDouble("salario"));
+            rs.close();
+            stmt.close();
+            return func;
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro na pesquisa de funcionário", e);
+        }
+    }
     public Funcionario read(int id){
         try {
             sql = "SELECT * FROM Funcionario WHERE id = ?";
@@ -66,6 +86,8 @@ public class FuncionarioDAO {
             func.setTelefone(rs.getString("telefone"));
             func.setEmail(rs.getString("email"));
             func.setSalario(rs.getDouble("salario"));
+            rs.close();
+            stmt.close();
             return func;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na pesquisa de funcionário", e);

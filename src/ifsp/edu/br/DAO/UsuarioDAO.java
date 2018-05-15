@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDAO {
-    //public static List<Usuario> usuarios = new ArrayList<>();
 
     Connection connection = Database.getConnection();
     String sql = "";
@@ -32,20 +31,9 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             throw new RuntimeException("Erro no cadastro de usuário", e);
         }
-        //usuarios.add(u);
     }
 
     public void update(Usuario u){
-//        for (Usuario user : usuarios) {
-//            if(user.getId() == u.getId()){
-//                user.setId(u.getId());
-//                user.setNome(u.getNome());
-//                user.setCpf(u.getCpf());
-//                user.setEndereco(u.getEndereco());
-//                user.setTelefone(u.getTelefone());
-//                user.setEmail(u.getEmail());
-//            }
-//        }
         try {
             sql = "UPDATE Usuario SET nome = ?, endereco = ?, telefone = ?, email = ? WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -61,13 +49,28 @@ public class UsuarioDAO {
         }
     }
 
+    public Usuario read(Usuario u){
+        try {
+            sql = "SELECT * FROM Usuario WHERE id = ?";
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, u.getId());
+            ResultSet rs = stmt.executeQuery();
+            Usuario user = new Usuario();
+            user.setId(rs.getInt("id"));
+            user.setNome(rs.getString("nome"));
+            user.setCpf(rs.getString("cpf"));
+            user.setEndereco(rs.getString("endereco"));
+            user.setTelefone(rs.getString("telefone"));
+            user.setEmail(rs.getString("email"));
+            rs.close();
+            stmt.close();
+            return user;
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro na pesquisa de usuário", e);
+        }
+    }
+
     public Usuario read(int id){
-//        for(Usuario user : usuarios){
-//            if(user.getId() == id) {
-//                return user;
-//            }
-//        }
-//        return null;
         try {
             sql = "SELECT * FROM Usuario WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -80,6 +83,8 @@ public class UsuarioDAO {
             user.setEndereco(rs.getString("endereco"));
             user.setTelefone(rs.getString("telefone"));
             user.setEmail(rs.getString("email"));
+            rs.close();
+            stmt.close();
             return user;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na pesquisa de usuário", e);
@@ -87,9 +92,6 @@ public class UsuarioDAO {
     }
 
     public List<Usuario> list(){
-//        for(Usuario user : usuarios){
-//            System.out.println(user.toString());
-//        }
         try {
             sql = "SELECT * FROM Usuario";
             stmt = connection.prepareStatement(sql);
@@ -115,7 +117,6 @@ public class UsuarioDAO {
     }
 
     public void remove(Usuario u){
-//        usuarios.remove(u);
         try {
             sql = "DELETE FROM Usuario WHERE id = ?";
             stmt = connection.prepareStatement(sql);

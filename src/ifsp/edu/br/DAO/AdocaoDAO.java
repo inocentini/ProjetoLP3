@@ -12,10 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdocaoDAO {
-    public static List<Adocao> adocoes = new ArrayList<>();
-
+    private static List<Adocao> adocoes = new ArrayList<>();
+    Connection connection = Database.getConnection();
+    String sql = "";
+    PreparedStatement stmt = null;
+    
     public void add(Adocao a) {
-        adocoes.add(a);
+
     }
 
     public void update(Adocao adocao){

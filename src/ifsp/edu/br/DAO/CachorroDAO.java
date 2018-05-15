@@ -27,6 +27,7 @@ public class CachorroDAO {
            stmt.setBoolean(5,c.isVacinado());
            stmt.setBoolean(6,c.isCastrado());
            stmt.execute();
+           stmt.close();
        } catch (SQLException e) {
            throw new RuntimeException("Erro no cadastro de cachorro", e);
        }
@@ -42,8 +43,30 @@ public class CachorroDAO {
             stmt.setBoolean(4,c.isCastrado());
             stmt.setInt(5,c.getId());
             stmt.execute();
+            stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro em atualizar cachorro.", e);
+        }
+    }
+
+    public Cachorro read(Cachorro c){
+        try {
+            sql = "SELECT * FROM Cachorro WHERE id = ?";
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1,c.getId());
+            ResultSet rs = stmt.executeQuery();
+            Cachorro dog = new Cachorro();
+            dog.setId(rs.getInt("id"));
+            dog.setApelido(rs.getString("apelido"));
+            dog.setIdade(rs.getInt("idade"));
+            dog.setSexo(rs.getBoolean("sexo"));
+            dog.setVacinado(rs.getBoolean("vacinado"));
+            dog.setCastrado(rs.getBoolean("castrado"));
+            rs.close();
+            stmt.close();
+            return dog;
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro na pesquisa de cachorro.", e);
         }
     }
 
@@ -60,6 +83,8 @@ public class CachorroDAO {
             dog.setSexo(rs.getBoolean("sexo"));
             dog.setVacinado(rs.getBoolean("vacinado"));
             dog.setCastrado(rs.getBoolean("castrado"));
+            rs.close();
+            stmt.close();
             return dog;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na pesquisa de cachorro.", e);
@@ -83,6 +108,7 @@ public class CachorroDAO {
                 cachorros.add(dog);
             }
             rs.close();
+            stmt.close();
             return cachorros;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na listagem dos cachorros.", e);
@@ -95,6 +121,7 @@ public class CachorroDAO {
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1,c.getId());
             stmt.execute();
+            stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro na exclusão de cachorro.", e);
         }
