@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Adocao {
+
     private int id;
     private List<Animal> animais = new ArrayList<>();
     private Usuario user;

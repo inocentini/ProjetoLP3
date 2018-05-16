@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="97cb4ea5-ec28-40f9-8c51-db68d59251fc" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projeto.db" beforeDir="false" afterPath="$PROJECT_DIR$/projeto.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/AdocaoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/AdocaoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/CachorroDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/CachorroDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/ContaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/ContaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/FuncionarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/FuncionarioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/GatoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/GatoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/ProdutoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/ProdutoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/DAO/UsuarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Adocao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Adocao.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,17 +34,35 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
+            <state relative-caret-position="3162">
               <caret line="244" column="30" selection-start-line="244" selection-start-column="30" selection-end-line="244" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContaDAO.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/ContaDAO.java">
+      <file leaf-file-name="Adocao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Adocao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1887">
-              <caret line="117" column="5" lean-forward="true" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
+            <state relative-caret-position="85">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdocaoDAO.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/AdocaoDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="23" column="74" lean-forward="true" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CachorroDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/CachorroDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="799">
+              <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -103,7 +117,6 @@
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/Menu/MainMenu.java" />
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Animais/Gato.java" />
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Animais/Cachorro.java" />
-        <option value="$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Adocao.java" />
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/Menu/Menu.java" />
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Produto.java" />
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Doacao.java" />
@@ -116,8 +129,9 @@
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/DAO/FuncionarioDAO.java" />
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/DAO/CachorroDAO.java" />
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/DAO/GatoDAO.java" />
-        <option value="$PROJECT_DIR$/src/ifsp/edu/br/DAO/AdocaoDAO.java" />
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/DAO/ContaDAO.java" />
+        <option value="$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Adocao.java" />
+        <option value="$PROJECT_DIR$/src/ifsp/edu/br/DAO/AdocaoDAO.java" />
       </list>
     </option>
   </component>
@@ -139,8 +153,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -181,7 +195,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -255,12 +269,13 @@
       <workItem from="1525929887971" duration="4778000" />
       <workItem from="1525959687840" duration="2743000" />
       <workItem from="1525972071984" duration="730000" />
-      <workItem from="1526352719734" duration="6050000" />
+      <workItem from="1526352719734" duration="6768000" />
+      <workItem from="1526471563630" duration="4954000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39473000" />
+    <option name="totallyTimeSpent" value="45145000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -288,7 +303,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32960895" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2829513" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2872493" />
       <window_info anchor="right" id="Database" order="3" weight="0.3295129" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -377,13 +392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/DoacaoDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Pessoas/Usuario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -463,13 +471,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/CachorroDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/GatoDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
@@ -484,31 +485,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Adocao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="15" column="60" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/AdocaoDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding>
-            <element signature="e#497#498#0" expanded="true" />
-            <element signature="e#520#521#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="244" column="30" selection-start-line="244" selection-start-column="30" selection-end-line="244" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Conta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -519,7 +495,42 @@
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/ContaDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1887">
-          <caret line="117" column="5" lean-forward="true" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
+          <caret line="117" column="5" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/DoacaoDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3162">
+          <caret line="244" column="30" selection-start-line="244" selection-start-column="30" selection-end-line="244" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Modelo/Adocao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/CachorroDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/AdocaoDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="23" column="74" lean-forward="true" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
         </state>
       </provider>
     </entry>

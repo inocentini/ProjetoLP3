@@ -7,18 +7,30 @@ import ifsp.edu.br.Modelo.Animais.Cachorro;
 import ifsp.edu.br.Modelo.Animais.Gato;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdocaoDAO {
-    private static List<Adocao> adocoes = new ArrayList<>();
+
     Connection connection = Database.getConnection();
     String sql = "";
     PreparedStatement stmt = null;
-    
-    public void add(Adocao a) {
 
+    public void add(Adocao a) {
+        try {
+            sql = "INSERT INTO Adocao (id, user_id, data) VALUES (?,?,?)";
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1,a.getId());
+            stmt.setInt(2,a.getUser().getId());
+            stmt.setDate(3, (Date) a.getData());
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro na inserção de adoção.", e);
+        }
     }
 
     public void update(Adocao adocao){
