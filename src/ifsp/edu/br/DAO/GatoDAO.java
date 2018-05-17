@@ -19,10 +19,11 @@ public class GatoDAO {
     public void add(Gato g){
         try {
             connection = Database.getConnection();
-            sql = "INSERT INTO Gato(id,apelido,idade,sexo,vacinado,castrado) VALUES (?,?,?,?,?,?)";
+            sql = "INSERT INTO Gato(id,apelido,raca,idade,sexo,vacinado,castrado) VALUES (?,?,?,?,?,?,?)";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1,g.getId());
             stmt.setString(2,g.getApelido());
+            stmt.setString(3,g.getRaca());
             stmt.setInt(3,g.getIdade());
             stmt.setBoolean(4,g.isSexo());
             stmt.setBoolean(5,g.isVacinado());
@@ -61,6 +62,7 @@ public class GatoDAO {
             Gato cat = new Gato();
             cat.setId(rs.getInt("id"));
             cat.setApelido(rs.getString("apelido"));
+            cat.setRaca(rs.getString("raca"));
             cat.setIdade(rs.getInt("idade"));
             cat.setSexo(rs.getBoolean("sexo"));
             cat.setVacinado(rs.getBoolean("vacinado"));
@@ -83,6 +85,7 @@ public class GatoDAO {
             Gato cat = new Gato();
             cat.setId(rs.getInt("id"));
             cat.setApelido(rs.getString("apelido"));
+            cat.setRaca(rs.getString("raca"));
             cat.setIdade(rs.getInt("idade"));
             cat.setSexo(rs.getBoolean("sexo"));
             cat.setVacinado(rs.getBoolean("vacinado"));
@@ -106,6 +109,7 @@ public class GatoDAO {
                 Gato cat = new Gato();
                 cat.setId(rs.getInt("id"));
                 cat.setApelido(rs.getString("apelido"));
+                cat.setRaca(rs.getString("raca"));
                 cat.setIdade(rs.getInt("idade"));
                 cat.setSexo(rs.getBoolean("sexo"));
                 cat.setVacinado(rs.getBoolean("vacinado"));

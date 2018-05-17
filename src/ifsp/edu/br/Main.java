@@ -38,7 +38,7 @@ public class Main {
     private static UsuarioDAO userDAO = new UsuarioDAO();
     private static FuncionarioDAO funcDAO = new FuncionarioDAO();
     private static ContaDAO contaDAO = new ContaDAO();
-    private static AdocaoDAO adocaoDAO = new AdocaoDAO();
+//    private static AdocaoDAO adocaoDAO = new AdocaoDAO();
     private static DoacaoDAO doacaoDAO = new DoacaoDAO();
     private static ProdutoDAO produtoDAO = new ProdutoDAO();
 
@@ -364,7 +364,7 @@ public class Main {
                             break;
                     }
                     break;
-                case 5: //Gerenciamento de Adoções
+                /*case 5: //Gerenciamento de Adoções
                     menu.adocaoMenu();
                     int opcAd = scn.nextInt();
                     switch (opcAd){
@@ -493,7 +493,7 @@ public class Main {
                             System.out.println("Opção inválida");
                             break;
                     }
-                    break;
+                    break;*/
                 case 6: // Gerenciamento de Doações
                     menu.doacaoMenu(); // Menu Doação
                     int opcDoa = scn.nextInt();

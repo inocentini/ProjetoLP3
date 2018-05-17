@@ -4,6 +4,7 @@ package ifsp.edu.br.Modelo.Animais;
 public abstract class Animal {
     private int id;
     private String apelido;
+    private String raca;
     private int idade;
     private boolean sexo;
     private boolean vacinado;
@@ -11,9 +12,10 @@ public abstract class Animal {
 
     public Animal(){}
 
-    public Animal(int id,String apelido, int idade, boolean sexo, boolean vacinado, boolean castrado) {
+    public Animal(int id,String apelido,String raca, int idade, boolean sexo, boolean vacinado, boolean castrado) {
         this.setId(id);
         this.setApelido(apelido);
+        this.raca = raca;
         this.setIdade(idade);
         this.setSexo(sexo);
         this.setVacinado(vacinado);
@@ -34,6 +36,14 @@ public abstract class Animal {
 
     public void setApelido(String apelido) {
         this.apelido = apelido;
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+
+    public void setRaca(String raca) {
+        this.raca = raca;
     }
 
     public int getIdade() {
@@ -75,6 +85,7 @@ public abstract class Animal {
         String castrado = isVacinado() ? "Sim" : "Não";
         return ("\nID: " + getId()+
                 "\nApelido: " + getApelido()+
+                "\nRaça: " + getRaca()+
                 "\nIdade: " + getIdade()+
                 "\nSexo: " + sex+
                 "\nVacinado? " + vacinado+

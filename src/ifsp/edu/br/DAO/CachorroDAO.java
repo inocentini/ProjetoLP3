@@ -18,14 +18,15 @@ public class CachorroDAO {
 
     public void add(Cachorro c){
        try {
-           sql = "INSERT INTO Cachorro(id,apelido,idade,sexo,vacinado,castrado) VALUES (?,?,?,?,?,?)";
+           sql = "INSERT INTO Animal(apelido,raca,idade,sexo,vacinado,castrado,tipo) VALUES (?,?,?,?,?,?,?)";
            stmt = connection.prepareStatement(sql);
-           stmt.setInt(1,c.getId());
-           stmt.setString(2,c.getApelido());
+           stmt.setString(1,c.getApelido());
+           stmt.setString(2,c.getRaca());
            stmt.setInt(3,c.getIdade());
            stmt.setBoolean(4,c.isSexo());
            stmt.setBoolean(5,c.isVacinado());
            stmt.setBoolean(6,c.isCastrado());
+           stmt.setString(7,"Cachorro");
            stmt.execute();
            stmt.close();
        } catch (SQLException e) {
@@ -35,7 +36,7 @@ public class CachorroDAO {
 
     public void update(Cachorro c){
         try{
-            sql = "UPDATE Cachorro SET apelido = ?, idade = ?, vacinado = ?, castrado = ? WHERE id = ?";
+            sql = "UPDATE Animal SET apelido = ?, idade = ?, vacinado = ?, castrado = ? WHERE id = ?";
             stmt = connection.prepareStatement(sql);
             stmt.setString(1,c.getApelido());
             stmt.setInt(2,c.getIdade());
@@ -51,13 +52,14 @@ public class CachorroDAO {
 
     public Cachorro read(Cachorro c){
         try {
-            sql = "SELECT * FROM Cachorro WHERE id = ?";
+            sql = "SELECT * FROM Animal WHERE id = ?";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1,c.getId());
             ResultSet rs = stmt.executeQuery();
             Cachorro dog = new Cachorro();
             dog.setId(rs.getInt("id"));
             dog.setApelido(rs.getString("apelido"));
+            dog.setRaca(rs.getString("raca"));
             dog.setIdade(rs.getInt("idade"));
             dog.setSexo(rs.getBoolean("sexo"));
             dog.setVacinado(rs.getBoolean("vacinado"));
@@ -72,13 +74,14 @@ public class CachorroDAO {
 
     public Cachorro read(int id){
         try {
-            sql = "SELECT * FROM Cachorro WHERE id = ?";
+            sql = "SELECT * FROM Animal WHERE id = ?";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
             Cachorro dog = new Cachorro();
             dog.setId(rs.getInt("id"));
             dog.setApelido(rs.getString("apelido"));
+            dog.setRaca(rs.getString("raca"));
             dog.setIdade(rs.getInt("idade"));
             dog.setSexo(rs.getBoolean("sexo"));
             dog.setVacinado(rs.getBoolean("vacinado"));
@@ -93,7 +96,7 @@ public class CachorroDAO {
 
     public List<Cachorro> list(){
         try {
-            sql = "SELECT * FROM Cachorro";
+            sql = "SELECT * FROM Animal WHERE tipo like 'Cachorro'";
             stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             List<Cachorro> cachorros = new ArrayList<>();
@@ -101,6 +104,7 @@ public class CachorroDAO {
                 Cachorro dog = new Cachorro();
                 dog.setId(rs.getInt("id"));
                 dog.setApelido(rs.getString("apelido"));
+                dog.setRaca(rs.getString("raca"));
                 dog.setIdade(rs.getInt("idade"));
                 dog.setSexo(rs.getBoolean("sexo"));
                 dog.setVacinado(rs.getBoolean("vacinado"));
@@ -117,7 +121,7 @@ public class CachorroDAO {
 
     public void remove(Cachorro c){
         try {
-            sql = "DELETE FROM Cachorro WHERE id = ?";
+            sql = "DELETE FROM Animal WHERE id = ?";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1,c.getId());
             stmt.execute();
