@@ -19,15 +19,15 @@ public class GatoDAO {
     public void add(Gato g){
         try {
             connection = Database.getConnection();
-            sql = "INSERT INTO Gato(id,apelido,raca,idade,sexo,vacinado,castrado) VALUES (?,?,?,?,?,?,?)";
+            sql = "INSERT INTO Animal(apelido,raca,idade,sexo,vacinado,castrado,tipo) VALUES (?,?,?,?,?,?,?)";
             stmt = connection.prepareStatement(sql);
-            stmt.setInt(1,g.getId());
-            stmt.setString(2,g.getApelido());
-            stmt.setString(3,g.getRaca());
+            stmt.setString(1,g.getApelido());
+            stmt.setString(2,g.getRaca());
             stmt.setInt(3,g.getIdade());
             stmt.setBoolean(4,g.isSexo());
             stmt.setBoolean(5,g.isVacinado());
             stmt.setBoolean(6,g.isCastrado());
+            stmt.setString(7,"Gato");
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -38,7 +38,7 @@ public class GatoDAO {
     public void update(Gato g){
         try {
             connection = Database.getConnection();
-            sql = "UPDATE Gato SET apelido = ?,idade = ?,vacinado = ?,castrado = ? WHERE id =?";
+            sql = "UPDATE Animal SET apelido = ?,idade = ?,vacinado = ?,castrado = ? WHERE id =?";
             stmt = connection.prepareStatement(sql);
             stmt.setString(1,g.getApelido());
             stmt.setInt(2,g.getIdade());
@@ -55,7 +55,7 @@ public class GatoDAO {
     public Gato read(Gato g){
         try {
             connection = Database.getConnection();
-            sql = "SELECT * FROM Gato WHERE id =?";
+            sql = "SELECT * FROM Animal WHERE id =?";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1,g.getId());
             ResultSet rs = stmt.executeQuery();
@@ -78,7 +78,7 @@ public class GatoDAO {
     public Gato read(int id){
         try {
             connection = Database.getConnection();
-            sql = "SELECT * FROM Gato WHERE id =?";
+            sql = "SELECT * FROM Animal WHERE id =?";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
@@ -101,7 +101,7 @@ public class GatoDAO {
     public List<Gato> list(){
         try {
             connection = Database.getConnection();
-            sql = "SELECT * FROM Gato";
+            sql = "SELECT * FROM Animal WHERE tipo like 'Gato'";
             stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             List<Gato> gatos = new ArrayList<>();
@@ -127,7 +127,7 @@ public class GatoDAO {
     public void remove(Gato g){
         try {
             connection = Database.getConnection();
-            sql = "DELETE FROM Gato WHERE id = ?";
+            sql = "DELETE FROM Animal WHERE id = ?";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1,g.getId());
             stmt.execute();

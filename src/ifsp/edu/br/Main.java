@@ -38,7 +38,7 @@ public class Main {
     private static UsuarioDAO userDAO = new UsuarioDAO();
     private static FuncionarioDAO funcDAO = new FuncionarioDAO();
     private static ContaDAO contaDAO = new ContaDAO();
-//    private static AdocaoDAO adocaoDAO = new AdocaoDAO();
+    private static AdocaoDAO adocaoDAO = new AdocaoDAO();
     private static DoacaoDAO doacaoDAO = new DoacaoDAO();
     private static ProdutoDAO produtoDAO = new ProdutoDAO();
 
@@ -364,17 +364,20 @@ public class Main {
                             break;
                     }
                     break;
-                /*case 5: //Gerenciamento de Adoções
+                case 5: //Gerenciamento de Adoções
                     menu.adocaoMenu();
                     int opcAd = scn.nextInt();
-                    switch (opcAd){
+                    switch (opcAd) {
                         case 0: // Sair
                             break;
                         case 1: // Adicionar adoção
                             Adocao adocao = new Adocao();
                             adocao.setId(idAdocao++);
                             System.out.println("Informe o id do usuário que fará a adoção:");
-                            userDAO.list();
+                            List<Usuario> users = userDAO.list();
+                            for(Usuario u : users){
+                                System.out.println(u.toString());
+                            }
                             adocao.setUser(userDAO.read(scn.nextInt()));
                             scn.nextLine();
                             System.out.println("Informe a data da adoção:");
@@ -384,16 +387,19 @@ public class Main {
                             adocao.setData(dtAd);
                             boolean opAd = true;
                             List<Animal> animais = new ArrayList<>();
-                            while(opAd){
+                            while (opAd) {
                                 System.out.println("Deseja adicionar:\n1 - Cachorro.\n2 - Gato.\n0 - Sair");
                                 int opAdSw = scn.nextInt();
-                                switch (opAdSw){
+                                switch (opAdSw) {
                                     case 0://Sair
                                         opAd = false;
                                         break;
                                     case 1: // Adicionar cachorro na lista
                                         System.out.println("Informe o id do cachorro que deseja adotar:");
-                                        dogDAO.list();
+                                        List<Cachorro> cachorros = dogDAO.list();
+                                        for(Cachorro c : cachorros){
+                                            System.out.println(c.toString());
+                                        }
                                         Cachorro dogAd = dogDAO.read(scn.nextInt());
                                         if (dogAd != null) {
                                             animais.add(dogAd);
@@ -403,7 +409,10 @@ public class Main {
                                         break;
                                     case 2: // Adicionar gato na lista
                                         System.out.println("Informe o id do gato que deseja adotar:");
-                                        catDAO.list();
+                                        List<Gato> gatos = catDAO.list();
+                                        for(Gato g : gatos){
+                                            System.out.println(g.toString());
+                                        }
                                         Gato catAd = catDAO.read(scn.nextInt());
                                         if (catAd != null) {
                                             animais.add(catAd);
@@ -418,82 +427,7 @@ public class Main {
                             adocao.setAnimais(animais);
                             adocaoDAO.add(adocao);
                             break;
-                        case 2: // Listar todas as adoções
-                            adocaoDAO.list();
-                            break;
-                        case 3: //Pesquisar adoção pelo id.
-                            System.out.println("Informe o id da adoção.");
-                            Adocao adocaoRead = adocaoDAO.read(scn.nextInt());
-                            if (adocaoRead != null) {
-                                System.out.println(adocaoDAO.toString());
-                                for (Animal a : adocaoRead.getAnimais()) {
-                                    if (a.getClass() == Cachorro.class)
-                                        System.out.println("Cachorro:");
-                                    else if (a.getClass() == Gato.class)
-                                        System.out.println("Gato:");
-
-                                    System.out.println(a.toString());
-                                }
-                            } else
-                                System.out.println("Adoção não encontrada!");
-
-                            break;
-                        case 4:// Alterar adoção pelo id
-                            System.out.println("Informe o id da adoção que deseja alterar:");
-                            Adocao adocaoUp = adocaoDAO.read(scn.nextInt());
-                            scn.nextLine();
-                            System.out.println("Informe o id do novo Usuário da adoção:");
-                            userDAO.list();
-                            adocaoUp.setUser(userDAO.read(scn.nextInt()));
-                            System.out.println("Informe a nova data da adoção:");
-                            String dateAdUp = scn.nextLine();
-                            DateFormat dfAdUp = new SimpleDateFormat("dd/MM/yyyy");
-                            Date dtAdUp = dfAdUp.parse(dateAdUp);
-                            adocaoUp.setData(dtAdUp);
-                            boolean opAdUp = true;
-                            List<Animal> animaisUp = new ArrayList<>();
-                            while(opAdUp){
-                                System.out.println("Deseja adicionar:\n1 - Cachorro.\n2 - Gato.\n0 - Sair");
-                                int opAdSwUp = scn.nextInt();
-                                switch (opAdSwUp){
-                                    case 0://Sair
-                                        opAdUp = false;
-                                        break;
-                                    case 1: // Adicionar cachorro na lista
-                                        System.out.println("Informe o id do novo cachorro que deseja adotar:");
-                                        dogDAO.list();
-                                        Cachorro dogAd = dogDAO.read(scn.nextInt());
-                                        if (dogAd != null) {
-                                            animaisUp.add(dogAd);
-                                            dogDAO.remove(dogAd);
-                                        } else
-                                            System.out.println("Cachorro não encontrado!");
-                                        break;
-                                    case 2: // Adicionar gato na lista
-                                        System.out.println("Informe o id do novo gato que deseja adotar:");
-                                        catDAO.list();
-                                        Gato catAd = catDAO.read(scn.nextInt());
-                                        if (catAd != null) {
-                                            animaisUp.add(catAd);
-                                            catDAO.remove(catAd);
-                                        } else
-                                            System.out.println("Gato não encontrado!");
-                                        break;
-                                    default:
-                                        System.out.println("Opção inválida.");
-                                }
-                            }
-                            adocaoUp.setAnimais(animaisUp);
-                            adocaoDAO.update(adocaoUp);
-                            break;
-                        case 5: // Remover Adoção
-                            adocaoDAO.remove(adocaoDAO.read(scn.nextInt()));
-                            break;
-                        default:
-                            System.out.println("Opção inválida");
-                            break;
                     }
-                    break;*/
                 case 6: // Gerenciamento de Doações
                     menu.doacaoMenu(); // Menu Doação
                     int opcDoa = scn.nextInt();

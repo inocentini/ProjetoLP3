@@ -5,6 +5,7 @@ import ifsp.edu.br.Modelo.Adocao;
 import ifsp.edu.br.Modelo.Animais.Animal;
 import ifsp.edu.br.Modelo.Animais.Cachorro;
 import ifsp.edu.br.Modelo.Animais.Gato;
+import ifsp.edu.br.Modelo.Pessoas.Usuario;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,11 +19,10 @@ public class AdocaoDAO {
 
     public void add(Adocao a) {
         try {
-            sql = "INSERT INTO Adocao (id, user_id, data) VALUES (?,?,?)";
+            sql = "INSERT INTO Adocao (user_id, data) VALUES (?,?)";
             stmt = connection.prepareStatement(sql);
-            stmt.setInt(1,a.getId());
-            stmt.setInt(2,a.getUser().getId());
-            stmt.setDate(3, (Date) a.getData());
+            stmt.setInt(1,a.getUser().getId());
+            stmt.setString(2, a.getData().toString());
             stmt.execute();
             stmt.close();
             for(Animal animal : a.getAnimais()){
@@ -38,7 +38,28 @@ public class AdocaoDAO {
         }
     }
 
-    public void update(Adocao adocao){
+    public Adocao read(Adocao a){
+        try {
+            sql = "SELECT * FROM Adocao WHERE id = ?";
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1,a.getId());
+            ResultSet rs = stmt.executeQuery();
+            Adocao ad = new Adocao();
+            ad.setId(rs.getInt("id"));
+            UsuarioDAO userDAO = new UsuarioDAO();
+            Usuario user = new Usuario();
+            user = userDAO.read(rs.getInt("user_id"));
+            ad.setUser(user);
+            ad.setData(rs.getDate("data"));
+            rs.close();
+            stmt.close();
+            return ad;
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro na pesquisa de adocao.", e);
+        }
+    }
+
+    /*public void update(Adocao adocao){
         for(Adocao a : adocoes){
             if(a.getId() == adocao.getId()){
                 a.setUser(adocao.getUser());
@@ -73,5 +94,6 @@ public class AdocaoDAO {
 
     public void remove(Adocao a){
         adocoes.remove(a);
-    }
+    }*/
+
 }
