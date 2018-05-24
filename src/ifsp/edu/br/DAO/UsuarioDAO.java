@@ -1,7 +1,7 @@
 package ifsp.edu.br.DAO;
 
-import ifsp.edu.br.Database;
-import ifsp.edu.br.Modelo.Pessoas.Usuario;
+import ifsp.edu.br.Database.Database;
+import ifsp.edu.br.Model.Pessoas.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

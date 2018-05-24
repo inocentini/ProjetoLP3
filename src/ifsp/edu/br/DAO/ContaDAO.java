@@ -1,9 +1,8 @@
 package ifsp.edu.br.DAO;
 
-import ifsp.edu.br.Database;
-import ifsp.edu.br.Modelo.Conta;
+import ifsp.edu.br.Database.Database;
+import ifsp.edu.br.Model.Conta;
 
-import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

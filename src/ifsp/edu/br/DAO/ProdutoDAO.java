@@ -1,7 +1,7 @@
 package ifsp.edu.br.DAO;
 
-import ifsp.edu.br.Database;
-import ifsp.edu.br.Modelo.Produto;
+import ifsp.edu.br.Database.Database;
+import ifsp.edu.br.Model.Produto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

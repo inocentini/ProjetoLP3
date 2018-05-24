@@ -1,7 +1,7 @@
 package ifsp.edu.br.DAO;
 
-import ifsp.edu.br.Database;
-import ifsp.edu.br.Modelo.Animais.Cachorro;
+import ifsp.edu.br.Database.Database;
+import ifsp.edu.br.Model.Animais.Cachorro;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,6 +27,7 @@ public class CachorroDAO {
            stmt.setBoolean(5,c.isVacinado());
            stmt.setBoolean(6,c.isCastrado());
            stmt.setString(7,"Cachorro");
+//           stmt.setInt(8,c.getAdocao().getId());
            stmt.execute();
            stmt.close();
        } catch (SQLException e) {
@@ -36,13 +37,14 @@ public class CachorroDAO {
 
     public void update(Cachorro c){
         try{
-            sql = "UPDATE Animal SET apelido = ?, idade = ?, vacinado = ?, castrado = ? WHERE id = ?";
+            sql = "UPDATE Animal SET apelido = ?, idade = ?, vacinado = ?, castrado = ?, adocao_id = ? WHERE id = ?";
             stmt = connection.prepareStatement(sql);
             stmt.setString(1,c.getApelido());
             stmt.setInt(2,c.getIdade());
             stmt.setBoolean(3,c.isVacinado());
             stmt.setBoolean(4,c.isCastrado());
-            stmt.setInt(5,c.getId());
+            stmt.setInt(5,c.getAdocao());
+            stmt.setInt(6,c.getId());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -64,6 +66,7 @@ public class CachorroDAO {
             dog.setSexo(rs.getBoolean("sexo"));
             dog.setVacinado(rs.getBoolean("vacinado"));
             dog.setCastrado(rs.getBoolean("castrado"));
+            dog.setAdocao(rs.getInt("adocao_id"));
             rs.close();
             stmt.close();
             return dog;
@@ -85,7 +88,7 @@ public class CachorroDAO {
             dog.setIdade(rs.getInt("idade"));
             dog.setSexo(rs.getBoolean("sexo"));
             dog.setVacinado(rs.getBoolean("vacinado"));
-            dog.setCastrado(rs.getBoolean("castrado"));
+            dog.setAdocao(rs.getInt("adocao_id"));
             rs.close();
             stmt.close();
             return dog;
@@ -109,6 +112,7 @@ public class CachorroDAO {
                 dog.setSexo(rs.getBoolean("sexo"));
                 dog.setVacinado(rs.getBoolean("vacinado"));
                 dog.setCastrado(rs.getBoolean("castrado"));
+                dog.setAdocao(rs.getInt("adocao_id"));
                 cachorros.add(dog);
             }
             rs.close();
@@ -130,5 +134,18 @@ public class CachorroDAO {
             throw new RuntimeException("Erro na exclusão de cachorro.", e);
         }
     }
-
+    public int nextSeqAnimal(){
+        try {
+            int id;
+            sql = "SELECT seq FROM sqlite_sequence WHERE name = 'Animal'";
+            stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            id = rs.getInt("seq");
+            rs.close();
+            stmt.close();
+            return id++;
+        } catch (SQLException e) {
+            throw new RuntimeException("erro", e);
+        }
+    }
 }

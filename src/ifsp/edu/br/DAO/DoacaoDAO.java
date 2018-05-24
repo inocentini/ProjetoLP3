@@ -1,10 +1,10 @@
 package ifsp.edu.br.DAO;
 
-import ifsp.edu.br.Modelo.Animais.Animal;
-import ifsp.edu.br.Modelo.Animais.Cachorro;
-import ifsp.edu.br.Modelo.Animais.Gato;
-import ifsp.edu.br.Modelo.Doacao;
-import ifsp.edu.br.Modelo.Produto;
+import ifsp.edu.br.Model.Animais.Animal;
+import ifsp.edu.br.Model.Animais.Cachorro;
+import ifsp.edu.br.Model.Animais.Gato;
+import ifsp.edu.br.Model.Doacao;
+import ifsp.edu.br.Model.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
