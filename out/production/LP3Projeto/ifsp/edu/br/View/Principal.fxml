@@ -5,13 +5,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsp.edu.br.Control.PrincipalController">
    <left>
-      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #212121;" BorderPane.alignment="CENTER">
+      <VBox fx:id="vboxLeft" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #212121;" BorderPane.alignment="CENTER">
          <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="100.0" prefWidth="108.0" text="Animais">
+            <Button fx:id="btnAnimal" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#gerenciaAnimal" prefHeight="100.0" prefWidth="108.0" text="Animais">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -20,7 +21,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="100.0" prefWidth="108.0" text="Usuários">
+            <Button fx:id="btnUser" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#gerenciaUsuario" prefHeight="100.0" prefWidth="108.0" text="Usuários">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -29,7 +30,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="100.0" prefWidth="108.0" text="Funcinários">
+            <Button fx:id="btnFunc" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#gerenciaFuncionario" prefHeight="100.0" prefWidth="108.0" text="Funcinários">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,7 +39,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="100.0" prefWidth="108.0" text="Contas">
+            <Button fx:id="btnConta" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#gerenciaConta" prefHeight="100.0" prefWidth="108.0" text="Contas">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -47,7 +48,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="100.0" prefWidth="108.0" text="Doações">
+            <Button fx:id="btnDoa" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#gerenciaDoacao" prefHeight="100.0" prefWidth="108.0" text="Doações">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -56,15 +57,19 @@
                   </ImageView>
                </graphic>
             </Button>
-            <AnchorPane prefHeight="414.0" prefWidth="100.0" />
          </children>
       </VBox>
    </left>
    <center>
-      <ImageView fitHeight="399.0" fitWidth="535.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@../Resources/IMG_20171120_181242974.jpg" />
-         </image>
-      </ImageView>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="ivCenter" fitHeight="399.0" fitWidth="535.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/IMG_20171120_181242974.jpg" />
+               </image>
+            </ImageView>
+            <Pane fx:id="secPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
    </center>
 </BorderPane>
