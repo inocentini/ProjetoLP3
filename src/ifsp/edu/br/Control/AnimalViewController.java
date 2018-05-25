@@ -3,13 +3,13 @@ package ifsp.edu.br.Control;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
@@ -82,16 +82,16 @@ public class AnimalViewController {
     private Label labCastrado;
 
     @FXML
-    private CheckBox chckM;
-
-    @FXML
-    private CheckBox chckF;
-
-    @FXML
     private TextField txtVacinado;
 
     @FXML
     private TextField txtCastrado;
+
+    @FXML
+    private RadioButton rbtnSexF;
+
+    @FXML
+    private RadioButton rbtnSexM;
 
     @FXML
     private Button btnInserir;
@@ -113,6 +113,9 @@ public class AnimalViewController {
 
     @FXML
     private RadioButton rbtnNome;
+
+    @FXML
+    private ToggleGroup pesquisa;
 
     @FXML
     private RadioButton rbtnId;
