@@ -3,6 +3,7 @@ package ifsp.edu.br.DAO;
 import ifsp.edu.br.Database.Database;
 import ifsp.edu.br.Model.Animais.Cachorro;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,11 +13,11 @@ import java.util.List;
 
 public class CachorroDAO {
 
-    Connection connection = Database.getConnection();
-    String sql = "";
-    PreparedStatement stmt = null;
 
     public void add(Cachorro c){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
        try {
            sql = "INSERT INTO Animal(apelido,raca,idade,sexo,vacinado,castrado,tipo) VALUES (?,?,?,?,?,?,?)";
            stmt = connection.prepareStatement(sql);
@@ -29,13 +30,17 @@ public class CachorroDAO {
            stmt.setString(7,"Cachorro");
 //           stmt.setInt(8,c.getAdocao().getId());
            stmt.execute();
-           stmt.close();
        } catch (SQLException e) {
-           throw new RuntimeException("Erro no cadastro de cachorro", e);
+           e.printStackTrace();
+       }finally {
+           Database.closeConnection(connection,stmt);
        }
     }
 
     public void update(Cachorro c){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try{
             sql = "UPDATE Animal SET apelido = ?, idade = ?, vacinado = ?, castrado = ?, adocao_id = ? WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -46,13 +51,17 @@ public class CachorroDAO {
             stmt.setInt(5,c.getAdocao());
             stmt.setInt(6,c.getId());
             stmt.execute();
-            stmt.close();
         } catch (SQLException e) {
-            throw new RuntimeException("Erro em atualizar cachorro.", e);
+            e.printStackTrace();
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public Cachorro read(Cachorro c){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Animal WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -68,14 +77,19 @@ public class CachorroDAO {
             dog.setCastrado(rs.getBoolean("castrado"));
             dog.setAdocao(rs.getInt("adocao_id"));
             rs.close();
-            stmt.close();
             return dog;
         } catch (SQLException e) {
-            throw new RuntimeException("Erro na pesquisa de cachorro.", e);
+            e.printStackTrace();
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
+        return null;
     }
 
     public Cachorro read(int id){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Animal WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -90,14 +104,19 @@ public class CachorroDAO {
             dog.setVacinado(rs.getBoolean("vacinado"));
             dog.setAdocao(rs.getInt("adocao_id"));
             rs.close();
-            stmt.close();
             return dog;
         } catch (SQLException e) {
-            throw new RuntimeException("Erro na pesquisa de cachorro.", e);
+            e.printStackTrace();
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
+        return null;
     }
 
     public List<Cachorro> list(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Animal WHERE tipo like 'Cachorro'";
             stmt = connection.prepareStatement(sql);
@@ -116,14 +135,19 @@ public class CachorroDAO {
                 cachorros.add(dog);
             }
             rs.close();
-            stmt.close();
             return cachorros;
         } catch (SQLException e) {
-            throw new RuntimeException("Erro na listagem dos cachorros.", e);
+            e.printStackTrace();
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
+        return null;
     }
 
     public void remove(Cachorro c){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "DELETE FROM Animal WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -131,21 +155,30 @@ public class CachorroDAO {
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
-            throw new RuntimeException("Erro na exclusão de cachorro.", e);
+            e.printStackTrace();
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
     public int nextSeqAnimal(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             int id;
             sql = "SELECT seq FROM sqlite_sequence WHERE name = 'Animal'";
             stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             id = rs.getInt("seq");
+            id++;
             rs.close();
             stmt.close();
-            return id++;
+            return id;
         } catch (SQLException e) {
-            throw new RuntimeException("erro", e);
+            e.printStackTrace();
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
+        return Integer.parseInt(null);
     }
 }

@@ -18,18 +18,19 @@ public class Database {
             try {
                 con.close();
             } catch (SQLException e) {
-                throw new RuntimeException("Erro no encerramento da conexão.", e);
+                e.printStackTrace();
             }
         }
     }
 
     public static void closeConnection(Connection con, PreparedStatement stmt){
-        closeConnection(con);
         if(stmt!=null){
             try {
                 stmt.close();
             } catch (SQLException e) {
-                throw new RuntimeException("Erro no encerramento da Statement.", e);
+                e.printStackTrace();
+            }finally {
+                closeConnection(con);
             }
         }
 
