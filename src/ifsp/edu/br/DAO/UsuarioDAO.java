@@ -18,14 +18,14 @@ public class UsuarioDAO {
 
     public void add(Usuario u){
         try {
-            sql = "INSERT INTO Usuario(id,nome,cpf,endereco,telefone,email) VALUES (?,?,?,?,?,?)";
+            sql = "INSERT INTO Usuario(nome,cpf,endereco,telefone,email) VALUES (?,?,?,?,?)";
             stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, u.getId());
-            stmt.setString(2,u.getNome());
-            stmt.setString(3,u.getCpf());
-            stmt.setString(4,u.getEndereco());
-            stmt.setString(5,u.getTelefone());
-            stmt.setString(6, u.getEmail());
+//            stmt.setInt(1, u.getId());
+            stmt.setString(1,u.getNome());
+            stmt.setString(2,u.getCpf());
+            stmt.setString(3,u.getEndereco());
+            stmt.setString(4,u.getTelefone());
+            stmt.setString(5, u.getEmail());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -126,5 +126,27 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             throw new RuntimeException("Erro na exclusão do usuário.", e);
         }
+    }
+
+    public int nextSeqUser(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
+        try {
+            int id;
+            sql = "SELECT seq FROM sqlite_sequence WHERE name = 'Usuario'";
+            stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            id = rs.getInt("seq");
+            id++;
+            rs.close();
+            stmt.close();
+            return id;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            Database.closeConnection(connection,stmt);
+        }
+        return Integer.parseInt(null);
     }
 }

@@ -148,9 +148,10 @@ public class GatoDAO {
             stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             id = rs.getInt("seq");
+            id++;
             rs.close();
             stmt.close();
-            return id++;
+            return id;
         } catch (SQLException e) {
             throw new RuntimeException("erro", e);
         }

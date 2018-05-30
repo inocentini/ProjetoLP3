@@ -2,11 +2,9 @@ package ifsp.edu.br.Control;
 
 import ifsp.edu.br.DAO.CachorroDAO;
 import ifsp.edu.br.DAO.GatoDAO;
-import ifsp.edu.br.Database.Database;
 import ifsp.edu.br.Model.Animais.Animal;
 import ifsp.edu.br.Model.Animais.Cachorro;
 import ifsp.edu.br.Model.Animais.Gato;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -18,7 +16,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -159,12 +156,12 @@ public class AnimalViewController implements Initializable {
         if(animal != null){
             boolean btnAlterarClicked = showGerenciamentoAnimal(animal);
             if(btnAlterarClicked && animal.getClass() == Cachorro.class){
-                CachorroDAO dogDao = new CachorroDAO();
-                dogDao.update((Cachorro) animal);
+//                CachorroDAO dogDao = new CachorroDAO();
+//                dogDao.update((Cachorro) animal);
                 fillTableCachorro();
             }else if(btnAlterarClicked && animal.getClass() == Gato.class){
-                GatoDAO catDAO = new GatoDAO();
-                catDAO.update((Gato) animal);
+//                GatoDAO catDAO = new GatoDAO();
+//                catDAO.update((Gato) animal);
                 fillTableGato();
             }
         }else {
@@ -186,7 +183,7 @@ public class AnimalViewController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Removendo Animal!");
             alert.setContentText("Você deseja remover este animal?");
-            alert.show();
+            alert.showAndWait();
             CachorroDAO dogDAO = new CachorroDAO();
             dogDAO.remove((Cachorro) animal);
             fillTableCachorro();
@@ -194,7 +191,7 @@ public class AnimalViewController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Removendo Animal!");
             alert.setContentText("Você deseja remover este animal?");
-            alert.show();
+            alert.showAndWait();
             GatoDAO catDAO = new GatoDAO();
             catDAO.remove((Gato) animal);
             fillTableGato();
@@ -208,7 +205,7 @@ public class AnimalViewController implements Initializable {
 
     public boolean showGerenciamentoAnimal() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
-                "ifsp/edu/br/View/GerenciamentoAnimal.fxml"));
+                "ifsp/edu/br/View/CRUDAnimal.fxml"));
         AnchorPane page = (AnchorPane) loader.load();
 
         Stage dialogStage = new Stage();
@@ -216,7 +213,7 @@ public class AnimalViewController implements Initializable {
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
 
-        GerenciamentoAnimalController controller = loader.getController();
+        CRUDAnimalController controller = loader.getController();
         controller.setDialogStage(dialogStage);
 
         dialogStage.showAndWait();
@@ -226,15 +223,15 @@ public class AnimalViewController implements Initializable {
 
     public boolean showGerenciamentoAnimal(Animal animal) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
-                "ifsp/edu/br/View/GerenciamentoAnimal.fxml"));
+                "ifsp/edu/br/View/CRUDAnimal.fxml"));
         AnchorPane page = (AnchorPane) loader.load();
 
         Stage dialogStage = new Stage();
-        dialogStage.setTitle("Cadastro de PET");
+        dialogStage.setTitle("Alteração de PET");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
 
-        GerenciamentoAnimalController controller = loader.getController();
+        CRUDAnimalController controller = loader.getController();
         controller.setDialogStage(dialogStage);
         controller.setAnimal(animal);
 
@@ -332,7 +329,7 @@ public class AnimalViewController implements Initializable {
 
     public void selectItemTableViewCachorro(Cachorro dog){
         if(dog != null) {
-            txtId.setEditable(false);
+            txtId.setDisable(true);
             txtId.setText(String.valueOf(dog.getId()));
             txtNick.setEditable(false);
             txtNick.setText(dog.getApelido());

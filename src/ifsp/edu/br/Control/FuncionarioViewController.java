@@ -1,32 +1,45 @@
 package ifsp.edu.br.Control;
 
+import ifsp.edu.br.DAO.FuncionarioDAO;
+import ifsp.edu.br.Model.Pessoas.Funcionario;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class FuncionarioViewController implements Initializable {
+
     @FXML
     private SplitPane spliUsers;
 
     @FXML
-    private TableView<?> tableFunc;
+    private TableView<Funcionario> tableFunc;
 
     @FXML
-    private TableColumn<?, ?> tableFuncId;
+    private TableColumn<Funcionario, Integer> tableFuncId;
 
     @FXML
-    private TableColumn<?, ?> tableFuncNome;
+    private TableColumn<Funcionario, String> tableFuncNome;
+
+    @FXML
+    private TableColumn<Funcionario, String> tableFuncCPF;
 
     @FXML
     private Label labFunc;
@@ -98,33 +111,165 @@ public class FuncionarioViewController implements Initializable {
     private Label labPesquisar;
 
     @FXML
-    private RadioButton rbtnNome;
-
-    @FXML
-    private RadioButton rbtnId;
-
-    @FXML
-    void inserirFuncionario(MouseEvent event) {
-
+    void handleBtnAlterar(ActionEvent event) throws IOException {
+        Funcionario func = new Funcionario();
+        func = tableFunc.getSelectionModel().getSelectedItem();
+        if(func != null){
+            boolean btnAlterarClicked = showGerenciamentoFunc(func);
+            if(btnAlterarClicked){
+                fillTableFunc();
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Selecionar Funcionário");
+            alert.setContentText("Por favor, selecione um funcionário na tabela");
+            alert.show();
+        }
     }
 
     @FXML
-    void removeFuncionario(MouseEvent event) {
-
+    void handleBtnInserir(ActionEvent event) throws IOException {
+        boolean btnAddClicked = showGerenciamentoFunc();
+        if(btnAddClicked){
+            fillTableFunc();
+        }
     }
 
     @FXML
-    void updateFuncionario(MouseEvent event) {
+    void handleBtnRemover(ActionEvent event) {
+        Funcionario func = new Funcionario();
+        func = tableFunc.getSelectionModel().getSelectedItem();
 
+        if(func != null ){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Removendo Funcionário.");
+            alert.setContentText("Você deseja remover este funcionário?");
+            alert.showAndWait();
+            FuncionarioDAO funcDAO = new FuncionarioDAO();
+            funcDAO.remove(func);
+            fillTableFunc();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Seleção de funcionário");
+            alert.setContentText("Por favor, selecione um funcionário.");
+            alert.show();
+        }
     }
 
     @FXML
-    void voltarPrincipal(MouseEvent event) {
+    void handleBtnVoltar(ActionEvent event) {
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        fillTableFunc();
+        tableFunc.getSelectionModel().selectedItemProperty().addListener(
+                (Observable, oldValue, newValue) -> selectItemTableViewFunc(newValue));
+    }
+
+    @FXML
+    void pesquisaFunc(KeyEvent event) {
+        ObservableList<Funcionario> observableList = tableFunc.getItems();
+        FilteredList<Funcionario> filteredList = new FilteredList<>(observableList, funcionario -> true);
+        txtPesquisar.setOnKeyReleased(funcionario -> {
+            txtPesquisar.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
+                filteredList.setPredicate((Predicate<? super Funcionario>) func -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if (newValue == String.valueOf(func.getId())) {
+                        return true;
+                    } else if (func.getNome().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    }
+                    return false;
+                });
+            });
+            SortedList<Funcionario> sortedList = new SortedList<>(filteredList);
+            sortedList.comparatorProperty().bind(tableFunc.comparatorProperty());
+            tableFunc.setItems(sortedList);
+        });
+    }
+
+
+    public void fillTableFunc(){
+        FuncionarioDAO funcDAO = new FuncionarioDAO();
+        List<Funcionario> funcionarioList;
+        ObservableList<Funcionario> funcionarioObservableList;
+        tableFuncId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableFuncNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        tableFuncCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+
+        funcionarioList = funcDAO.list();
+
+        funcionarioObservableList = FXCollections.observableArrayList(funcionarioList);
+        tableFunc.setItems(funcionarioObservableList);
+    }
+
+
+    public void selectItemTableViewFunc(Funcionario func){
+        if(func != null){
+            txtId.setText(String.valueOf(func.getId()));
+            txtId.setDisable(true);
+            txtNome.setText(func.getNome());
+            txtNome.setEditable(false);
+            txtCPF.setText(func.getCpf());
+            txtCPF.setEditable(false);
+            txtEndereço.setText(func.getEndereco());
+            txtEndereço.setEditable(false);
+            txtTelefone.setText(func.getTelefone());
+            txtTelefone.setEditable(false);
+            txtEmail.setText(func.getEmail());
+            txtEmail.setEditable(false);
+            txtSalario.setText(String.valueOf(func.getSalario()));
+            txtSalario.setEditable(false);
+        }else{
+            txtId.setText("");
+            txtNome.setText("");
+            txtCPF.setText("");
+            txtEndereço.setText("");
+            txtTelefone.setText("");
+            txtEmail.setText("");
+            txtSalario.setText("");
+        }
+    }
+
+    public boolean showGerenciamentoFunc() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
+                "ifsp/edu/br/View/CRUDFunc.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Cadastro de Funcionários");
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+
+        CRUDFuncController controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+
+        dialogStage.showAndWait();
+
+        return controller.isBtnConfirmClicked();
+    }
+
+    public boolean showGerenciamentoFunc(Funcionario func) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
+                "ifsp/edu/br/View/CRUDFunc.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Alteração de Usuários");
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+
+        CRUDFuncController controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+        controller.setFunc(func);
+
+        dialogStage.showAndWait();
+
+        return controller.isBtnConfirmClicked();
     }
 }
-

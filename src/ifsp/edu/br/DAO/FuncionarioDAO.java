@@ -18,15 +18,15 @@ public class FuncionarioDAO {
 
     public void add(Funcionario f){
         try {
-            sql = "INSERT INTO Funcionario(id,nome,cpf,endereco,telefone,email,salario) VALUES (?,?,?,?,?,?,?)";
+            sql = "INSERT INTO Funcionario(nome,cpf,endereco,telefone,email,salario) VALUES (?,?,?,?,?,?)";
             stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, f.getId());
-            stmt.setString(2,f.getNome());
-            stmt.setString(3,f.getCpf());
-            stmt.setString(4,f.getEndereco());
-            stmt.setString(5,f.getTelefone());
-            stmt.setString(6, f.getEmail());
-            stmt.setDouble(7,f.getSalario());
+//            stmt.setInt(1, f.getId());
+            stmt.setString(1,f.getNome());
+            stmt.setString(2,f.getCpf());
+            stmt.setString(3,f.getEndereco());
+            stmt.setString(4,f.getTelefone());
+            stmt.setString(5, f.getEmail());
+            stmt.setDouble(6,f.getSalario());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -129,5 +129,27 @@ public class FuncionarioDAO {
         } catch (SQLException e) {
             throw new RuntimeException("Erro na exclusão do funcionário.", e);
         }
+    }
+
+    public int nextSeqFunc(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
+        try {
+            int id;
+            sql = "SELECT seq FROM sqlite_sequence WHERE name = 'Funcionario'";
+            stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            id = rs.getInt("seq");
+            id++;
+            rs.close();
+            stmt.close();
+            return id;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            Database.closeConnection(connection,stmt);
+        }
+        return Integer.parseInt(null);
     }
 }
