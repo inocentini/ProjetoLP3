@@ -1,5 +1,7 @@
 package ifsp.edu.br.Model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Conta {
@@ -51,11 +53,13 @@ public class Conta {
         this.vencimento = vencimento;
     }
 
-    @Override
-    public String toString() {
-        return "ID:"+getId()+
-                "\nDescrição:"+getDescricao()+
-                "\nPreço:"+getValor()+
-                "\nVencimento:"+getVencimento();
-    }
+//    @Override
+//    public String toString() {
+//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//        String date = dateFormat.format(getVencimento());
+//        return "ID:"+getId()+
+//                "\nDescrição:"+getDescricao()+
+//                "\nPreço:"+getValor()+
+//                "\nVencimento:" +date;
+//    }
 }

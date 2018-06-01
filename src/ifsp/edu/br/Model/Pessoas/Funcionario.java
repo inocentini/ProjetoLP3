@@ -21,14 +21,14 @@ public class Funcionario extends Pessoa {
         this.salario = salario;
     }
 
-    @Override
-    public String toString() {
-        return "ID:"+getId()+
-                "\nNome:"+getNome()+
-                "\nCPF:"+getCpf()+
-                "\nEndereço:"+getEndereco()+
-                "\nTelefone:"+getTelefone()+
-                "\nEmail:"+getEmail()+
-                "\nSalario:"+getSalario();
-    }
+//    @Override
+//    public String toString() {
+//        return "ID:"+getId()+
+//                "\nNome:"+getNome()+
+//                "\nCPF:"+getCpf()+
+//                "\nEndereço:"+getEndereco()+
+//                "\nTelefone:"+getTelefone()+
+//                "\nEmail:"+getEmail()+
+//                "\nSalario:"+getSalario();
+//    }
 }

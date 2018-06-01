@@ -56,6 +56,15 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button fx:id="btnEstoque" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#gerenciaEstoque" prefHeight="100.0" prefWidth="108.0" text="Estoque">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Resources/archive.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </VBox>
    </left>

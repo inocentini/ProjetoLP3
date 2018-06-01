@@ -57,11 +57,11 @@ public class Adocao {
         this.data = data;
     }
 
-    @Override
-    public String toString() {
-        return "ID:" + getId() +
-                "\nUsuário:" + getUser().getNome() +
-                "\nData:" + getData()+
-                "\nAnimais:" + getAnimais();
-    }
+//    @Override
+//    public String toString() {
+//        return "ID:" + getId() +
+//                "\nUsuário:" + getUser().getNome() +
+//                "\nData:" + getData()+
+//                "\nAnimais:" + getAnimais();
+//    }
 }

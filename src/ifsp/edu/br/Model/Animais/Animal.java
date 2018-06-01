@@ -88,17 +88,17 @@ public abstract class Animal {
         this.adocao = adocao;
     }
 
-    @Override
-    public String toString(){
-        String sex = isSexo() ? "Macho" : "Fêmea";
-        String vacinado = isVacinado() ? "Sim" : "Não";
-        String castrado = isVacinado() ? "Sim" : "Não";
-        return ("\nID: " + getId()+
-                "\nApelido: " + getApelido()+
-                "\nRaça: " + getRaca()+
-                "\nIdade: " + getIdade()+
-                "\nSexo: " + sex+
-                "\nVacinado? " + vacinado+
-                "\nCastrado? " + castrado);
-    }
+//    @Override
+//    public String toString(){
+//        String sex = isSexo() ? "Macho" : "Fêmea";
+//        String vacinado = isVacinado() ? "Sim" : "Não";
+//        String castrado = isVacinado() ? "Sim" : "Não";
+//        return ("\nID: " + getId()+
+//                "\nApelido: " + getApelido()+
+//                "\nRaça: " + getRaca()+
+//                "\nIdade: " + getIdade()+
+//                "\nSexo: " + sex+
+//                "\nVacinado? " + vacinado+
+//                "\nCastrado? " + castrado);
+//    }
 }

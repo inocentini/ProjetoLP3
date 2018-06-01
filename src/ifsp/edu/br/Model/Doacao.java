@@ -66,10 +66,10 @@ public class Doacao {
         this.data = data;
     }
 
-    @Override
-    public String toString() {
-        return "ID:"+getId()+
-                "\nUsuário"+getUser().getNome()+
-                "\nData:"+getData();
-    }
+//    @Override
+//    public String toString() {
+//        return "ID:"+getId()+
+//                "\nUsuário"+getUser().getNome()+
+//                "\nData:"+getData();
+//    }
 }

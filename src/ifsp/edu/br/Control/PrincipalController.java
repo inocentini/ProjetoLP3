@@ -4,6 +4,7 @@ import ifsp.edu.br.DAO.CachorroDAO;
 import ifsp.edu.br.Database.Database;
 import ifsp.edu.br.Model.Animais.Animal;
 import ifsp.edu.br.Model.Animais.Cachorro;
+import ifsp.edu.br.Model.Conta;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import javax.swing.text.View;
 import java.io.IOException;
@@ -54,24 +56,38 @@ public class PrincipalController implements Initializable {
     @FXML
     private AnchorPane paneCenter;
 
+    @FXML
+    private Button btnEstoque;
+
+
 
     @FXML
     void gerenciaAnimal(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ifsp/edu/br/View/AnimalView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().
+                getClassLoader().getResource("ifsp/edu/br/View/AnimalView.fxml"));
         AnchorPane root = loader.load();
         AnimalViewController controller = loader.getController();
+        paneCenter.getChildren().setAll(root);
+        paneCenter.getChildren().remove(paneCenter);
+    }
+
+    @FXML
+    void gerenciaConta(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader()
+                .getResource("ifsp/edu/br/View/ContaView.fxml"));
+        AnchorPane root = loader.load();
+        ContaViewController controller = loader.getController();
         paneCenter.getChildren().setAll(root);
         ivCenter.setVisible(false);
     }
 
     @FXML
-    void gerenciaConta(MouseEvent event) {
-
-    }
-
-    @FXML
-    void gerenciaDoacao(MouseEvent event) {
-
+    void gerenciaDoacao(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
+                "ifsp/edu/br/View/DoacoesView.fxml"));
+        AnchorPane root = loader.load();
+        DoacoesViewController controller = loader.getController();
+        paneCenter.getChildren().setAll(root);
     }
 
     @FXML
@@ -91,8 +107,13 @@ public class PrincipalController implements Initializable {
 
     }
 
+    @FXML
+    void gerenciaEstoque(MouseEvent event){
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        ivCenter.setVisible(true);
     }
 }

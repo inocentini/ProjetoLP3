@@ -2,25 +2,32 @@ package ifsp.edu.br.DAO;
 
 import ifsp.edu.br.Database.Database;
 import ifsp.edu.br.Model.Conta;
+import javafx.scene.input.DataFormat;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 public class ContaDAO {
 
     Connection connection = Database.getConnection();
     String sql = "";
     PreparedStatement stmt = null;
+    DateFormat dateFormatDB = new SimpleDateFormat("yyyy-MM-dd");
 
     public void add(Conta c){
         try {
-            sql = "INSERT INTO Conta(id,descricao,valor,vencimento) VALUES(?,?,?,?)";
+            sql = "INSERT INTO Conta(descricao,valor,vencimento) VALUES(?,?,?)";
             stmt = connection.prepareStatement(sql);
-            stmt.setInt(1,c.getId());
-            stmt.setString(2,c.getDescricao());
-            stmt.setDouble(3,c.getValor());
-            stmt.setDate(4, (Date) c.getVencimento());
+//            stmt.setInt(1,c.getId());
+            stmt.setString(1,c.getDescricao());
+            stmt.setDouble(2,c.getValor());
+            String date = dateFormatDB.format(c.getVencimento());
+            stmt.setDate(3, java.sql.Date.valueOf(date));
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -34,7 +41,8 @@ public class ContaDAO {
             stmt = connection.prepareStatement(sql);
             stmt.setString(1,c.getDescricao());
             stmt.setDouble(2,c.getValor());
-            stmt.setDate(3, (Date) c.getVencimento());
+            String dataConta = dateFormatDB.format(c.getVencimento());
+            stmt.setDate(3, java.sql.Date.valueOf(dataConta));
             stmt.setInt(4,c.getId());
             stmt.execute();
             stmt.close();
@@ -49,12 +57,15 @@ public class ContaDAO {
             sql = "SELECT * FROM Conta WHERE id = ?";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1,c.getId());
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             ResultSet rs = stmt.executeQuery();
             Conta conta = new Conta();
             conta.setId(rs.getInt("id"));
             conta.setDescricao(rs.getString("descricao"));
             conta.setValor(rs.getDouble("valor"));
-            conta.setVencimento(rs.getDate("vencimento"));
+            String dataConta = dateFormat.format(rs.getDate("vencimento"));
+            java.util.Date contaData = new java.util.Date(dataConta);
+            conta.setVencimento(contaData);
             rs.close();
             stmt.close();
             return conta;
@@ -68,12 +79,15 @@ public class ContaDAO {
             sql = "SELECT * FROM Conta WHERE id = ?";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1,id);
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             ResultSet rs = stmt.executeQuery();
             Conta conta = new Conta();
             conta.setId(rs.getInt("id"));
             conta.setDescricao(rs.getString("descricao"));
             conta.setValor(rs.getDouble("valor"));
-            conta.setVencimento(rs.getDate("vencimento"));
+            String dataConta = dateFormat.format(rs.getDate("vencimento"));
+            java.util.Date contaData = new java.util.Date(dataConta);
+            conta.setVencimento(contaData);
             rs.close();
             stmt.close();
             return conta;
@@ -115,4 +129,28 @@ public class ContaDAO {
             throw new RuntimeException("Erro na exclusão de uma conta.", e);
         }
     }
+
+    public int nextSeqConta(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
+        try {
+            int id;
+            sql = "SELECT seq FROM sqlite_sequence WHERE name = 'Conta'";
+            stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            id = rs.getInt("seq");
+            id++;
+            rs.close();
+            stmt.close();
+            return id;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            Database.closeConnection(connection,stmt);
+        }
+        return Integer.parseInt(null);
+    }
+
+
 }

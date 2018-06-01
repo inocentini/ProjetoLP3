@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsp.edu.br.Control.ContaViewController">
+   <children>
+      <SplitPane fx:id="spliUsers" dividerPositions="0.44966442953020136" layoutX="-8.0" layoutY="49.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="348.0" prefWidth="285.0">
+               <children>
+                  <TableView fx:id="tableConta" layoutY="25.0" prefHeight="323.0" prefWidth="321.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                     <columns>
+                        <TableColumn fx:id="tableContaId" prefWidth="35.0" text="id" />
+                        <TableColumn fx:id="tableContaDesc" prefWidth="77.0" text="Descrição" />
+                        <TableColumn fx:id="tableContaVencimento" prefWidth="78.0" text="Vencimento" />
+                        <TableColumn fx:id="tableContaValor" prefWidth="73.0" text="Valor" />
+                     </columns>
+                  </TableView>
+                  <Label fx:id="labConta" layoutY="6.0" text="Contas:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="348.0" prefWidth="305.0">
+               <children>
+                  <Label fx:id="labDesc" layoutX="8.0" layoutY="14.0" text="Descrição da Conta">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <GridPane fx:id="gridDesc" layoutX="17.0" layoutY="104.0" prefHeight="108.0" prefWidth="201.0" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="107.0" AnchorPane.topAnchor="104.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="69.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="132.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="labValor" text="Valor:" GridPane.rowIndex="2" />
+                        <Label fx:id="labVencimento" text="Vencimento:" GridPane.rowIndex="3" />
+                        <Label fx:id="labId" text="Id:" />
+                        <Label fx:id="labDesc" text="Descrição:" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtId" prefHeight="25.0" prefWidth="50.0" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtDesc" prefHeight="25.0" prefWidth="118.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtValor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtVencimento" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <Button fx:id="btnInserir" layoutX="27.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleBtnInserir" prefHeight="26.0" prefWidth="52.0" text="Inserir" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="251.0" />
+                  <Button fx:id="btnAlterar" layoutX="27.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleBtnAlterar" text="Alterar" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="297.0" />
+                  <Button fx:id="btnDeletar" layoutX="144.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleBtnRemover" prefHeight="26.0" prefWidth="71.0" text="Deletar" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="251.0" />
+                  <Button fx:id="btnVoltar" layoutX="144.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleBtnVoltar" prefHeight="26.0" prefWidth="71.0" text="Voltar" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="297.0" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+      <TextField fx:id="txtPesquisar" layoutX="95.0" layoutY="21.0" onKeyReleased="#pesquisaFunc" prefHeight="26.0" prefWidth="280.0" AnchorPane.bottomAnchor="353.0" AnchorPane.topAnchor="21.0" />
+      <Label fx:id="labPesquisar" layoutX="14.0" layoutY="27.0" text="Pesquisar :" AnchorPane.bottomAnchor="353.0" AnchorPane.topAnchor="21.0" />
+   </children>
+</AnchorPane>

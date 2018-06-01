@@ -49,11 +49,11 @@ public class Produto {
         this.qtd = qtd;
     }
 
-    @Override
-    public String toString() {
-        return "ID:" + getId() +
-                "\nDescrição:" + getDescricao() +
-                "\nPreço:" + getPreco() +
-                "\nQuantidade:" + getQtd();
-    }
+//    @Override
+//    public String toString() {
+//        return "ID:" + getId() +
+//                "\nDescrição:" + getDescricao() +
+//                "\nPreço:" + getPreco() +
+//                "\nQuantidade:" + getQtd();
+//    }
 }

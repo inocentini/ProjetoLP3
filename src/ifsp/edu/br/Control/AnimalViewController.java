@@ -15,11 +15,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.beans.EventHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -131,10 +135,14 @@ public class AnimalViewController implements Initializable {
     private RadioButton rbtnDog;
 
     @FXML
-    private ToggleGroup pesquisa;
+    private ToggleGroup pesquisaou;
 
     @FXML
     private RadioButton rbtnGato;
+
+    @FXML
+    private AnchorPane apTela;
+
 
     @FXML
     public void handleBtnInserir() throws IOException {
@@ -201,6 +209,12 @@ public class AnimalViewController implements Initializable {
             alert.setContentText("Por favor, selecione um animal.");
             alert.show();
         }
+    }
+
+    public void handleBtnVoltar() throws IOException {
+        this.apTela.setVisible(false);
+        //Mais alguma coisa pra mostrar a imagem de inicio
+
     }
 
     public boolean showGerenciamentoAnimal() throws IOException {

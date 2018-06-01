@@ -10,13 +10,13 @@ public class Usuario extends Pessoa {
         super(id, nome, cpf, endereco, telefone, email);
     }
 
-    @Override
-    public String toString() {
-        return "\nID: "+getId()+
-                "\nNome: "+getNome()+
-                "\nCPF: "+getCpf()+
-                "\nEndereço: "+getEndereco()+
-                "\nTelefone: "+getTelefone()+
-                "\nEmail: "+getEmail();
-    }
+//    @Override
+//    public String toString() {
+//        return "\nID: "+getId()+
+//                "\nNome: "+getNome()+
+//                "\nCPF: "+getCpf()+
+//                "\nEndereço: "+getEndereco()+
+//                "\nTelefone: "+getTelefone()+
+//                "\nEmail: "+getEmail();
+//    }
 }
