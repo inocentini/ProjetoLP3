@@ -144,6 +144,8 @@ public class AnimalViewController implements Initializable {
     private AnchorPane apTela;
 
 
+
+
     @FXML
     public void handleBtnInserir() throws IOException {
         boolean btnAddClicked = showGerenciamentoAnimal();

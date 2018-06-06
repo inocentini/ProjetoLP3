@@ -9,6 +9,8 @@ import ifsp.edu.br.Model.Pessoas.Usuario;
 import ifsp.edu.br.Model.Produto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -18,8 +20,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Date;
 
 public class DoacoesViewController {
@@ -182,8 +187,11 @@ public class DoacoesViewController {
     }
 
     @FXML
-    void handleBtnInserir(ActionEvent event) {
+    void handleBtnInserir(ActionEvent event) throws IOException {
+        boolean btnAddClicked = showGerenciamentoAdocao();
+        if(btnAddClicked) {
 
+        }
     }
 
     @FXML
@@ -214,6 +222,43 @@ public class DoacoesViewController {
     @FXML
     void pesquisaFunc(KeyEvent event) {
 
+    }
+
+    public boolean showGerenciamentoAdocao() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
+                "ifsp/edu/br/View/CRUDAdocao.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Cadastro de Adoção");
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+
+        CRUDAdocaoController controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+
+        dialogStage.showAndWait();
+
+        return controller.isBtnconfirm();
+    }
+
+    public boolean showGerenciamentoAdocao(Adocao adocao) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
+                "ifsp/edu/br/View/CRUDAdocao.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Alteração de Adoção");
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+
+        CRUDAdocaoController controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+        controller.setAdocao(adocao);
+
+        dialogStage.showAndWait();
+
+        return controller.isBtnconfirm();
     }
 
 }
