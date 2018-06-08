@@ -261,7 +261,7 @@ public class AnimalViewController implements Initializable {
         if(rbtnDog.isSelected()) {
             ObservableList<Cachorro> observableList = tableDog.getItems();
             FilteredList<Cachorro> filteredList = new FilteredList<>(observableList, cachorro -> true);
-            txtPesquisar.setOnKeyReleased(cachorro -> {
+            txtPesquisar.setOnKeyPressed(cachorro -> {
                 txtPesquisar.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
                     filteredList.setPredicate((Predicate<? super Cachorro>) dog -> {
                         if (newValue == null || newValue.isEmpty()) {
@@ -283,7 +283,7 @@ public class AnimalViewController implements Initializable {
         }else if(rbtnGato.isSelected()){
             ObservableList<Gato> observableListCat = tableCat.getItems();
             FilteredList<Gato> filteredListCat = new FilteredList<>(observableListCat, gato -> true);
-            txtPesquisar.setOnKeyReleased(cachorro -> {
+            txtPesquisar.setOnKeyPressed(cachorro -> {
                 txtPesquisar.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
                     filteredListCat.setPredicate((Predicate<? super Gato>) cat -> {
                         if (newValue == null || newValue.isEmpty()) {
@@ -303,6 +303,7 @@ public class AnimalViewController implements Initializable {
                 tableCat.setItems(sortedList);
             });
         }
+
     }
 
 

@@ -6,8 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsp.edu.br.Control.PrincipalController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsp.edu.br.Control.PrincipalController">
    <left>
       <VBox fx:id="vboxLeft" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #212121;" BorderPane.alignment="CENTER">
          <children>
@@ -19,6 +20,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font size="12.0" />
+               </font>
             </Button>
             <Button fx:id="btnUser" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#gerenciaUsuario" prefHeight="100.0" prefWidth="108.0" text="Usuários">
                <graphic>
@@ -28,8 +32,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font size="12.0" />
+               </font>
             </Button>
-            <Button fx:id="btnFunc" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#gerenciaFuncionario" prefHeight="100.0" prefWidth="108.0" text="Funcionários">
+            <Button fx:id="btnFunc" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#gerenciaFuncionario" prefHeight="67.0" prefWidth="120.0" text="Funcionários">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,6 +44,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font size="12.0" />
+               </font>
             </Button>
             <Button fx:id="btnConta" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#gerenciaConta" prefHeight="100.0" prefWidth="108.0" text="Contas">
                <graphic>
@@ -46,6 +56,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font size="12.0" />
+               </font>
             </Button>
             <Button fx:id="btnDoa" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#gerenciaDoacao" prefHeight="100.0" prefWidth="108.0" text="Doações">
                <graphic>
@@ -55,6 +68,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font size="12.0" />
+               </font>
             </Button>
             <Button fx:id="btnEstoque" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#gerenciaEstoque" prefHeight="100.0" prefWidth="108.0" text="Estoque">
                <graphic>
@@ -64,6 +80,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font size="12.0" />
+               </font>
             </Button>
          </children>
       </VBox>
@@ -71,7 +90,7 @@
    <center>
       <AnchorPane fx:id="paneCenter" maxHeight="400.0" maxWidth="500.0" minHeight="400.0" minWidth="500.0" prefHeight="400.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="ivCenter" fitHeight="400.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ivCenter" fitHeight="400.0" fitWidth="564.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Resources/IMG_20171120_181242974.jpg" />
                </image>

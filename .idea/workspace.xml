@@ -5,11 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97cb4ea5-ec28-40f9-8c51-db68d59251fc" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sqlite-jdbc-3.21.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_21_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/Control/PrincipalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/Control/PrincipalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LP3Projeto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LP3Projeto.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/Control/AnimalViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/Control/AnimalViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/Control/CRUDAdocaoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/Control/CRUDAdocaoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/AnimalView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/AnimalView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/CRUDAdocao.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/CRUDAdocao.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/CRUDAnimal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/CRUDAnimal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/CRUDConta.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/CRUDConta.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/CRUDFunc.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/CRUDFunc.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/CRUDUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/CRUDUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/ContaView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/ContaView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/DoacoesView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/DoacoesView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/FuncionarioView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/FuncionarioView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/Principal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/Principal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/UserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LP3Projeto/ifsp/edu/br/View/UserView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projeto.db" beforeDir="false" afterPath="$PROJECT_DIR$/projeto.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/Control/AnimalViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/Control/AnimalViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/Control/DoacoesViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/Control/DoacoesViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/Control/PrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/Control/PrincipalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/Control/CRUDAdocaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/Control/CRUDAdocaoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/View/AnimalView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/View/AnimalView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/View/CRUDAdocao.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/View/CRUDAdocao.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/View/CRUDAnimal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/View/CRUDAnimal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/View/CRUDConta.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/View/CRUDConta.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/View/CRUDFunc.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/View/CRUDFunc.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/View/CRUDUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/View/CRUDUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/View/ContaView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/View/ContaView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/View/DoacoesView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/View/DoacoesView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/View/FuncionarioView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/View/FuncionarioView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/View/Principal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/View/Principal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ifsp/edu/br/View/UserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ifsp/edu/br/View/UserView.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,14 +48,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DoacoesViewController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/DoacoesViewController.java">
+      <file leaf-file-name="UserViewController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/UserViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="190" column="51" lean-forward="true" selection-start-line="190" selection-start-column="51" selection-end-line="190" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state>
+              <caret line="172" column="21" selection-start-line="172" selection-start-column="21" selection-end-line="172" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -36,32 +60,11 @@
       <file leaf-file-name="CRUDAdocaoController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/CRUDAdocaoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="725">
-              <caret line="290" column="65" selection-start-line="290" selection-start-column="65" selection-end-line="290" selection-end-column="65" />
+            <state relative-caret-position="3136">
+              <caret line="269" column="34" lean-forward="true" selection-start-line="269" selection-start-column="34" selection-end-line="269" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2353#2354#0" expanded="true" />
-                <element signature="e#2387#2388#0" expanded="true" />
-                <element signature="e#2440#2441#0" expanded="true" />
-                <element signature="e#2486#2487#0" expanded="true" />
-                <element signature="e#2523#2524#0" expanded="true" />
-                <element signature="e#2556#2557#0" expanded="true" />
-                <element signature="e#2609#2610#0" expanded="true" />
-                <element signature="e#2653#2654#0" expanded="true" />
-                <element signature="e#2686#2687#0" expanded="true" />
-                <element signature="e#2715#2716#0" expanded="true" />
-                <element signature="e#2759#2760#0" expanded="true" />
-                <element signature="e#2795#2796#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserViewController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/UserViewController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-247">
-              <caret line="186" column="87" lean-forward="true" selection-start-line="186" selection-start-column="87" selection-end-line="186" selection-end-column="87" />
             </state>
           </provider>
         </entry>
@@ -69,11 +72,8 @@
       <file leaf-file-name="AnimalViewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/AnimalViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="260" column="8" selection-start-line="260" selection-start-column="8" selection-end-line="304" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="3840">
+              <caret line="284" column="50" selection-start-line="284" selection-start-column="50" selection-end-line="284" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -157,8 +157,8 @@
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/Control/PrincipalController.java" />
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/View/CRUDAdocao.fxml" />
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/DAO/AnimalDAO.java" />
-        <option value="$PROJECT_DIR$/src/ifsp/edu/br/Control/AnimalViewController.java" />
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/Control/DoacoesViewController.java" />
+        <option value="$PROJECT_DIR$/src/ifsp/edu/br/Control/AnimalViewController.java" />
         <option value="$PROJECT_DIR$/src/ifsp/edu/br/Control/CRUDAdocaoController.java" />
       </list>
     </option>
@@ -185,8 +185,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -217,30 +215,24 @@
               <item name="ProjetoLP3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="br" type="462c0819:PsiDirectoryNode" />
-              <item name="DAO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProjetoLP3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProjetoLP3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="br" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProjetoLP3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Mateus/LP3-ControlX" />
-    <property name="project.structure.last.edited" value="Facets" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/sqlite-jdbc-3.23.1.jar!/" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
@@ -307,11 +299,15 @@
       <workItem from="1527179175319" duration="5232000" />
       <workItem from="1527219665232" duration="5886000" />
       <workItem from="1527255072615" duration="8628000" />
+      <workItem from="1528381754972" duration="172000" />
+      <workItem from="1528381948872" duration="5643000" />
+      <workItem from="1528418572485" duration="2694000" />
+      <workItem from="1528468411171" duration="6596000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65440000" />
+    <option name="totallyTimeSpent" value="80545000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -323,35 +319,35 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-1" y="0" width="1442" height="873" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" weight="0.32933104" />
-      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49848714" weight="0.44082332" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49848714" weight="0.44025975" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5015129" side_tool="true" weight="0.44082332" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5034722" side_tool="true" weight="0.2857143" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49621785" weight="0.2864494" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4965278" weight="0.2857143" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49848714" weight="0.32933104" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.301059" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30069444" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49856734" weight="0.37392795" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49856734" weight="0.37272727" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
@@ -359,16 +355,16 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49621785" weight="0.54373926" />
       <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49848714" weight="0.44082332" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2700454" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" weight="0.32933104" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -377,14 +373,14 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49848714" weight="0.32933104" />
       <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49856734" visible="true" weight="0.16123499" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5015129" side_tool="true" weight="0.44082332" />
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2700454" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,20 +391,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="72" />
+      <option name="time" value="89" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Menu/AnimalMenu.java" />
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/ProdutoDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="52" column="27" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/net/URLClassLoader.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40.jar!/com/mysql/jdbc/Driver.class" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/sql/DriverManager.java" />
     <entry file="jar://$PROJECT_DIR$/../sqlite-jdbc-3.21.0.jar!/org/sqlite/core/DB.class" />
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/View/Menu.fxml" />
@@ -423,7 +409,6 @@
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/PrincipalController.java" />
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Principal.fxml" />
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/Menu.java" />
-    <entry file="jar:///opt/java/jdk-10.0.1/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java" />
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Model/Animais/Cachorro.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -431,20 +416,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_171/javafx-src.zip!/javafx/stage/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="83" column="4" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_171/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="1772" column="46" selection-start-line="1772" selection-start-column="21" selection-end-line="1772" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_171/javafx-src.zip!/javafx/stage/Window.java" />
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_171/javafx-src.zip!/javafx/fxml/FXMLLoader.java" />
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/AdocaoDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -452,41 +425,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Database/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/util/function/Predicate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-174">
-          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.base/javafx/event/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="198" selection-start-line="198" selection-end-line="198" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.graphics/javafx/scene/Scene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="2620" selection-start-line="2620" selection-end-line="2620" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/GatoDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2465">
-          <caret line="153" column="22" selection-start-line="153" selection-start-column="22" selection-end-line="153" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/util/function/Predicate.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.base/javafx/event/Event.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.graphics/javafx/scene/Scene.java" />
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/UsuarioDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -522,20 +463,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.sql/java/sql/Date.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="140" column="56" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="2608" selection-start-line="2608" selection-end-line="2608" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.sql/java/sql/Date.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java" />
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/DoacaoDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -578,13 +507,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/text/DateFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="394" selection-start-line="394" selection-end-line="394" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/text/DateFormat.java" />
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Model/Conta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -624,9 +547,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="140" column="47" lean-forward="true" selection-start-line="140" selection-start-column="47" selection-end-line="140" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -637,23 +557,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/CachorroDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="183" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/AnimalDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="66" column="37" lean-forward="true" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/AnimalDAO.java" />
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/PrincipalController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1853">
@@ -661,30 +565,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/CRUDAnimalController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="174" selection-start-line="174" selection-end-line="176" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/AnimalViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="260" column="8" selection-start-line="260" selection-start-column="8" selection-end-line="304" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/UserViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-247">
-          <caret line="186" column="87" lean-forward="true" selection-start-line="186" selection-start-column="87" selection-end-line="186" selection-end-column="87" />
         </state>
       </provider>
     </entry>
@@ -698,24 +578,90 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/View/DoacoesView.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180" />
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/View/CRUDAnimal.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-405" />
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/CRUDAnimalController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="174" selection-start-line="174" selection-end-line="176" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/UserViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="172" column="21" selection-start-line="172" selection-start-column="21" selection-end-line="172" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/AnimalViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3840">
+          <caret line="284" column="50" selection-start-line="284" selection-start-column="50" selection-end-line="284" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/sqlite-jdbc-3.23.1.jar!/org/sqlite/JDBC.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="25" column="118" selection-start-line="25" selection-start-column="118" selection-end-line="25" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Database/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/GatoDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/DAO/CachorroDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///opt/java/jdk-10.0.1/lib/src.zip!/javafx.controls/javafx/scene/control/cell/PropertyValueFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
+          <folding>
+            <element signature="e#5265#5266#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///opt/java/jdk-10.0.1/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="1786" selection-start-line="1786" selection-end-line="1786" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ifsp/edu/br/Control/CRUDAdocaoController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="290" column="65" selection-start-line="290" selection-start-column="65" selection-end-line="290" selection-end-column="65" />
+        <state relative-caret-position="3136">
+          <caret line="269" column="34" lean-forward="true" selection-start-line="269" selection-start-column="34" selection-end-line="269" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2353#2354#0" expanded="true" />
-            <element signature="e#2387#2388#0" expanded="true" />
-            <element signature="e#2440#2441#0" expanded="true" />
-            <element signature="e#2486#2487#0" expanded="true" />
-            <element signature="e#2523#2524#0" expanded="true" />
-            <element signature="e#2556#2557#0" expanded="true" />
-            <element signature="e#2609#2610#0" expanded="true" />
-            <element signature="e#2653#2654#0" expanded="true" />
-            <element signature="e#2686#2687#0" expanded="true" />
-            <element signature="e#2715#2716#0" expanded="true" />
-            <element signature="e#2759#2760#0" expanded="true" />
-            <element signature="e#2795#2796#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -749,7 +695,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>sqlite-jdbc-3.21.0</last-edited>
+          <last-edited>sqlite-jdbc-3.23.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -761,7 +707,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>Java10</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -786,7 +732,7 @@
       </state>
       <state key="ProjectJDKs.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>Java10</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

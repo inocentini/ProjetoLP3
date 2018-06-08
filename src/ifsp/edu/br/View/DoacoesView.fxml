@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsp.edu.br.Control.DoacoesViewController">
+<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsp.edu.br.Control.DoacoesViewController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -23,7 +23,7 @@
                <content>
                   <AnchorPane maxHeight="320.0" maxWidth="600.0" prefHeight="320.0" prefWidth="600.0">
                      <children>
-                        <SplitPane fx:id="spliUsers" dividerPositions="0.3294314381270903" layoutX="-8.0" layoutY="49.0" maxHeight="320.0" maxWidth="600.0" prefHeight="320.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                        <SplitPane fx:id="spliUsers" dividerPositions="0.34782608695652173" layoutX="-8.0" layoutY="49.0" maxHeight="320.0" maxWidth="600.0" prefHeight="320.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                            <items>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="348.0" prefWidth="285.0">
                                  <children>
@@ -31,7 +31,7 @@
                                        <columns>
                                           <TableColumn fx:id="tableAdocaoId" prefWidth="35.0" text="id" />
                                           <TableColumn fx:id="tableAdocaoUser" prefWidth="68.0" text="Usuário" />
-                                          <TableColumn fx:id="tableAdocaoDate" prefWidth="84.0" text="Data Adoção" />
+                                          <TableColumn fx:id="tableAdocaoDate" prefWidth="99.0" text="Data Adoção" />
                                        </columns>
                                     </TableView>
                                     <Label fx:id="labAdocao" layoutY="6.0" text="Adoções:">
@@ -49,15 +49,15 @@
                                        </font>
                                     </Label>
                                     <Button fx:id="btnInserir" layoutX="14.0" layoutY="275.0" maxHeight="30.0" maxWidth="60.0" mnemonicParsing="false" onAction="#handleBtnInserir" prefHeight="30.0" prefWidth="60.0" text="Inserir" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="275.0" />
-                                    <Button fx:id="btnAlterar" layoutX="83.0" layoutY="275.0" maxHeight="30.0" maxWidth="60.0" mnemonicParsing="false" onAction="#handleBtnAlterar" prefHeight="30.0" prefWidth="60.0" text="Alterar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="83.0" AnchorPane.topAnchor="275.0" />
-                                    <Button fx:id="btnDeletar" layoutX="153.0" layoutY="275.0" maxHeight="20.0" maxWidth="60.0" mnemonicParsing="false" onAction="#handleBtnRemover" prefHeight="30.0" prefWidth="60.0" text="Deletar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="153.0" AnchorPane.topAnchor="275.0" />
-                                    <Button fx:id="btnVoltar" layoutX="225.0" layoutY="275.0" maxHeight="30.0" maxWidth="80.0" mnemonicParsing="false" onAction="#handleBtnVoltar" prefHeight="30.0" prefWidth="60.0" text="Voltar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="275.0" />
+                                    <Button fx:id="btnAlterar" layoutX="82.0" layoutY="275.0" maxHeight="30.0" maxWidth="63.0" mnemonicParsing="false" onAction="#handleBtnAlterar" prefHeight="29.0" prefWidth="63.0" text="Alterar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="275.0" />
+                                    <Button fx:id="btnDeletar" layoutX="152.0" layoutY="275.0" maxHeight="29.0" maxWidth="67.0" mnemonicParsing="false" onAction="#handleBtnRemover" prefHeight="29.0" prefWidth="67.0" text="Deletar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="152.0" AnchorPane.topAnchor="275.0" />
+                                    <Button fx:id="btnVoltar" layoutX="224.0" layoutY="275.0" maxHeight="30.0" maxWidth="80.0" mnemonicParsing="false" onAction="#handleBtnVoltar" prefHeight="30.0" prefWidth="60.0" text="Voltar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="224.0" AnchorPane.topAnchor="275.0" />
                                     <AnchorPane layoutX="8.0" layoutY="39.0" prefHeight="210.0" prefWidth="223.0">
                                        <children>
                                           <GridPane fx:id="gridDesc" layoutY="3.0" prefHeight="97.0" prefWidth="224.0" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="3.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="63.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="144.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="58.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="170.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -65,9 +65,9 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Label fx:id="labData" prefHeight="31.0" prefWidth="35.0" text="Data:" GridPane.rowIndex="2" />
+                                                <Label fx:id="labData" prefHeight="31.0" prefWidth="42.0" text="Data:" GridPane.rowIndex="2" />
                                                 <Label fx:id="labId" text="Id:" />
-                                                <Label fx:id="labUser" prefHeight="17.0" prefWidth="44.0" text="Usuário:" GridPane.rowIndex="1" />
+                                                <Label fx:id="labUser" prefHeight="17.0" prefWidth="56.0" text="Usuário:" GridPane.rowIndex="1" />
                                                 <TextField fx:id="txtId" prefHeight="28.0" prefWidth="173.0" GridPane.columnIndex="1" />
                                                 <TextField fx:id="txtUser" prefHeight="25.0" prefWidth="118.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <DatePicker fx:id="dtAdo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -99,15 +99,15 @@
                <content>
                   <AnchorPane>
                      <children>
-                        <SplitPane fx:id="spliUsers1" dividerPositions="0.31605351170568563" layoutX="-8.0" layoutY="49.0" maxHeight="320.0" maxWidth="600.0" prefHeight="320.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                        <SplitPane fx:id="spliUsers1" dividerPositions="0.3511705685618729" layoutX="-8.0" layoutY="49.0" maxHeight="320.0" maxWidth="600.0" prefHeight="320.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                            <items>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="348.0" prefWidth="285.0">
                                  <children>
                                     <TableView fx:id="tableDoacao" layoutY="25.0" prefHeight="294.0" prefWidth="266.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                                        <columns>
                                           <TableColumn fx:id="tableDoacaoId" prefWidth="35.0" text="id" />
-                                          <TableColumn fx:id="tableDoacaoUser" prefWidth="69.0" text="Usuário" />
-                                          <TableColumn fx:id="tableDoacaoDate" text="Data Doação" />
+                                          <TableColumn fx:id="tableDoacaoUser" prefWidth="63.0" text="Usuário" />
+                                          <TableColumn fx:id="tableDoacaoDate" prefWidth="106.0" text="Data Doação" />
                                        </columns>
                                     </TableView>
                                     <Label fx:id="labDoacao" layoutY="6.0" text="Doações:">
@@ -125,15 +125,15 @@
                                        </font>
                                     </Label>
                                     <Button fx:id="btnInserirDoa" layoutX="14.0" layoutY="275.0" maxHeight="30.0" maxWidth="60.0" mnemonicParsing="false" onAction="#handleBtnInserirDoa" prefHeight="30.0" prefWidth="60.0" text="Inserir" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="275.0" />
-                                    <Button fx:id="btnAlterarDoa" layoutX="83.0" layoutY="275.0" maxHeight="30.0" maxWidth="60.0" mnemonicParsing="false" onAction="#handleBtnAlterarDoa" prefHeight="30.0" prefWidth="60.0" text="Alterar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="83.0" AnchorPane.topAnchor="275.0" />
-                                    <Button fx:id="btnDeletarDoa" layoutX="153.0" layoutY="275.0" maxHeight="20.0" maxWidth="60.0" mnemonicParsing="false" onAction="#handleBtnRemoverDoa" prefHeight="30.0" prefWidth="60.0" text="Deletar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="153.0" AnchorPane.topAnchor="275.0" />
-                                    <Button fx:id="btnVoltarDoa" layoutX="225.0" layoutY="275.0" maxHeight="30.0" maxWidth="80.0" mnemonicParsing="false" onAction="#handleBtnVoltarDoa" prefHeight="30.0" prefWidth="60.0" text="Voltar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="275.0" />
+                                    <Button fx:id="btnAlterarDoa" layoutX="81.0" layoutY="275.0" maxHeight="30.0" maxWidth="66.0" mnemonicParsing="false" onAction="#handleBtnAlterarDoa" prefHeight="29.0" prefWidth="63.0" text="Alterar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="275.0" />
+                                    <Button fx:id="btnDeletarDoa" layoutX="149.0" layoutY="275.0" maxHeight="29.0" maxWidth="67.0" mnemonicParsing="false" onAction="#handleBtnRemoverDoa" prefHeight="29.0" prefWidth="67.0" text="Deletar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="149.0" AnchorPane.topAnchor="275.0" />
+                                    <Button fx:id="btnVoltarDoa" layoutX="222.0" layoutY="275.0" maxHeight="30.0" maxWidth="80.0" mnemonicParsing="false" onAction="#handleBtnVoltarDoa" prefHeight="30.0" prefWidth="60.0" text="Voltar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="222.0" AnchorPane.topAnchor="275.0" />
                                     <AnchorPane layoutX="8.0" layoutY="27.0" prefHeight="230.0" prefWidth="229.0">
                                        <children>
-                                          <GridPane fx:id="gridDesc1" layoutY="14.0" prefHeight="93.0" prefWidth="228.0" AnchorPane.bottomAnchor="123.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="14.0">
+                                          <GridPane fx:id="gridDesc1" layoutY="14.0" prefHeight="93.0" prefWidth="230.0" AnchorPane.bottomAnchor="123.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="14.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="65.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="143.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="56.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="174.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />

@@ -23,44 +23,38 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class CRUDAdocaoController implements Initializable {
 
 
     @FXML
-    private TableView<Cachorro> tableDog;
+    private TableView<Animal> tableAnimais;
 
     @FXML
-    private TableColumn<Cachorro, Integer> tableDogId;
+    private TableColumn<Animal, Integer> tableAnimaisId;
 
     @FXML
-    private TableColumn<Cachorro, String> tableDogApelido;
+    private TableColumn<Animal, String> tableAnimaisApelido;
 
     @FXML
-    private TableView<Gato> tableCat;
-
-    @FXML
-    private TableColumn<Gato, Integer> tableCatId;
-
-    @FXML
-    private TableColumn<Gato, String> tableCatApelido;
+    private TableColumn<Animal, String> tableAnimaisRaca;
 
     @FXML
     private Button btnInserir;
 
     @FXML
-    private TableView<Animal> tableAnimalOut;
+    private TableView<Animal> tableAnimalAd;
 
     @FXML
-    private TableColumn<Animal, Integer> tableAnimalOutId;
+    private TableColumn<Animal, Integer> tableAnimalIdAd;
 
     @FXML
-    private TableColumn<Animal, String> tableAnimalOutApelido;
+    private TableColumn<Animal, String> tableAnimalApelidoAd;
+
+    @FXML
+    private TableColumn<Animal, String> tableAnimalRacaAd;
 
     @FXML
     private Button btnCadastrar;
@@ -148,61 +142,43 @@ public class CRUDAdocaoController implements Initializable {
 
     @FXML
     void handleInserirAnimal(ActionEvent event) {
+        tableAnimais.getSelectionModel().selectedItemProperty().addListener(
+                (Observable, oldValue, newValue) -> selectItemTableViewAnimal(newValue));
+
 
     }
 
     @FXML
     void handleVoltar(ActionEvent event) {
-
+        this.dialogStage.close();
     }
 
     @FXML
     void pesquisarAnimal(KeyEvent event) {
-        if(rbtnCachorro.isSelected()) {
-            ObservableList<Cachorro> observableList = tableDog.getItems();
-            FilteredList<Cachorro> filteredList = new FilteredList<>(observableList, cachorro -> true);
-            txtPesquisarPet.setOnKeyReleased(cachorro -> {
+
+        ObservableList<Animal> observableList = tableAnimais.getItems();
+        FilteredList<Animal> filteredList = new FilteredList<>(observableList, animal -> true);
+            txtPesquisarPet.setOnKeyReleased(animal -> {
                 txtPesquisarPet.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
-                    filteredList.setPredicate((Predicate<? super Cachorro>) dog -> {
+                    filteredList.setPredicate((Predicate<? super Animal>) pet -> {
                         if (newValue == null || newValue.isEmpty()) {
                             return true;
                         }
                         String lowerCaseFilter = newValue.toLowerCase();
-                        if (newValue == String.valueOf(dog.getId())) {
+                        int id = Integer.parseInt(newValue);
+                        if (id == pet.getId()) {
                             return true;
-                        } else if (dog.getApelido().toLowerCase().contains(lowerCaseFilter)) {
+                        } else if (pet.getApelido().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
                         return false;
                     });
                 });
-                SortedList<Cachorro> sortedList = new SortedList<>(filteredList);
-                sortedList.comparatorProperty().bind(tableDog.comparatorProperty());
-                tableDog.setItems(sortedList);
+                SortedList<Animal> sortedList = new SortedList<>(filteredList);
+                sortedList.comparatorProperty().bind(tableAnimais.comparatorProperty());
+                tableAnimais.setItems(sortedList);
             });
-        }else if(rbtnGato.isSelected()){
-            ObservableList<Gato> observableListCat = tableCat.getItems();
-            FilteredList<Gato> filteredListCat = new FilteredList<>(observableListCat, gato -> true);
-            txtPesquisarPet.setOnKeyReleased(cachorro -> {
-                txtPesquisarPet.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
-                    filteredListCat.setPredicate((Predicate<? super Gato>) cat -> {
-                        if (newValue == null || newValue.isEmpty()) {
-                            return true;
-                        }
-                        String lowerCaseFilter = newValue.toLowerCase();
-                        if (newValue == String.valueOf(cat.getId())) {
-                            return true;
-                        } else if (cat.getApelido().toLowerCase().contains(lowerCaseFilter)) {
-                            return true;
-                        }
-                        return false;
-                    });
-                });
-                SortedList<Gato> sortedList = new SortedList<>(filteredListCat);
-                sortedList.comparatorProperty().bind(tableCat.comparatorProperty());
-                tableCat.setItems(sortedList);
-            });
-        }
+
     }
 
     @FXML
@@ -253,37 +229,56 @@ public class CRUDAdocaoController implements Initializable {
         }
     }
 
-    public void fillTableCachorro(){
-        CachorroDAO dogDAO = new CachorroDAO();
-        List<Cachorro> cachorroList;
-        ObservableList<Cachorro> cachorroObservableList;
-        tableDogId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        tableDogApelido.setCellValueFactory(new PropertyValueFactory<>("apelido"));
+    public void fillTableAnimalAd(List<Animal> animais){
 
-        cachorroList = dogDAO.list();
+        ObservableList<Animal> observableList = null;
+        tableAnimalIdAd.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableAnimalApelidoAd.setCellValueFactory(new PropertyValueFactory<>("apelido"));
+        tableAnimalRacaAd.setCellValueFactory(new PropertyValueFactory<>("raca"));
 
-        cachorroObservableList = FXCollections.observableArrayList(cachorroList);
-        tableDog.setItems(cachorroObservableList);
+        observableList = FXCollections.observableArrayList(animais);
+        tableAnimalAd.setItems(observableList);
     }
 
-    public void fillTableGato(){
+    public void filltableAnimal(){
+        CachorroDAO dogDAO = new CachorroDAO();
         GatoDAO catDAO = new GatoDAO();
         List<Gato> gatoList;
-        ObservableList<Gato> gatoObservableList;
-        tableCatId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        tableCatApelido.setCellValueFactory(new PropertyValueFactory<>("apelido"));
+        List<Cachorro> dogList;
+        List<Animal> animalList = new ArrayList<>();
+        ObservableList<Animal> observableList = null;
+        tableAnimaisId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableAnimaisApelido.setCellValueFactory(new PropertyValueFactory<>("apelido"));
+        tableAnimaisRaca.setCellValueFactory(new PropertyValueFactory<>("raca"));
 
         gatoList = catDAO.list();
+        dogList = dogDAO.list();
+        for (Animal a:gatoList) {
+            animalList.add(a);
+        }
+        for(Animal a : dogList)
+            animalList.add(a);
 
-        gatoObservableList = FXCollections.observableArrayList(gatoList);
-        tableCat.setItems(gatoObservableList);
+
+        observableList = FXCollections.observableArrayList(animalList);
+        tableAnimais.setItems(observableList);
+    }
+
+    public void selectItemTableViewAnimal(Animal animal){
+        if(animal != null){
+            List<Animal> animaisAd = new ArrayList<>();
+            animaisAd.add(animal);
+            fillTableAnimalAd(animaisAd);
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Selecione um animal!");
+        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        fillTableCachorro();
-        fillTableGato();
         fillTableUsers();
+        filltableAnimal();
         tableUser.getSelectionModel().selectedItemProperty().addListener(
                 (Observable, oldValue, newValue) -> selectItemTableViewUser(newValue));
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

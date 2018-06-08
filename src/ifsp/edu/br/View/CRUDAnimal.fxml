@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsp.edu.br.Control.CRUDAnimalController">
+<AnchorPane prefHeight="400.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsp.edu.br.Control.CRUDAnimalController">
    <children>
       <GridPane layoutX="55.0" layoutY="91.0" prefHeight="219.0" prefWidth="297.0">
         <columnConstraints>
@@ -55,7 +55,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </RadioButton>
-            <RadioButton fx:id="rbtnVacN" mnemonicParsing="false" prefHeight="0.0" prefWidth="48.0" text="Não" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <RadioButton fx:id="rbtnVacN" mnemonicParsing="false" prefHeight="18.0" prefWidth="54.0" text="Não" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="70.0" />
                </GridPane.margin>
@@ -86,8 +86,8 @@
          </children>
       </GridPane>
       <Button fx:id="btnAdd" layoutX="194.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBtnAdicionar" text="Adicionar" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="126.0" />
-      <Button fx:id="btnCancelar" layoutX="282.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBtnCancelar" prefHeight="25.0" prefWidth="67.0" text="Cancelar" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="45.0" />
-      <Label fx:id="labGerenPet" layoutX="91.0" layoutY="31.0" text="CADASTRAMENTO DE PET">
+      <Button fx:id="btnCancelar" layoutX="282.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBtnCancelar" prefHeight="26.0" prefWidth="80.0" text="Cancelar" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="32.0" />
+      <Label fx:id="labGerenPet" layoutX="51.0" layoutY="34.0" text="CADASTRAMENTO DE PET">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
