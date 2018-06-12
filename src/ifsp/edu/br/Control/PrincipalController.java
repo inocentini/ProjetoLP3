@@ -107,8 +107,9 @@ public class PrincipalController implements Initializable {
     }
 
     @FXML
-    void gerenciaEstoque(MouseEvent event){
-
+    void gerenciaEstoque(MouseEvent event) throws IOException {
+        AnchorPane newLoadedPane = (AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("ifsp/edu/br/View/EstoqueView.fxml"));
+        paneCenter.getChildren().setAll(newLoadedPane);
     }
 
     @Override

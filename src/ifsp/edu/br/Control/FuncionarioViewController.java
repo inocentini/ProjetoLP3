@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -144,10 +145,15 @@ public class FuncionarioViewController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Removendo Funcionário.");
             alert.setContentText("Você deseja remover este funcionário?");
-            alert.showAndWait();
-            FuncionarioDAO funcDAO = new FuncionarioDAO();
-            funcDAO.remove(func);
-            fillTableFunc();
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.CANCEL){
+                return;
+            }else if(result.get() == ButtonType.OK){
+                FuncionarioDAO funcDAO = new FuncionarioDAO();
+                funcDAO.remove(func);
+                fillTableFunc();
+            }
+
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Seleção de funcionário");
@@ -245,6 +251,7 @@ public class FuncionarioViewController implements Initializable {
         dialogStage.setTitle("Cadastro de Funcionários");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
 
         CRUDFuncController controller = loader.getController();
         controller.setDialogStage(dialogStage);
@@ -263,6 +270,7 @@ public class FuncionarioViewController implements Initializable {
         dialogStage.setTitle("Alteração de Usuários");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
 
         CRUDFuncController controller = loader.getController();
         controller.setDialogStage(dialogStage);

@@ -27,6 +27,7 @@ import java.beans.EventHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -193,18 +194,30 @@ public class AnimalViewController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Removendo Animal!");
             alert.setContentText("Você deseja remover este animal?");
-            alert.showAndWait();
-            CachorroDAO dogDAO = new CachorroDAO();
-            dogDAO.remove((Cachorro) animal);
-            fillTableCachorro();
+            alert.getButtonTypes();
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.CANCEL){
+                return;
+            }else if(result.get() == ButtonType.OK){
+                CachorroDAO dogDAO = new CachorroDAO();
+                dogDAO.remove((Cachorro) animal);
+                fillTableCachorro();
+            }
+
         }else if(animal != null && animal.getClass() == Gato.class){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Removendo Animal!");
             alert.setContentText("Você deseja remover este animal?");
-            alert.showAndWait();
-            GatoDAO catDAO = new GatoDAO();
-            catDAO.remove((Gato) animal);
-            fillTableGato();
+            alert.getButtonTypes();
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.CANCEL) {
+                return;
+            }else if(result.get() == ButtonType.OK){
+                GatoDAO catDAO = new GatoDAO();
+                catDAO.remove((Gato) animal);
+                fillTableGato();
+            }
+
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Seleção de animal");
@@ -228,6 +241,7 @@ public class AnimalViewController implements Initializable {
         dialogStage.setTitle("Cadastro de PET");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
 
         CRUDAnimalController controller = loader.getController();
         controller.setDialogStage(dialogStage);
@@ -246,6 +260,7 @@ public class AnimalViewController implements Initializable {
         dialogStage.setTitle("Alteração de PET");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
 
         CRUDAnimalController controller = loader.getController();
         controller.setDialogStage(dialogStage);

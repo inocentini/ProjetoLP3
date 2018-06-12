@@ -233,6 +233,7 @@ public class DoacoesViewController {
         dialogStage.setTitle("Cadastro de Adoção");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
 
         CRUDAdocaoController controller = loader.getController();
         controller.setDialogStage(dialogStage);
@@ -251,6 +252,7 @@ public class DoacoesViewController {
         dialogStage.setTitle("Alteração de Adoção");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
 
         CRUDAdocaoController controller = loader.getController();
         controller.setDialogStage(dialogStage);

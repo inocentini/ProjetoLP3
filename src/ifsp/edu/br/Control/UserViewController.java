@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -138,10 +139,16 @@ public class UserViewController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Removendo Usuário.");
             alert.setContentText("Você deseja remover este usuário?");
-            alert.showAndWait();
-            UsuarioDAO userDAO = new UsuarioDAO();
-            userDAO.remove(user);
-            fillTableUsers();
+            alert.getButtonTypes();
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.CANCEL){
+              return;
+            }else if(result.get() == ButtonType.OK){
+                UsuarioDAO userDAO = new UsuarioDAO();
+                userDAO.remove(user);
+                fillTableUsers();
+            }
+
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Seleção de usuário");
@@ -235,6 +242,7 @@ public class UserViewController implements Initializable {
         dialogStage.setTitle("Cadastro de Usuários");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
 
         CRUDUserController controller = loader.getController();
         controller.setDialogStage(dialogStage);
@@ -253,6 +261,7 @@ public class UserViewController implements Initializable {
         dialogStage.setTitle("Alteração de Usuários");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
 
         CRUDUserController controller = loader.getController();
         controller.setDialogStage(dialogStage);

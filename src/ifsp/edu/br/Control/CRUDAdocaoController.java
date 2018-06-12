@@ -135,17 +135,35 @@ public class CRUDAdocaoController implements Initializable {
         this.adocao = adocao;
     }
 
+    static List<Animal> animalList = new ArrayList<>();
+
     @FXML
     void handleCadastrarAdocao(ActionEvent event) {
 
     }
 
     @FXML
-    void handleInserirAnimal(ActionEvent event) {
-        tableAnimais.getSelectionModel().selectedItemProperty().addListener(
-                (Observable, oldValue, newValue) -> selectItemTableViewAnimal(newValue));
+    void handleInserirAnimal() {
+        Animal animal = (Animal) tableAnimais.getSelectionModel().getSelectedItem();
+        List<Animal> addPet = animalList;
+        if(!animalList.isEmpty()){
+            for(Iterator<Animal> iterator = animalList.iterator() ; iterator.hasNext();){
+                Animal a = null;
+                a = iterator.next();
+                if(a.getId() == animal.getId()){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Animal ja Inserido!");
+                    alert.setContentText("Animal ja adicionado na lista!");
+                    alert.showAndWait();
+                    return;
+                }else{
+                    animalList.add(animal);
+                }
+            }
+        }else
+            animalList.add(animal);
 
-
+        fillTableAnimalAd(animalList);
     }
 
     @FXML
@@ -264,16 +282,6 @@ public class CRUDAdocaoController implements Initializable {
         tableAnimais.setItems(observableList);
     }
 
-    public void selectItemTableViewAnimal(Animal animal){
-        if(animal != null){
-            List<Animal> animaisAd = new ArrayList<>();
-            animaisAd.add(animal);
-            fillTableAnimalAd(animaisAd);
-        }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Selecione um animal!");
-        }
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

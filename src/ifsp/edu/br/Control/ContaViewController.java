@@ -26,6 +26,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -134,10 +135,15 @@ public class ContaViewController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Removendo Conta.");
             alert.setContentText("Você deseja remover esta conta?");
-            alert.showAndWait();
-            ContaDAO contaDAO = new ContaDAO();
-            contaDAO.remove(conta);
-            fillTableConta();
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.CANCEL){
+                return;
+            }else if(result.get() == ButtonType.OK){
+                ContaDAO contaDAO = new ContaDAO();
+                contaDAO.remove(conta);
+                fillTableConta();
+            }
+
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Seleção de conta");
@@ -225,6 +231,7 @@ public class ContaViewController implements Initializable {
         dialogStage.setTitle("Cadastro de Conta");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
 
         CRUDContaController controller = loader.getController();
         controller.setDialogStage(dialogStage);
@@ -243,6 +250,7 @@ public class ContaViewController implements Initializable {
         dialogStage.setTitle("Alteração de Conta");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
 
         CRUDContaController controller = loader.getController();
         controller.setDialogStage(dialogStage);
