@@ -5,6 +5,7 @@ import ifsp.edu.br.Model.Pessoas.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -101,7 +102,7 @@ public class CRUDUserController implements Initializable {
 
     @FXML
     void handleBtnAdicionar(ActionEvent event) {
-        if(user == null){
+        if(user == null && isComplete()){
             user = new Usuario();
             user.setNome(txtNome.getText());
             user.setCpf(txtCPF.getText());
@@ -111,7 +112,7 @@ public class CRUDUserController implements Initializable {
             userDAO.add(user);
             btnConfirmClicked = true;
             dialogStage.close();
-        }else{
+        }else if(user != null && isComplete()){
             user.setNome(txtNome.getText());
             user.setEndereco(txtEndereco.getText());
             user.setTelefone(txtTel.getText());
@@ -119,6 +120,12 @@ public class CRUDUserController implements Initializable {
             userDAO.update(user);
             btnConfirmClicked = true;
             dialogStage.close();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Dados incompletos");
+            alert.setContentText("Por favor, preencher dados corretamente.");
+            alert.showAndWait();
+            return;
         }
     }
 
@@ -131,5 +138,17 @@ public class CRUDUserController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         txtId.setText(String.valueOf(userDAO.nextSeqUser()));
         txtId.setEditable(false);
+    }
+
+    public boolean isComplete(){
+        if(txtId.getText().isEmpty()
+                || txtNome.getText().isEmpty()
+                || txtCPF.getText().isEmpty()
+                || txtEndereco.getText().isEmpty()
+                || txtTel.getText().isEmpty()
+                || txtEmail.getText().isEmpty()){
+            return false;
+        }
+        return true;
     }
 }

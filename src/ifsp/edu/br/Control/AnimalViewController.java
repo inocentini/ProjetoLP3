@@ -327,7 +327,6 @@ public class AnimalViewController implements Initializable {
         fillTableCachorro();
         tableDog.getSelectionModel().selectedItemProperty().addListener((
                 observable, oldValue, newValue) -> selectItemTableViewCachorro(newValue));
-
         fillTableGato();
         tableCat.getSelectionModel().selectedItemProperty().addListener((
                 observable, oldValue, newValue) -> selectItemTableViewGato(newValue));
@@ -400,7 +399,7 @@ public class AnimalViewController implements Initializable {
 
     public void selectItemTableViewGato(Gato cat){
         if(cat != null) {
-            txtId.setEditable(false);
+            txtId.setDisable(true);
             txtId.setText(String.valueOf(cat.getId()));
             txtNick.setEditable(false);
             txtNick.setText(cat.getApelido());

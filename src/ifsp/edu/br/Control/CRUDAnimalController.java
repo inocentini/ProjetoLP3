@@ -9,11 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -89,7 +85,7 @@ public class CRUDAnimalController implements Initializable {
 
     @FXML
     public void handleBtnAdicionar(){
-        if(animal == null) {
+        if(animal == null && isComplete()) {
             if (choiceboxAnimal.getValue() == "Cachorro") {
                 CachorroDAO dogDAO = new CachorroDAO();
                 animal = new Cachorro();
@@ -133,7 +129,7 @@ public class CRUDAnimalController implements Initializable {
             }
             btnconfirm = true;
             dialogStage.close();
-        }else{
+        }else if(animal != null && isComplete()){
             if(animal.getClass() == Cachorro.class){
                 CachorroDAO dogDAO = new CachorroDAO();
                 animal.setApelido(txtNick.getText());
@@ -163,6 +159,12 @@ public class CRUDAnimalController implements Initializable {
             }
             btnconfirm = true;
             dialogStage.close();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Dados incompletos");
+            alert.setContentText("Por favor, preencher dados corretamente.");
+            alert.showAndWait();
+            return;
         }
     }
 
@@ -238,5 +240,19 @@ public class CRUDAnimalController implements Initializable {
         this.labGerenPet.setText("ALTERAÇÃO DE PET");
         btnAdd.setText("Alterar");
 
+    }
+
+    public boolean isComplete(){
+        if(txtId.getText().isEmpty()
+                || txtIdade.getText().isEmpty()
+                || txtNick.getText().isEmpty()
+                || txtRaca.getText().isEmpty()
+                || (rbtnSexM.getText().isEmpty() && rbtnSexF.getText().isEmpty())
+                || (rbtnVacS.getText().isEmpty() && rbtnVacN.getText().isEmpty())
+                || (rbtnCasS.getText().isEmpty() && rbtnCasN.getText().isEmpty())
+                || choiceboxAnimal.getItems().isEmpty()){
+            return false;
+        }
+        return true;
     }
 }

@@ -5,6 +5,7 @@ import ifsp.edu.br.Model.Pessoas.Funcionario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -68,7 +69,7 @@ public class CRUDFuncController implements Initializable {
 
     @FXML
     void handleBtnAdicionar(ActionEvent event) {
-        if(func == null){
+        if(func == null && isComplete()){
             func = new Funcionario();
             func.setNome(txtNome.getText());
             func.setCpf(txtCPF.getText());
@@ -79,7 +80,7 @@ public class CRUDFuncController implements Initializable {
             funcDAO.add(func);
             btnConfirmClicked = true;
             dialogStage.close();
-        }else{
+        }else if(func != null && isComplete()){
             func.setNome(txtNome.getText());
             func.setEndereco(txtEndereco.getText());
             func.setTelefone(txtTel.getText());
@@ -88,6 +89,12 @@ public class CRUDFuncController implements Initializable {
             funcDAO.update(func);
             btnConfirmClicked = true;
             dialogStage.close();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Dados incompletos");
+            alert.setContentText("Por favor, preencher dados corretamente.");
+            alert.showAndWait();
+            return;
         }
 
     }
@@ -140,5 +147,18 @@ public class CRUDFuncController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         txtId.setText(String.valueOf(funcDAO.nextSeqFunc()));
         txtId.setEditable(false);
+    }
+
+    public boolean isComplete(){
+        if(txtId.getText().isEmpty()
+                || txtNome.getText().isEmpty()
+                || txtCPF.getText().isEmpty()
+                || txtEndereco.getText().isEmpty()
+                || txtTel.getText().isEmpty()
+                || txtEmail.getText().isEmpty()
+                || txtSalario.getText().isEmpty()){
+            return false;
+        }
+        return true;
     }
 }

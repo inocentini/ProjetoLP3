@@ -103,8 +103,7 @@ public class ContaViewController implements Initializable {
 
     @FXML
     void handleBtnAlterar(ActionEvent event) throws IOException {
-        Conta conta = new Conta();
-        conta = tableConta.getSelectionModel().getSelectedItem();
+        Conta conta = tableConta.getSelectionModel().getSelectedItem();
         if(conta != null){
             boolean btnAlterarClicked = showGerenciamentoConta(conta);
             if(btnAlterarClicked){

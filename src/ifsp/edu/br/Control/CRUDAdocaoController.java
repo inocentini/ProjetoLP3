@@ -161,7 +161,7 @@ public class CRUDAdocaoController implements Initializable {
     void handleCadastrarAdocao(ActionEvent event) {
         AdocaoDAO adocaoDAO = new AdocaoDAO();
         UsuarioDAO userDAO = new UsuarioDAO();
-        if(adocao == null){
+        if(adocao == null && isComplete()){
             Usuario user = userDAO.read(Integer.parseInt(txtId.getText()));
             adocao = new Adocao();
             adocao.setUser(user);
@@ -196,7 +196,7 @@ public class CRUDAdocaoController implements Initializable {
                     catDAO.update(cat);
                 }
             }
-        }else{
+        }else if (adocao != null && isComplete()){
             Usuario user = userDAO.read(Integer.parseInt(txtId.getText()));
             adocao.setUser(user);
             Date data = new Date(System.currentTimeMillis());
@@ -230,9 +230,15 @@ public class CRUDAdocaoController implements Initializable {
                     catDAO.update(cat);
                 }
             }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Dados Incompletos");
+            alert.setContentText("Por favor, preencher dados corretamente.");
+            alert.showAndWait();
+            return;
         }
         btnconfirm = true;
-        
+
         dialogStage.close();
 
     }
@@ -274,8 +280,7 @@ public class CRUDAdocaoController implements Initializable {
                             return true;
                         }
                         String lowerCaseFilter = newValue.toLowerCase();
-                        int id = Integer.parseInt(newValue);
-                        if (id == pet.getId()) {
+                        if (newValue.equals(pet.getId())) {
                             return true;
                         } else if (pet.getApelido().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
@@ -301,7 +306,7 @@ public class CRUDAdocaoController implements Initializable {
                         return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
-                    if (newValue == String.valueOf(user.getId())) {
+                    if (newValue.equals(String.valueOf(user.getId()))) {
                         return true;
                     } else if (user.getNome().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
@@ -386,5 +391,15 @@ public class CRUDAdocaoController implements Initializable {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date data = new Date(System.currentTimeMillis());
         labDate.setText(String.valueOf(dateFormat.format(data)));
+    }
+
+    public boolean isComplete(){
+        if(txtUser.getText().isEmpty()
+                || txtId.getText().isEmpty() ||
+                labDate.getText().isEmpty() ||
+                tableAnimalAd.getItems().isEmpty()){
+            return false;
+        }
+        return true;
     }
 }

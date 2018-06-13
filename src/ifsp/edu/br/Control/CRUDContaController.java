@@ -5,10 +5,7 @@ import ifsp.edu.br.Model.Conta;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -63,7 +60,7 @@ public class CRUDContaController implements Initializable {
 
     @FXML
     void handleBtnAdicionar(ActionEvent event) {
-        if(conta == null){
+        if(conta == null && isComplete()){
             conta = new Conta();
             conta.setDescricao(txtDesc.getText());
             conta.setValor(Double.parseDouble(txtValor.getText()));
@@ -73,7 +70,7 @@ public class CRUDContaController implements Initializable {
             contaDAO.add(conta);
             btnClickedConfirm = true;
             dialogStage.close();
-        }else{
+        }else if(conta != null && isComplete()){
             conta.setDescricao(txtDesc.getText());
             conta.setValor(Double.parseDouble(txtValor.getText()));
             String dataVenc = dtVencimento.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
@@ -82,6 +79,12 @@ public class CRUDContaController implements Initializable {
             contaDAO.update(conta);
             btnClickedConfirm = true;
             dialogStage.close();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Dados incompletos");
+            alert.setContentText("Por favor, preencher dados corretamente.");
+            alert.showAndWait();
+            return;
         }
     }
 
@@ -128,8 +131,18 @@ public class CRUDContaController implements Initializable {
     }
 
     public static final LocalDate LOCAL_DATE (String dateString){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(dateString, formatter);
         return localDate;
+    }
+
+    public boolean isComplete(){
+        if(txtId.getText().isEmpty()
+                || txtDesc.getText().isEmpty()
+                || txtValor.getText().isEmpty()
+                || dtVencimento.getValue() == null){
+            return false;
+        }
+        return true;
     }
 }

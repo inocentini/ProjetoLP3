@@ -58,7 +58,7 @@
          </children>
       </GridPane>
       <Label fx:id="labPesquisarPet" layoutX="35.0" layoutY="163.0" text="Pesquisar:" />
-      <TextField fx:id="txtPesquisarPet" layoutX="103.0" layoutY="159.0" onKeyTyped="#pesquisarAnimal" prefHeight="26.0" prefWidth="166.0" />
+      <TextField fx:id="txtPesquisarPet" layoutX="103.0" layoutY="159.0" onKeyReleased="#pesquisarAnimal" prefHeight="26.0" prefWidth="166.0" />
       <Label fx:id="labAdocao" layoutX="388.0" layoutY="22.0" text="Adoção de PET">
          <font>
             <Font name="System Bold" size="18.0" />
