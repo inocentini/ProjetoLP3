@@ -12,11 +12,11 @@ import java.util.List;
 
 public class GatoDAO {
 
-    Connection connection = Database.getConnection();
-    String sql = "";
-    PreparedStatement stmt = null;
 
     public void add(Gato g){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
             sql = "INSERT INTO Animal(apelido,raca,idade,sexo,vacinado,castrado,tipo) VALUES (?,?,?,?,?,?,?)";
@@ -33,10 +33,15 @@ public class GatoDAO {
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro no cadastro de gato.", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public void update(Gato g){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
             sql = "UPDATE Animal SET apelido = ?,idade = ?,vacinado = ?,castrado = ?, adocao_id = ? WHERE id =?";
@@ -51,10 +56,15 @@ public class GatoDAO {
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro na atualização do gato.", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public Gato read(Gato g){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
             sql = "SELECT * FROM Animal WHERE id =?";
@@ -75,10 +85,15 @@ public class GatoDAO {
             return cat;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na pesquisa de gato.",e );
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public Gato read(int id){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
             sql = "SELECT * FROM Animal WHERE id =?";
@@ -99,13 +114,18 @@ public class GatoDAO {
             return cat;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na pesquisa de gato.",e );
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public List<Gato> list(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
-            sql = "SELECT * FROM Animal WHERE tipo like 'Gato'";
+            sql = "SELECT * FROM Animal WHERE tipo like 'Gato'  and adocao_id like '0'";
             stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             List<Gato> gatos = new ArrayList<>();
@@ -126,10 +146,15 @@ public class GatoDAO {
             return gatos;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na listagem dos gatos.",e );
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public void remove(Gato g){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
             sql = "DELETE FROM Animal WHERE id = ?";
@@ -139,9 +164,14 @@ public class GatoDAO {
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro na exclusão do gato.", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
     public int nextSeqAnimal(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             int id;
             sql = "SELECT seq FROM sqlite_sequence WHERE name = 'Animal'";
@@ -154,6 +184,8 @@ public class GatoDAO {
             return id;
         } catch (SQLException e) {
             throw new RuntimeException("erro", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 }

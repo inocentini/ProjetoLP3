@@ -73,14 +73,10 @@
                                                 <DatePicker fx:id="dtAdo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                              </children>
                                           </GridPane>
-                                          <TableView fx:id="tableDog" layoutX="-2.0" layoutY="108.0" prefHeight="110.0" prefWidth="110.0">
+                                          <TableView fx:id="tableAnimaisAd" layoutY="117.0" prefHeight="113.0" prefWidth="225.0">
                                             <columns>
-                                              <TableColumn fx:id="tableDogColun" prefWidth="110.0" text="Cachorros" />
-                                            </columns>
-                                          </TableView>
-                                          <TableView fx:id="tableCat" layoutX="110.0" layoutY="108.0" prefHeight="110.0" prefWidth="117.0">
-                                            <columns>
-                                              <TableColumn fx:id="tableCatColun" prefWidth="116.0" text="Gatos" />
+                                              <TableColumn fx:id="tableAnimaisAdId" prefWidth="75.0" text="id" />
+                                              <TableColumn fx:id="tableAnimaisAdNick" prefWidth="149.0" text="Apelido" />
                                             </columns>
                                           </TableView>
                                        </children>

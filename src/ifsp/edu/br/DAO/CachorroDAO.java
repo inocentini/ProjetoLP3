@@ -118,7 +118,7 @@ public class CachorroDAO {
         String sql = "";
         PreparedStatement stmt = null;
         try {
-            sql = "SELECT * FROM Animal WHERE tipo like 'Cachorro'";
+            sql = "SELECT * FROM Animal WHERE tipo like 'Cachorro' and adocao_id like '0'";
             stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             List<Cachorro> cachorros = new ArrayList<>();

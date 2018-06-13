@@ -1,5 +1,6 @@
 package ifsp.edu.br.Control;
 
+import ifsp.edu.br.DAO.AdocaoDAO;
 import ifsp.edu.br.DAO.CachorroDAO;
 import ifsp.edu.br.DAO.GatoDAO;
 import ifsp.edu.br.DAO.UsuarioDAO;
@@ -107,6 +108,15 @@ public class CRUDAdocaoController implements Initializable {
     @FXML
     private RadioButton rbtnGato;
 
+    @FXML
+    private Label labId;
+
+    @FXML
+    private TextField txtId;
+
+    @FXML
+    private Label labAdocao;
+
     private Stage dialogStage;
     private boolean btnconfirm = false;
     private Adocao adocao;
@@ -133,33 +143,114 @@ public class CRUDAdocaoController implements Initializable {
 
     public void setAdocao(Adocao adocao) {
         this.adocao = adocao;
+        this.txtId.setText(String.valueOf(adocao.getUser().getId()));
+        this.txtUser.setText(adocao.getUser().getNome());
+        this.labDate.setText(String.valueOf(adocao.getData()));
+        List<Animal> animais = adocao.getAnimais();
+        for(Animal a : animais){
+            animalList.add(a);
+        }
+        fillTableAnimalAd(animalList);
+        this.labAdocao.setText("Alteração de Adoção");
+        this.btnCadastrar.setText("Alterar");
     }
 
-    static List<Animal> animalList = new ArrayList<>();
+    List<Animal> animalList = new ArrayList<>();
 
     @FXML
     void handleCadastrarAdocao(ActionEvent event) {
+        AdocaoDAO adocaoDAO = new AdocaoDAO();
+        UsuarioDAO userDAO = new UsuarioDAO();
+        if(adocao == null){
+            Usuario user = userDAO.read(Integer.parseInt(txtId.getText()));
+            adocao = new Adocao();
+            adocao.setUser(user);
+            Date data = new Date(System.currentTimeMillis());
+            adocao.setData(data);
+            adocao.setAnimais(animalList);
+            adocaoDAO.add(adocao);
+            for(Animal a : animalList) {
+                if (a.getClass() == Cachorro.class) {
+                    CachorroDAO dogDAO = new CachorroDAO();
+                    Cachorro dog = new Cachorro();
+                    dog.setId(a.getId());
+                    dog.setApelido(a.getApelido());
+                    dog.setIdade(a.getIdade());
+                    dog.setSexo(a.isSexo());
+                    dog.setRaca(a.getRaca());
+                    dog.setVacinado(a.isVacinado());
+                    dog.setCastrado(a.isCastrado());
+                    dog.setAdocao(adocaoDAO.nextSeqAdocao());
+                    dogDAO.update(dog);
+                } else if (a.getClass() == Gato.class) {
+                    GatoDAO catDAO = new GatoDAO();
+                    Gato cat = new Gato();
+                    cat.setId(a.getId());
+                    cat.setApelido(a.getApelido());
+                    cat.setIdade(a.getIdade());
+                    cat.setRaca(a.getRaca());
+                    cat.setSexo(a.isSexo());
+                    cat.setVacinado(a.isVacinado());
+                    cat.setCastrado(a.isCastrado());
+                    cat.setAdocao(adocaoDAO.nextSeqAdocao());
+                    catDAO.update(cat);
+                }
+            }
+        }else{
+            Usuario user = userDAO.read(Integer.parseInt(txtId.getText()));
+            adocao.setUser(user);
+            Date data = new Date(System.currentTimeMillis());
+            adocao.setData(data);
+            adocao.setAnimais(animalList);
+            adocaoDAO.update(adocao);
+            for(Animal a : animalList) {
+                if (a.getClass() == Cachorro.class) {
+                    CachorroDAO dogDAO = new CachorroDAO();
+                    Cachorro dog = new Cachorro();
+                    dog.setId(a.getId());
+                    dog.setApelido(a.getApelido());
+                    dog.setIdade(a.getIdade());
+                    dog.setSexo(a.isSexo());
+                    dog.setRaca(a.getRaca());
+                    dog.setVacinado(a.isVacinado());
+                    dog.setCastrado(a.isCastrado());
+                    dog.setAdocao(adocao.getId());
+                    dogDAO.update(dog);
+                } else if (a.getClass() == Gato.class) {
+                    GatoDAO catDAO = new GatoDAO();
+                    Gato cat = new Gato();
+                    cat.setId(a.getId());
+                    cat.setApelido(a.getApelido());
+                    cat.setIdade(a.getIdade());
+                    cat.setRaca(a.getRaca());
+                    cat.setSexo(a.isSexo());
+                    cat.setVacinado(a.isVacinado());
+                    cat.setCastrado(a.isCastrado());
+                    cat.setAdocao(adocao.getId());
+                    catDAO.update(cat);
+                }
+            }
+        }
+        btnconfirm = true;
+        
+        dialogStage.close();
 
     }
 
     @FXML
     void handleInserirAnimal() {
-        Animal animal = (Animal) tableAnimais.getSelectionModel().getSelectedItem();
-        List<Animal> addPet = animalList;
+        Animal animal = tableAnimais.getSelectionModel().getSelectedItem();
         if(!animalList.isEmpty()){
-            for(Iterator<Animal> iterator = animalList.iterator() ; iterator.hasNext();){
-                Animal a = null;
-                a = iterator.next();
-                if(a.getId() == animal.getId()){
+            for(Animal a : animalList){
+                if(a.getId() == animal.getId()) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Animal ja Inserido!");
                     alert.setContentText("Animal ja adicionado na lista!");
                     alert.showAndWait();
                     return;
-                }else{
-                    animalList.add(animal);
                 }
             }
+            animalList.add(animal);
         }else
             animalList.add(animal);
 
@@ -240,6 +331,7 @@ public class CRUDAdocaoController implements Initializable {
 
     public void selectItemTableViewUser(Usuario user){
         if(user != null){
+            txtId.setText(String.valueOf(user.getId()));
             txtUser.setText(user.getNome());
             txtUser.setEditable(false);
         }else{
@@ -285,6 +377,8 @@ public class CRUDAdocaoController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        labId.setVisible(false);
+        txtId.setVisible(false);
         fillTableUsers();
         filltableAnimal();
         tableUser.getSelectionModel().selectedItemProperty().addListener(

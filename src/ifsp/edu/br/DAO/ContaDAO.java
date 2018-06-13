@@ -14,12 +14,13 @@ import java.util.Date;
 
 public class ContaDAO {
 
-    Connection connection = Database.getConnection();
-    String sql = "";
-    PreparedStatement stmt = null;
+
     DateFormat dateFormatDB = new SimpleDateFormat("yyyy-MM-dd");
 
     public void add(Conta c){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "INSERT INTO Conta(descricao,valor,vencimento) VALUES(?,?,?)";
             stmt = connection.prepareStatement(sql);
@@ -32,10 +33,15 @@ public class ContaDAO {
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro na adição de uma conta.", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public void update(Conta c){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "UPDATE Conta SET descricao = ?, valor = ?, vencimento = ? WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -48,11 +54,16 @@ public class ContaDAO {
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro na atualização de uma conta.", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
 
     }
 
     public Conta read(Conta c){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Conta WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -71,10 +82,15 @@ public class ContaDAO {
             return conta;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na leitura de uma conta.", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public Conta read(int id){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Conta WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -93,10 +109,15 @@ public class ContaDAO {
             return conta;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na leitura de uma conta.", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public List<Conta> list(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Conta";
             stmt = connection.prepareStatement(sql);
@@ -115,10 +136,15 @@ public class ContaDAO {
             return contas;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na listagem das contas.", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public void remove(Conta c){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "DELETE FROM Conta WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -127,6 +153,8 @@ public class ContaDAO {
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro na exclusão de uma conta.", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 

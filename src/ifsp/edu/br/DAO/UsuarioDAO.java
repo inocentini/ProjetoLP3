@@ -12,11 +12,11 @@ import java.util.List;
 
 public class UsuarioDAO {
 
-    Connection connection = Database.getConnection();
-    String sql = "";
-    PreparedStatement stmt = null;
 
     public void add(Usuario u){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "INSERT INTO Usuario(nome,cpf,endereco,telefone,email) VALUES (?,?,?,?,?)";
             stmt = connection.prepareStatement(sql);
@@ -34,6 +34,9 @@ public class UsuarioDAO {
     }
 
     public void update(Usuario u){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "UPDATE Usuario SET nome = ?, endereco = ?, telefone = ?, email = ? WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -50,6 +53,9 @@ public class UsuarioDAO {
     }
 
     public Usuario read(Usuario u){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Usuario WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -71,6 +77,9 @@ public class UsuarioDAO {
     }
 
     public Usuario read(int id){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Usuario WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -92,6 +101,9 @@ public class UsuarioDAO {
     }
 
     public List<Usuario> list(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Usuario";
             stmt = connection.prepareStatement(sql);
@@ -117,6 +129,9 @@ public class UsuarioDAO {
     }
 
     public void remove(Usuario u){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "DELETE FROM Usuario WHERE id = ?";
             stmt = connection.prepareStatement(sql);

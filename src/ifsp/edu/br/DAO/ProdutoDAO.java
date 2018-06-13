@@ -12,11 +12,12 @@ import java.util.List;
 
 public class ProdutoDAO {
 
-    Connection connection = Database.getConnection();
-    String sql = "";
-    PreparedStatement stmt = null;
+
 
     public void add(Produto p){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "INSERT INTO Produto(id,descricao,preco,qtd) VALUES(?,?,?,?)";
             stmt = connection.prepareStatement(sql);
@@ -28,10 +29,15 @@ public class ProdutoDAO {
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro na adição de um produto.", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public void update(Produto p){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "UPDATE Produto SET descricao = ?,preco = ?,qtd = ? WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -43,10 +49,15 @@ public class ProdutoDAO {
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro na atualização de produto.",e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public Produto read(Produto p){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Produto WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -62,9 +73,14 @@ public class ProdutoDAO {
             return produto;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na leitura de produto.",e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
     public Produto read(int id){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Produto WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -80,10 +96,15 @@ public class ProdutoDAO {
             return produto;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na leitura de produto.",e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public List<Produto> list(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Produto";
             stmt = connection.prepareStatement(sql);
@@ -102,10 +123,15 @@ public class ProdutoDAO {
             return produtos;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na listagem de produto.",e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public void remove(Produto p){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "DELETE FROM Produto WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -114,6 +140,8 @@ public class ProdutoDAO {
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro na exclusão de produto.",e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 }

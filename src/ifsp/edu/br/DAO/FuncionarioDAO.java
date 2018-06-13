@@ -12,11 +12,12 @@ import java.util.List;
 
 public class FuncionarioDAO {
 
-    Connection connection = Database.getConnection();
-    String sql = "";
-    PreparedStatement stmt = null;
+
 
     public void add(Funcionario f){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "INSERT INTO Funcionario(nome,cpf,endereco,telefone,email,salario) VALUES (?,?,?,?,?,?)";
             stmt = connection.prepareStatement(sql);
@@ -31,10 +32,15 @@ public class FuncionarioDAO {
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro no cadastro de funcionário", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public void update(Funcionario f){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "UPDATE Funcionario SET nome = ?, endereco = ?, telefone = ?, email = ?, salario = ? WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -48,10 +54,15 @@ public class FuncionarioDAO {
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro na atualização do funcionário", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public Funcionario read(Funcionario f){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Funcionario WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -70,9 +81,14 @@ public class FuncionarioDAO {
             return func;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na pesquisa de funcionário", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
     public Funcionario read(int id){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Funcionario WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -91,10 +107,15 @@ public class FuncionarioDAO {
             return func;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na pesquisa de funcionário", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public List<Funcionario> list(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "SELECT * FROM Funcionario";
             stmt = connection.prepareStatement(sql);
@@ -116,10 +137,15 @@ public class FuncionarioDAO {
             return funcionarios;
         } catch (SQLException e) {
             throw new RuntimeException("Erro na listagem dos funcionários", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 
     public void remove(Funcionario f){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
         try {
             sql = "DELETE FROM Funcionario WHERE id = ?";
             stmt = connection.prepareStatement(sql);
@@ -128,6 +154,8 @@ public class FuncionarioDAO {
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException("Erro na exclusão do funcionário.", e);
+        }finally {
+            Database.closeConnection(connection,stmt);
         }
     }
 

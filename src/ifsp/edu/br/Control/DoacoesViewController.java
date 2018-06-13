@@ -1,5 +1,8 @@
 package ifsp.edu.br.Control;
 
+import ifsp.edu.br.DAO.AdocaoDAO;
+import ifsp.edu.br.DAO.CachorroDAO;
+import ifsp.edu.br.DAO.GatoDAO;
 import ifsp.edu.br.Model.Adocao;
 import ifsp.edu.br.Model.Animais.Animal;
 import ifsp.edu.br.Model.Animais.Cachorro;
@@ -7,27 +10,30 @@ import ifsp.edu.br.Model.Animais.Gato;
 import ifsp.edu.br.Model.Doacao;
 import ifsp.edu.br.Model.Pessoas.Usuario;
 import ifsp.edu.br.Model.Produto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class DoacoesViewController {
+public class DoacoesViewController  implements Initializable {
 
     @FXML
     private Tab tabAdo;
@@ -87,16 +93,13 @@ public class DoacoesViewController {
     private Button btnVoltar;
 
     @FXML
-    private TableView<Cachorro> tableDog;
+    private TableView<Animal> tableAnimaisAd;
 
     @FXML
-    private TableColumn<Cachorro, String> tableDogColun;
+    private TableColumn<Animal, Integer> tableAnimaisAdId;
 
     @FXML
-    private TableView<Gato> tableCat;
-
-    @FXML
-    private TableColumn<Gato, String> tableCatColun;
+    private TableColumn<Animal, String> tableAnimaisAdNick;
 
     @FXML
     private TextField txtPesquisar;
@@ -177,8 +180,19 @@ public class DoacoesViewController {
     private Label labPesquisarDoa;
 
     @FXML
-    void handleBtnAlterar(ActionEvent event) {
-
+    void handleBtnAlterar(ActionEvent event) throws IOException {
+        Adocao adocaoup = tableAdocao.getSelectionModel().getSelectedItem();
+        if(adocaoup != null){
+            boolean btnAlterarClicked = showGerenciamentoAdocao(adocaoup);
+            if(btnAlterarClicked){
+                fillTableAdocao();
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Seleção de Adoção");
+            alert.setContentText("Por favor, selecione uma adoção.");
+            alert.show();
+        }
     }
 
     @FXML
@@ -190,7 +204,7 @@ public class DoacoesViewController {
     void handleBtnInserir(ActionEvent event) throws IOException {
         boolean btnAddClicked = showGerenciamentoAdocao();
         if(btnAddClicked) {
-
+            fillTableAdocao();
         }
     }
 
@@ -201,7 +215,36 @@ public class DoacoesViewController {
 
     @FXML
     void handleBtnRemover(ActionEvent event) {
-
+        Adocao adocao = tableAdocao.getSelectionModel().getSelectedItem();
+        if(adocao != null){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Removendo Adoção.");
+            alert.setContentText("Você deseja remover esta adoção?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.CANCEL){
+                return;
+            }else if(result.get() == ButtonType.OK){
+                AdocaoDAO adocaoDAO = new AdocaoDAO();
+                for(Animal a : adocao.getAnimais()){
+                    if(a.getClass() == Cachorro.class){
+                        CachorroDAO dogDAO = new CachorroDAO();
+                        a.setAdocao(0);
+                        dogDAO.update((Cachorro) a);
+                    }else if(a.getClass() == Gato.class){
+                        GatoDAO catDAO = new GatoDAO();
+                        a.setAdocao(0);
+                        catDAO.update((Gato) a);
+                    }
+                }
+                adocaoDAO.remove(adocao);
+                fillTableAdocao();
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Seleção de Adoção");
+            alert.setContentText("Por favor, selecione uma adoção.");
+            alert.show();
+        }
     }
 
     @FXML
@@ -222,6 +265,52 @@ public class DoacoesViewController {
     @FXML
     void pesquisaFunc(KeyEvent event) {
 
+    }
+
+    public void fillTableAnimaisAd(Adocao adocao){
+        tableAnimaisAd.getItems().clear();
+        List<Animal> animais = adocao.getAnimais();
+        ObservableList<Animal> animals;
+
+        tableAnimaisAdId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableAnimaisAdNick.setCellValueFactory(new PropertyValueFactory<>("apelido"));
+
+        animals = FXCollections.observableArrayList(animais);
+        tableAnimaisAd.setItems(animals);
+
+    }
+
+    public void fillTableAdocao(){
+        tableAdocao.getItems().clear();
+
+        AdocaoDAO adocaoDAO = new AdocaoDAO();
+        List<Adocao> adocoes = adocaoDAO.list();
+        ObservableList<Adocao> observableList = FXCollections.observableArrayList();
+        for(Adocao ad : adocoes){
+            observableList.add(new Adocao(ad.getId(),ad.getAnimais(),ad.getUser(),ad.getData()));
+        }
+        tableAdocaoId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableAdocaoUser.setCellValueFactory(new PropertyValueFactory<>("user"));
+        tableAdocaoDate.setCellValueFactory(new PropertyValueFactory<>("data"));
+
+        tableAdocao.setItems(observableList);
+
+    }
+
+    public void selectItemTableAdocao(Adocao adocao){
+        if(adocao != null){
+            txtId.setDisable(true);
+            txtId.setText(String.valueOf(adocao.getId()));
+            txtUser.setEditable(false);
+            txtUser.setText(adocao.getUser().getNome());
+            dtAdo.setEditable(false);
+            dtAdo.setValue(LOCAL_DATE(adocao.getData().toString()));
+            fillTableAnimaisAd(adocao);
+        }else{
+            txtId.setText("");
+            txtUser.setText("");
+            tableAnimaisAd.getItems().clear();
+        }
     }
 
     public boolean showGerenciamentoAdocao() throws IOException {
@@ -263,4 +352,16 @@ public class DoacoesViewController {
         return controller.isBtnconfirm();
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        fillTableAdocao();
+        tableAdocao.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> selectItemTableAdocao(newValue));
+    }
+
+    public static final LocalDate LOCAL_DATE (String dateString){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(dateString, formatter);
+        return localDate;
+    }
 }
