@@ -114,6 +114,7 @@ public class ContaViewController implements Initializable {
             alert.setTitle("Selecionar Conta");
             alert.setContentText("Por favor, selecione uma conta na tabela");
             alert.show();
+            return;
         }
 
     }
@@ -127,8 +128,7 @@ public class ContaViewController implements Initializable {
 
     @FXML
     void handleBtnRemover(ActionEvent event) {
-        Conta conta = new Conta();
-        conta = tableConta.getSelectionModel().getSelectedItem();
+        Conta conta = tableConta.getSelectionModel().getSelectedItem();
 
         if(conta != null ){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

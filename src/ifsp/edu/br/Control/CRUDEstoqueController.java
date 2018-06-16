@@ -5,6 +5,7 @@ import ifsp.edu.br.Model.Produto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -82,16 +83,39 @@ public class CRUDEstoqueController implements Initializable {
         this.txtQtd.setText(String.valueOf(produto.getQtd()));
         this.labGerenProd.setText("ALTERAÇÃO DE PRODUTO");
         this.btnAdd.setText("Alterar");
+        this.btnCancelar.setText("Voltar");
     }
 
     @FXML
     void handleBtnAdicionar(ActionEvent event) {
+        if(produto == null && isComplete()){
+            produto = new Produto();
+            produto.setDescricao(txtDesc.getText());
+            produto.setPreco(Double.parseDouble(txtPreco.getText()));
+            produto.setQtd(Integer.parseInt(txtQtd.getText()));
+            produtoDAO.add(produto);
+            btnClickedConfirm = true;
+            dialogStage.close();
+        }else if(produto != null && isComplete()){
+            produto.setDescricao(txtDesc.getText());
+            produto.setPreco(Double.parseDouble(txtPreco.getText()));
+            produto.setQtd(Integer.parseInt(txtQtd.getText()));
+            produtoDAO.update(produto);
+            btnClickedConfirm = true;
+            dialogStage.close();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Dados incompletos");
+            alert.setContentText("Por favor, preencher dados corretamente.");
+            alert.showAndWait();
+            return;
+        }
 
     }
 
     @FXML
     void handleBtnCancelar(ActionEvent event) {
-
+        this.dialogStage.close();
     }
 
     public boolean isComplete(){
@@ -106,6 +130,7 @@ public class CRUDEstoqueController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        txtId.setText(String.valueOf(produtoDAO.nextSeqProduto()));
+        txtId.setEditable(false);
     }
 }

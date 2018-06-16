@@ -21,8 +21,8 @@
                   <TableView fx:id="tableProd" layoutY="25.0" prefHeight="323.0" prefWidth="321.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                      <columns>
                         <TableColumn fx:id="tableProdId" prefWidth="35.0" text="id" />
-                        <TableColumn fx:id="tableProdDesc" prefWidth="87.0" text="Descrição" />
-                        <TableColumn fx:id="tableProdQnt" prefWidth="95.0" text="Quantidade" />
+                        <TableColumn fx:id="tableProdDesc" prefWidth="128.0" text="Descrição" />
+                        <TableColumn fx:id="tableProdQnt" prefWidth="54.0" text="Qtd" />
                         <TableColumn fx:id="tableProdPreco" prefWidth="67.0" text="Preço" />
                      </columns>
                   </TableView>

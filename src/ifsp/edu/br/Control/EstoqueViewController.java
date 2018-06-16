@@ -11,12 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -26,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -98,7 +94,20 @@ public class EstoqueViewController implements Initializable {
     private Label labPesquisar;
 
     @FXML
-    void handleBtnAlterar(ActionEvent event) {
+    void handleBtnAlterar(ActionEvent event) throws IOException {
+        Produto produto = tableProd.getSelectionModel().getSelectedItem();
+        if(produto != null){
+            boolean btnAlterarClicked = showGerenciamentoEstoque(produto);
+            if(btnAlterarClicked){
+                fillTableProd();
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Selecionar Produto");
+            alert.setContentText("Por favor, selecione uma conta na tabela");
+            alert.show();
+            return;
+        }
 
     }
 
@@ -106,13 +115,33 @@ public class EstoqueViewController implements Initializable {
     void handleBtnInserir(ActionEvent event) throws IOException {
         boolean btnAddClicked = showGerenciamentoEstoque();
         if(btnAddClicked){
-
+            fillTableProd();
         }
 
     }
 
     @FXML
     void handleBtnRemover(ActionEvent event) {
+        Produto produto = tableProd.getSelectionModel().getSelectedItem();
+        if(produto != null){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Removendo Produto.");
+            alert.setContentText("Você deseja remover este produto?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.CANCEL){
+                return;
+            }else if(result.get() == ButtonType.OK){
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                produtoDAO.remove(produto);
+                fillTableProd();
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Seleção de Produto");
+            alert.setContentText("Por favor, selecione um produto.");
+            alert.show();
+            return;
+        }
 
     }
 

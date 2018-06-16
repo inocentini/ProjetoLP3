@@ -19,12 +19,11 @@ public class ProdutoDAO {
         String sql = "";
         PreparedStatement stmt = null;
         try {
-            sql = "INSERT INTO Produto(id,descricao,preco,qtd) VALUES(?,?,?,?)";
+            sql = "INSERT INTO Produto(descricao,preco,qtd) VALUES(?,?,?)";
             stmt = connection.prepareStatement(sql);
-            stmt.setInt(1,p.getId());
-            stmt.setString(2,p.getDescricao());
-            stmt.setDouble(3,p.getPreco());
-            stmt.setInt(4,p.getQtd());
+            stmt.setString(1,p.getDescricao());
+            stmt.setDouble(2,p.getPreco());
+            stmt.setInt(3,p.getQtd());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -143,5 +142,27 @@ public class ProdutoDAO {
         }finally {
             Database.closeConnection(connection,stmt);
         }
+    }
+
+    public int nextSeqProduto(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
+        try {
+            int id;
+            sql = "SELECT seq FROM sqlite_sequence WHERE name = 'Produto'";
+            stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            id = rs.getInt("seq");
+            id++;
+            rs.close();
+            stmt.close();
+            return id;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            Database.closeConnection(connection,stmt);
+        }
+        return Integer.parseInt(null);
     }
 }
