@@ -117,6 +117,7 @@ public class CRUDAdocaoController implements Initializable {
     @FXML
     private Label labAdocao;
 
+
     private Stage dialogStage;
     private boolean btnconfirm = false;
     private Adocao adocao;

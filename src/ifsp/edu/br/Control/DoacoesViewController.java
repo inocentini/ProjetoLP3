@@ -2,6 +2,7 @@ package ifsp.edu.br.Control;
 
 import ifsp.edu.br.DAO.AdocaoDAO;
 import ifsp.edu.br.DAO.CachorroDAO;
+import ifsp.edu.br.DAO.DoacaoDAO;
 import ifsp.edu.br.DAO.GatoDAO;
 import ifsp.edu.br.Model.Adocao;
 import ifsp.edu.br.Model.Animais.Animal;
@@ -196,8 +197,20 @@ public class DoacoesViewController  implements Initializable {
     }
 
     @FXML
-    void handleBtnAlterarDoa(ActionEvent event) {
-
+    void handleBtnAlterarDoa(ActionEvent event) throws IOException {
+        Doacao doacaoup = tableDoacao.getSelectionModel().getSelectedItem();
+        if(doacaoup != null){
+            boolean btnAddClicked = showGerenciamentoDoacao(doacaoup);
+            if(btnAddClicked){
+                fillTableDoacao();
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Seleção de Doação");
+            alert.setContentText("Por favor, selecione uma doação.");
+            alert.show();
+            return;
+        }
     }
 
     @FXML
@@ -209,8 +222,11 @@ public class DoacoesViewController  implements Initializable {
     }
 
     @FXML
-    void handleBtnInserirDoa(ActionEvent event) {
-
+    void handleBtnInserirDoa(ActionEvent event) throws IOException {
+        boolean btnAddClicked = showGerenciamentoDoacao();
+        if(btnAddClicked){
+            fillTableDoacao();
+        }
     }
 
     @FXML
@@ -280,6 +296,44 @@ public class DoacoesViewController  implements Initializable {
 
     }
 
+    public void fillTableAnimaisDoa(Doacao doacao){
+        tableAnimais.getItems().clear();
+        List<Animal> animals = doacao.getAnimais();
+        ObservableList<Animal> observableList;
+
+        tableAnimaisColun.setCellValueFactory(new PropertyValueFactory<>("apelido"));
+
+        observableList = FXCollections.observableArrayList(animals);
+        tableAnimais.setItems(observableList);
+    }
+
+    public void fillTableProdutoDoa(Doacao doacao){
+        tableProdutos.getItems().clear();
+        List<Produto> produtos = doacao.getProdutos();
+        ObservableList<Produto> observableList;
+
+        tableProdutoColun.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+
+        observableList = FXCollections.observableArrayList(produtos);
+        tableProdutos.setItems(observableList);
+    }
+
+    public void fillTableDoacao(){
+        tableDoacao.getItems().clear();
+
+        DoacaoDAO doacaoDAO = new DoacaoDAO();
+        List<Doacao> doacoes = doacaoDAO.list();
+        ObservableList<Doacao> observableList = FXCollections.observableArrayList();
+        for(Doacao d : doacoes){
+            observableList.add(new Doacao(d.getId(),d.getUser(),d.getAnimais(),d.getProdutos(),d.getData()));
+        }
+        tableDoacaoId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableDoacaoUser.setCellValueFactory(new PropertyValueFactory<>("user"));
+        tableDoacaoDate.setCellValueFactory(new PropertyValueFactory<>("data"));
+
+        tableDoacao.setItems(observableList);
+    }
+
     public void fillTableAdocao(){
         tableAdocao.getItems().clear();
 
@@ -297,6 +351,23 @@ public class DoacoesViewController  implements Initializable {
 
     }
 
+    public void selectItemTableDoacao(Doacao doacao){
+        if(doacao != null){
+            txtIdDoa.setDisable(true);
+            txtIdDoa.setText(String.valueOf(doacao.getId()));
+            txtUserDoa.setText(doacao.getUser().getNome());
+            txtUserDoa.setEditable(false);
+            dtDoa.setValue(LOCAL_DATE(doacao.getData().toString()));
+            fillTableAnimaisDoa(doacao);
+            fillTableProdutoDoa(doacao);
+        }else{
+            txtIdDoa.setText("");
+            txtUserDoa.setText("");
+            tableAnimais.getItems().clear();
+            tableProdutos.getItems().clear();
+        }
+    }
+
     public void selectItemTableAdocao(Adocao adocao){
         if(adocao != null){
             txtId.setDisable(true);
@@ -311,6 +382,45 @@ public class DoacoesViewController  implements Initializable {
             txtUser.setText("");
             tableAnimaisAd.getItems().clear();
         }
+    }
+
+    public boolean showGerenciamentoDoacao() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
+                "ifsp/edu/br/View/CRUDDoacao.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Cadastro de Doação");
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
+
+        CRUDDoacaoController controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+
+        dialogStage.showAndWait();
+
+        return controller.isBtnClickedConfirm();
+    }
+
+    public boolean showGerenciamentoDoacao(Doacao doacao) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
+                "ifsp/edu/br/View/CRUDDoacao.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Cadastro de Doação");
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
+
+        CRUDDoacaoController controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+        controller.setDoacao(doacao);
+
+        dialogStage.showAndWait();
+
+        return controller.isBtnClickedConfirm();
     }
 
     public boolean showGerenciamentoAdocao() throws IOException {
@@ -357,6 +467,11 @@ public class DoacoesViewController  implements Initializable {
         fillTableAdocao();
         tableAdocao.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> selectItemTableAdocao(newValue));
+
+        fillTableDoacao();
+        tableDoacao.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> selectItemTableDoacao(newValue)
+        );
     }
 
     public static final LocalDate LOCAL_DATE (String dateString){
