@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ComboBox?>
 <AnchorPane prefHeight="400.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsp.edu.br.Control.CRUDDoacaoController">
    <children>
       <Label fx:id="labGerenDoa" layoutX="118.0" layoutY="30.0" text="Cadastramento de Doação">
@@ -24,13 +25,13 @@
       <TableView fx:id="tableProduto" layoutX="257.0" layoutY="176.0" prefHeight="135.0" prefWidth="200.0">
         <columns>
           <TableColumn fx:id="tableProdutoId" prefWidth="39.0" text="id" />
-          <TableColumn fx:id="tableProdutoDesc" prefWidth="111.0" text="Descrição" />
+          <TableColumn fx:id="tableProdutoDesc" prefWidth="160.0" text="Descrição" />
         </columns>
       </TableView>
       <Label fx:id="labProdutos" layoutX="258.0" layoutY="150.0" text="Produtos:" />
       <Button fx:id="btnInserirProd" layoutX="326.0" layoutY="145.0" mnemonicParsing="false" onAction="#handleBtnInserirProduto" text="Inserir" />
       <Label fx:id="labUsers" layoutX="52.0" layoutY="72.0" text="Usuários:" />
-      <ChoiceBox fx:id="cbUser" layoutX="118.0" layoutY="67.0" prefHeight="26.0" prefWidth="207.0" />
+      <ComboBox fx:id="cbUser" layoutX="118.0" layoutY="67.0" prefHeight="26.0" prefWidth="207.0" />
       <Label fx:id="labDate" layoutX="52.0" layoutY="113.0" text="Data:" />
       <Label fx:id="labDataDoa" layoutX="120.0" layoutY="113.0" text="Label" />
       <Label fx:id="labAnimais" layoutX="52.0" layoutY="150.0" text="Animais:" />

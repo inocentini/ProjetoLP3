@@ -38,6 +38,7 @@ public class AdocaoDAO {
         }
     }
 
+
     public void update(Adocao a) {
         Connection connection = Database.getConnection();
         String sql = "";

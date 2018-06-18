@@ -88,7 +88,6 @@ public class CRUDDoacaoController implements Initializable {
     private List<Produto> produtoList = new ArrayList<>();
     private Stage dialogStage;
     private boolean btnClickedConfirm = false;
-    private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
     private Doacao doacao = null;
     private DoacaoDAO doacaoDAO = new DoacaoDAO();
     private UsuarioDAO userDAO = new UsuarioDAO();
@@ -213,33 +212,22 @@ public class CRUDDoacaoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fillComboBoxCliente();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date data = new Date(System.currentTimeMillis());
+        labDataDoa.setText(String.valueOf(dateFormat.format(data)));
     }
 
     public boolean isComplete(){
         if(cbUser.getValue() == null
-                || tableAnimal.getItems().isEmpty()
-                || tableProduto.getItems().isEmpty()){
+                || (tableAnimal.getItems().isEmpty() && tableProduto.getItems().isEmpty())){
             return false;
         }
         return true;
     }
 
     public Animal showCRUDAnimal() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ifsp/edu/br/View/CRUDAnimal.fxml"));
-        AnchorPane page = loader.load();
-
-        Stage dialogStage = new Stage();
-        dialogStage.setTitle("Cadastro de PET");
-        Scene scene = new Scene(page);
-        dialogStage.setScene(scene);
-        dialogStage.setResizable(false);
-
-        CRUDAnimalController controller = loader.getController();
-        controller.setDialogStage(dialogStage);
-
-        dialogStage.showAndWait();
-
-        return controller.getAnimal();
+        AnimalViewController controller = new AnimalViewController();
+        return controller.CRUDAnimalDoa();
     }
 
     public Produto showCRUDEstoque() throws IOException {

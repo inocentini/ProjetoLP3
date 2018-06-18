@@ -165,4 +165,25 @@ public class ProdutoDAO {
         }
         return Integer.parseInt(null);
     }
+
+    public int idSequenceProd(){
+        Connection connection = Database.getConnection();
+        String sql = "";
+        PreparedStatement stmt = null;
+        try {
+            int id;
+            sql = "SELECT seq FROM sqlite_sequence WHERE name = 'Produto'";
+            stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            id = rs.getInt("seq");
+            rs.close();
+            stmt.close();
+            return id;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            Database.closeConnection(connection,stmt);
+        }
+        return Integer.parseInt(null);
+    }
 }

@@ -265,7 +265,25 @@ public class DoacoesViewController  implements Initializable {
 
     @FXML
     void handleBtnRemoverDoa(ActionEvent event) {
-
+        Doacao doacao = tableDoacao.getSelectionModel().getSelectedItem();
+        if(doacao != null){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Removendo Adoção.");
+            alert.setContentText("Você deseja remover esta doação?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.CANCEL){
+                return;
+            }else if(result.get() == ButtonType.OK){
+                DoacaoDAO doacaoDAO = new DoacaoDAO();
+                doacaoDAO.remove(doacao);
+                fillTableDoacao();
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Seleção de Adoção");
+            alert.setContentText("Por favor, selecione uma doação.");
+            alert.show();
+        }
     }
 
     @FXML

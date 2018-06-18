@@ -167,12 +167,8 @@ public class AnimalViewController implements Initializable {
         if(animal != null){
             boolean btnAlterarClicked = showGerenciamentoAnimal(animal);
             if(btnAlterarClicked && animal.getClass() == Cachorro.class){
-//                CachorroDAO dogDao = new CachorroDAO();
-//                dogDao.update((Cachorro) animal);
                 fillTableCachorro();
             }else if(btnAlterarClicked && animal.getClass() == Gato.class){
-//                GatoDAO catDAO = new GatoDAO();
-//                catDAO.update((Gato) animal);
                 fillTableGato();
             }
         }else {
@@ -251,6 +247,7 @@ public class AnimalViewController implements Initializable {
         return controller.isBtnconfirm();
     }
 
+
     public boolean showGerenciamentoAnimal(Animal animal) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
                 "ifsp/edu/br/View/CRUDAnimal.fxml"));
@@ -270,6 +267,8 @@ public class AnimalViewController implements Initializable {
 
         return controller.isBtnconfirm();
     }
+
+
 
     @FXML
     void pesquisaAnimal(KeyEvent event){
@@ -433,6 +432,25 @@ public class AnimalViewController implements Initializable {
             txtVacinado.setText("");
             txtCastrado.setText("");
         }
+    }
+
+    public Animal CRUDAnimalDoa() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
+                "ifsp/edu/br/View/CRUDAnimal.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Cadastro de PET");
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+        dialogStage.setResizable(false);
+
+        CRUDAnimalController controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+
+        dialogStage.showAndWait();
+
+        return controller.getAnimal();
     }
 
 }
