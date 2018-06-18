@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -112,6 +114,19 @@ public class FuncionarioViewController implements Initializable {
     private Label labPesquisar;
 
     @FXML
+    private ImageView imageMenu;
+
+    private PrincipalController menu;
+
+    public PrincipalController getMenu() {
+        return menu;
+    }
+
+    public void setMenu(PrincipalController menu) {
+        this.menu = menu;
+    }
+
+    @FXML
     void handleBtnAlterar(ActionEvent event) throws IOException {
         Funcionario func = new Funcionario();
         func = tableFunc.getSelectionModel().getSelectedItem();
@@ -164,7 +179,10 @@ public class FuncionarioViewController implements Initializable {
 
     @FXML
     void handleBtnVoltar(ActionEvent event) {
-
+        Image image = menu.getIvCenter().getImage();
+        this.imageMenu.setDisable(false);
+        this.imageMenu.setImage(image);
+        this.imageMenu.setVisible(true);
     }
 
     @Override

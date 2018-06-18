@@ -22,6 +22,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -184,6 +186,20 @@ public class DoacoesViewController  implements Initializable {
     private Label labPesquisarDoa;
 
     @FXML
+    private ImageView imageMenu;
+
+
+    private PrincipalController menu;
+
+    public PrincipalController getMenu() {
+        return menu;
+    }
+
+    public void setMenu(PrincipalController menu) {
+        this.menu = menu;
+    }
+
+    @FXML
     void handleBtnAlterar(ActionEvent event) throws IOException {
         Adocao adocaoup = tableAdocao.getSelectionModel().getSelectedItem();
         if(adocaoup != null){
@@ -291,12 +307,18 @@ public class DoacoesViewController  implements Initializable {
 
     @FXML
     void handleBtnVoltar(ActionEvent event) {
-
+        Image image = menu.getIvCenter().getImage();
+        this.imageMenu.setDisable(false);
+        this.imageMenu.setImage(image);
+        this.imageMenu.setVisible(true);
     }
 
     @FXML
     void handleBtnVoltarDoa(ActionEvent event) {
-
+        Image image = menu.getIvCenter().getImage();
+        this.imageMenu.setDisable(false);
+        this.imageMenu.setImage(image);
+        this.imageMenu.setVisible(true);
     }
 
     @FXML

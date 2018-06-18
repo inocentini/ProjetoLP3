@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -66,6 +67,7 @@ public class PrincipalController implements Initializable {
                 getClassLoader().getResource("ifsp/edu/br/View/AnimalView.fxml"));
         AnchorPane root = loader.load();
         AnimalViewController controller = loader.getController();
+        controller.setMenu(this);
         paneCenter.getChildren().setAll(root);
         paneCenter.getChildren().remove(paneCenter);
     }
@@ -76,6 +78,7 @@ public class PrincipalController implements Initializable {
                 .getResource("ifsp/edu/br/View/ContaView.fxml"));
         AnchorPane root = loader.load();
         ContaViewController controller = loader.getController();
+        controller.setMenu(this);
         paneCenter.getChildren().setAll(root);
         ivCenter.setVisible(false);
     }
@@ -86,6 +89,7 @@ public class PrincipalController implements Initializable {
                 "ifsp/edu/br/View/DoacoesView.fxml"));
         AnchorPane root = loader.load();
         DoacoesViewController controller = loader.getController();
+        controller.setMenu(this);
         paneCenter.getChildren().setAll(root);
     }
 
@@ -94,26 +98,39 @@ public class PrincipalController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ifsp/edu/br/View/FuncionarioView.fxml"));
         AnchorPane root = loader.load();
         FuncionarioViewController controller = loader.getController();
+        controller.setMenu(this);
         paneCenter.getChildren().setAll(root);
-//        AnchorPane newLoadedPane = (AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("ifsp/edu/br/View/FuncionarioView.fxml"));
-//        paneCenter.getChildren().setAll(newLoadedPane);
     }
 
     @FXML
     void gerenciaUsuario(MouseEvent event) throws IOException {
-        AnchorPane newLoadedPane = (AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("ifsp/edu/br/View/UserView.fxml"));
-        paneCenter.getChildren().setAll(newLoadedPane);
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ifsp/edu/br/View/UserView.fxml"));
+        AnchorPane root = loader.load();
+        UserViewController controller = loader.getController();
+        controller.setMenu(this);
+        paneCenter.getChildren().setAll(root);
 
     }
 
     @FXML
     void gerenciaEstoque(MouseEvent event) throws IOException {
-        AnchorPane newLoadedPane = (AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("ifsp/edu/br/View/EstoqueView.fxml"));
-        paneCenter.getChildren().setAll(newLoadedPane);
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ifsp/edu/br/View/EstoqueView.fxml"));
+        AnchorPane root = loader.load();
+        EstoqueViewController controller = loader.getController();
+        controller.setMenu(this);
+        paneCenter.getChildren().setAll(root);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ivCenter.setVisible(true);
+
+    }
+
+    public ImageView getIvCenter() {
+        return ivCenter;
+    }
+
+    public void setIvCenter(ImageView ivCenter) {
+        this.ivCenter = ivCenter;
     }
 }

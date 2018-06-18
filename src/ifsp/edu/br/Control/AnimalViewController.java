@@ -144,8 +144,18 @@ public class AnimalViewController implements Initializable {
     @FXML
     private AnchorPane apTela;
 
+    @FXML
+    private ImageView imageTela;
 
+    private PrincipalController menu;
 
+    public PrincipalController getMenu() {
+        return menu;
+    }
+
+    public void setMenu(PrincipalController menu) {
+        this.menu = menu;
+    }
 
     @FXML
     public void handleBtnInserir() throws IOException {
@@ -223,9 +233,10 @@ public class AnimalViewController implements Initializable {
     }
 
     public void handleBtnVoltar() throws IOException {
-        this.apTela.setVisible(false);
-        //Mais alguma coisa pra mostrar a imagem de inicio
-
+        Image image = menu.getIvCenter().getImage();
+        this.imageTela.setDisable(false);
+        this.imageTela.setImage(image);
+        this.imageTela.setVisible(true);
     }
 
     public boolean showGerenciamentoAnimal() throws IOException {

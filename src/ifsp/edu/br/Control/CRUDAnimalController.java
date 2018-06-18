@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class CRUDAnimalController implements Initializable {
 
     @FXML
@@ -183,6 +184,9 @@ public class CRUDAnimalController implements Initializable {
         CachorroDAO dogDAO = new CachorroDAO();
         txtId.setText(String.valueOf(dogDAO.nextSeqAnimal()));
         txtId.setEditable(false);
+//        txtNick.setMask("L");
+//        txtRaca.setMask("L");
+//        txtIdade.setMask("N");
         choiceboxAnimal.setValue(tipoAnimal.get(0));
         choiceboxAnimal.setItems(tipoAnimal);
     }
