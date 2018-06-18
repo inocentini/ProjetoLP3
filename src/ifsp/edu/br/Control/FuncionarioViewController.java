@@ -178,7 +178,7 @@ public class FuncionarioViewController implements Initializable {
     void pesquisaFunc(KeyEvent event) {
         ObservableList<Funcionario> observableList = tableFunc.getItems();
         FilteredList<Funcionario> filteredList = new FilteredList<>(observableList, funcionario -> true);
-        txtPesquisar.setOnKeyReleased(funcionario -> {
+        txtPesquisar.setOnKeyPressed(funcionario -> {
             txtPesquisar.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
                 filteredList.setPredicate((Predicate<? super Funcionario>) func -> {
                     if (newValue == null || newValue.isEmpty()) {

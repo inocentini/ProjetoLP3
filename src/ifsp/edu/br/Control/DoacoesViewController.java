@@ -13,6 +13,8 @@ import ifsp.edu.br.Model.Pessoas.Usuario;
 import ifsp.edu.br.Model.Produto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,6 +35,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class DoacoesViewController  implements Initializable {
 
@@ -297,7 +300,54 @@ public class DoacoesViewController  implements Initializable {
     }
 
     @FXML
-    void pesquisaFunc(KeyEvent event) {
+    void pesquisaAdo(KeyEvent event) {
+        ObservableList<Adocao> observableList = tableAdocao.getItems();
+        FilteredList<Adocao> filteredList = new FilteredList<>(observableList, adocao -> true);
+        txtPesquisar.setOnKeyPressed(adocao -> {
+            txtPesquisar.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
+                filteredList.setPredicate((Predicate<? super Adocao>) ad -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    int id = Integer.parseInt(newValue);
+                    if (String.valueOf(ad.getId()).contains(newValue)) {
+                        return true;
+                    } else if (ad.getId() == id) {
+                        return true;
+                    }
+                    return false;
+                });
+            });
+            SortedList<Adocao> sortedList = new SortedList<>(filteredList);
+            sortedList.comparatorProperty().bind(tableAdocao.comparatorProperty());
+            tableAdocao.setItems(sortedList);
+        });
+
+    }
+
+    @FXML
+    void pesquisaDoa(KeyEvent event){
+        ObservableList<Doacao> observableList = tableDoacao.getItems();
+        FilteredList<Doacao> filteredList = new FilteredList<>(observableList, doacao -> true);
+        txtPesquisar.setOnKeyPressed(doacao -> {
+            txtPesquisar.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
+                filteredList.setPredicate((Predicate<? super Doacao>) doa -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    int id = Integer.parseInt(newValue);
+                    if (String.valueOf(doa.getId()).contains(newValue)) {
+                        return true;
+                    } else if (doa.getId() == id) {
+                        return true;
+                    }
+                    return false;
+                });
+            });
+            SortedList<Doacao> sortedList = new SortedList<>(filteredList);
+            sortedList.comparatorProperty().bind(tableDoacao.comparatorProperty());
+            tableDoacao.setItems(sortedList);
+        });
 
     }
 

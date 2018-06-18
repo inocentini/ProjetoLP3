@@ -85,7 +85,7 @@
                               </AnchorPane>
                            </items>
                         </SplitPane>
-                        <TextField fx:id="txtPesquisar" layoutX="95.0" layoutY="21.0" onKeyReleased="#pesquisaFunc" prefHeight="26.0" prefWidth="280.0" AnchorPane.bottomAnchor="353.0" AnchorPane.topAnchor="21.0" />
+                        <TextField fx:id="txtPesquisar" layoutX="95.0" layoutY="21.0" onKeyPressed="#pesquisaAdo" prefHeight="26.0" prefWidth="280.0" AnchorPane.bottomAnchor="353.0" AnchorPane.topAnchor="21.0" />
                         <Label fx:id="labPesquisar" layoutX="14.0" layoutY="27.0" text="Pesquisar :" AnchorPane.bottomAnchor="353.0" AnchorPane.topAnchor="21.0" />
                      </children>
                   </AnchorPane>
@@ -161,7 +161,7 @@
                               </AnchorPane>
                            </items>
                         </SplitPane>
-                        <TextField fx:id="txtPesquisarDoa" layoutX="95.0" layoutY="21.0" onKeyReleased="#pesquisaFunc" prefHeight="26.0" prefWidth="280.0" AnchorPane.bottomAnchor="353.0" AnchorPane.topAnchor="21.0" />
+                        <TextField fx:id="txtPesquisarDoa" layoutX="95.0" layoutY="21.0" onKeyPressed="#pesquisaDoa" prefHeight="26.0" prefWidth="280.0" AnchorPane.bottomAnchor="353.0" AnchorPane.topAnchor="21.0" />
                         <Label fx:id="labPesquisarDoa" layoutX="14.0" layoutY="27.0" text="Pesquisar :" AnchorPane.bottomAnchor="353.0" AnchorPane.topAnchor="21.0" />
                      </children>
                   </AnchorPane>

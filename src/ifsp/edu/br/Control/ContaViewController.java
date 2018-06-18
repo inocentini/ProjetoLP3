@@ -157,17 +157,18 @@ public class ContaViewController implements Initializable {
     }
 
     @FXML
-    void pesquisaFunc(KeyEvent event) {
+    void pesquisaConta(KeyEvent event) {
         ObservableList<Conta> observableList = tableConta.getItems();
         FilteredList<Conta> filteredList = new FilteredList<>(observableList, conta -> true);
-        txtPesquisar.setOnKeyReleased(conta -> {
+        txtPesquisar.setOnKeyPressed(conta -> {
             txtPesquisar.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
                 filteredList.setPredicate((Predicate<? super Conta>) taxe -> {
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
-                    if (String.valueOf(taxe.getId()).contains(newValue)) {
+
+                    if (String.valueOf(taxe.getId()) == newValue) {
                         return true;
                     } else if (taxe.getDescricao().toLowerCase().contains(lowerCaseFilter)) {
                         return true;

@@ -96,7 +96,7 @@
                </children></AnchorPane>
         </items>
       </SplitPane>
-      <TextField fx:id="txtPesquisar" layoutX="95.0" layoutY="21.0" onKeyTyped="#pesquisaAnimal" prefHeight="26.0" prefWidth="280.0" AnchorPane.bottomAnchor="353.0" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="228.0" AnchorPane.topAnchor="21.0" />
+      <TextField fx:id="txtPesquisar" layoutX="95.0" layoutY="21.0" onKeyPressed="#pesquisaAnimal" prefHeight="26.0" prefWidth="280.0" AnchorPane.bottomAnchor="353.0" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="228.0" AnchorPane.topAnchor="21.0" />
       <Label fx:id="labPesquisar" layoutX="14.0" layoutY="27.0" text="Pesquisar :" AnchorPane.bottomAnchor="353.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="21.0" />
       <RadioButton fx:id="rbtnDog" layoutX="392.0" layoutY="12.0" mnemonicParsing="false" text="Cachorro" AnchorPane.bottomAnchor="375.0" AnchorPane.leftAnchor="392.0" AnchorPane.rightAnchor="151.0" AnchorPane.topAnchor="10.0">
          <font>

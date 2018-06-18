@@ -317,6 +317,7 @@ public class AnimalViewController implements Initializable {
                 tableCat.setItems(sortedList);
             });
         }
+        return;
 
     }
 

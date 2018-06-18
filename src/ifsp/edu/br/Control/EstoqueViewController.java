@@ -151,17 +151,17 @@ public class EstoqueViewController implements Initializable {
     }
 
     @FXML
-    void pesquisaFunc(KeyEvent event) {
+    void pesquisaProduto(KeyEvent event) {
         ObservableList<Produto> observableList = tableProd.getItems();
         FilteredList<Produto> filteredList = new FilteredList<>(observableList, produto -> true);
-        txtPesquisar.setOnKeyReleased(produto -> {
+        txtPesquisar.setOnKeyPressed(produto -> {
             txtPesquisar.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
                 filteredList.setPredicate((Predicate<? super Produto>) prod -> {
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
-                    if (String.valueOf(prod.getId()).contains(newValue)) {
+                    if (String.valueOf(prod.getId()) == newValue) {
                         return true;
                     } else if (prod.getDescricao().toLowerCase().contains(lowerCaseFilter)) {
                         return true;

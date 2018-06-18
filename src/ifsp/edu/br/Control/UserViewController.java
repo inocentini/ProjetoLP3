@@ -166,7 +166,7 @@ public class UserViewController implements Initializable {
     void pesquisaUser(KeyEvent event) {
         ObservableList<Usuario> observableList = tableUser.getItems();
         FilteredList<Usuario> filteredList = new FilteredList<>(observableList, usuario -> true);
-        txtPesquisar.setOnKeyReleased(usario -> {
+        txtPesquisar.setOnKeyPressed(usario -> {
             txtPesquisar.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
                 filteredList.setPredicate((Predicate<? super Usuario>) user -> {
                     if (newValue == null || newValue.isEmpty()) {
